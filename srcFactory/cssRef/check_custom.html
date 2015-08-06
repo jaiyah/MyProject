@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>file type</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+<div class="box">
+    <span class="ctm-check">
+        <input type="checkbox" id="a" >
+        <label for="a"><i></i>쇼핑</label>
+    </span>
+    <span class="ctm-check">
+        <input type="checkbox" id="b">
+        <label for="b"><i></i>도서</label>
+    </span>
+    <span class="ctm-check">
+        <input type="checkbox" id="c">
+        <label for="c"><i></i>여행</label>
+    </span>
+</div>
+<style>
+
+    .box { margin: 50px auto; width: 500px; }
+    /* custom checkbox */
+    .ctm-check { position:relative; display:inline-block; overflow:hidden ;vertical-align:middle; *display:inline; *zoom:1}
+    .ctm-check input { position:absolute; width:14px; height:14px; opacity:0; filter:alpha(opacity=0); }
+    .ctm-check label { display:inline-block; height:20px; padding-right:10px; font-size:12px; line-height:1.6em; line-height:19px\9}
+    .ctm-check label i { display:inline-block; float:left; width:14px; height:14px; margin:2px 5px 0 0; background:url('./images/chk_bg.gif') no-repeat 0 0; }
+    .ctm-check.checked label i {background-position:0 -14px}
+
+</style>
+<script>
+
+    jQuery(function($){
+        /* Checkbox  */
+        var checkBox = $('.ctm-check');
+        var addClassCheckBox = function($input){
+            if ($input.prop('checked')){
+                $input.parent().addClass('checked');
+            } else {
+                $input.parent().removeClass('checked');
+            }
+        };
+        checkBox.on('change', 'input', function(){
+            addClassCheckBox($(this));
+        })
+
+
+    });
+
+</script>
+</body>
+</html>

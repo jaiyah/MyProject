@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="utf-8">
+    <title>IA (Imformation Architecture)</title>
+    <link rel="stylesheet" href="css/guide.css"/>
+    <link type="text/css" rel="stylesheet" href="css/shCore.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="./js/guide.js"></script>
+    <script src="./js/shCore.js"></script>
+    <script src="./js/shBrushJScript.js"></script>
+    <script src="./js/shBrushCss.js"></script>
+    <script src="./js/shBrushXml.js"></script>
+</head>
+<body>
+<a href="#wrap" class="skip">≫ &nbsp; 메뉴 건너 뛰기</a>
+<header>
+    <div id="header">
+        <hgroup>
+            <h1><span class="gd-bar"></span>Table Type</h1>
+
+            <h2>Publishing</h2>
+        </hgroup>
+    </div>
+</header>
+
+<div id="wrap">
+    <section>
+        <h3>Guide Tab</h3>
+
+        <p class="listBtnArea"><a href="./IA.html" class="on">Impormation Architeture</a></p>
+    </section>
+    <hr/>
+
+    <section class="guide-wrap">
+        <article>
+            <div class="guide-tap">
+                <ul>
+                    <li><a href="layout.html"><span>Layout Structure</span></a></li>
+                    <li><a href="title_font_type.html" class=""><span>Title & Font Type</span></a></li>
+                    <li><a href="tab_type.html" class=""><span>Tab Type</span></a></li>
+                    <li><a href="button_type.html" class=""><span>Button Type</span></a></li>
+                    <li><a href="list_type.html" class=""><span>List type</span></a></li>
+                    <li><a href="table_type.html" class="on"><span>Table Type</span></a></li>
+                    <li><a href="#" class=""><span>View Type</span></a></li>
+                    <li><a href="form_type.html" class=""><span>Form Type</span></a></li>
+                    <li><a href="popup_type.html" class=""><span>Pop-up Type</span></a></li>
+                    <li><a href="#" class=""><span>Scroll Type</span></a></li>
+                    <li><a href="#" class=""><span>IR Type</span></a></li>
+                </ul>
+            </div>
+            <div class="guide-contents">
+                <div class="guide-type">
+                    <h2 class="guide_tit">기본 가로형 리스트 테이블</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>모든 테이블의 정렬은 class tac(text-align:center), tal(text-align:left),tar(text-align:right) 로 적용합니다.</li>
+                            <li>default th 의 정렬값은 center, default td의 정렬값은 left 입니다.</li>
+                            <li>예) 전체 테이블의 정렬값이 center 일 경우 table에 클래스 tac 적용(tal,tar)</li>
+                            <li>예) 행의 전체 정렬값을 정렬하고자 할 경우에는 tr 에 클래스를 적용합니다.</li>
+                            <li>각 열의 정렬값이 다를 경우에는 각각의 td 에 클래스를 적용합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ 기본 테이블 타입1 View</span></p>
+                        <div class="preview">
+                            <!-- (s)tbl-type1 -->
+                            <div class="tbl-zone1">
+                                <table class="tbl-type1 tal">
+                                    <caption>기본정보 리스트</caption>
+                                    <colgroup span="6" style="width:16%"></colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td>남</td>
+                                        <th scope="row">생년월일</th>
+                                        <td>생년월일</td>
+                                        <th scope="row">국적</th>
+                                        <td>한국</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성명(영문)</th>
+                                        <td><input type="text" title="성명(영문) 입력" value="Kim jaehee" style="width:80%">
+                                        </td>
+                                        <th scope="row">주민등록번호</th>
+                                        <td>
+                                            <input type="text" title="주민등록번호 앞자리 입력" value="831012" maxlength="6"
+                                                   style="width:30%">
+                                            ~
+                                            <input type="password" title="주민등록번호 뒷자리 입력" value="9999999" maxlength="7"
+                                                   style="width:40%">
+                                        </td>
+                                        <th scope="row">병역</th>
+                                        <td><input type="text" title="병역 입력" value="미필" style="width:80%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td><input type="text" title="성별 입력" value="남" style="width:80%"></td>
+                                        <th scope="row">생년월일</th>
+                                        <td>
+                                            <input type="text" title="태어난 년도 입력" value="1983" maxlength="4"
+                                                   style="width:20%">
+                                            -
+                                            <input type="text" title="태어난 월 입력" value="10" maxlength="2"
+                                                   style="width:15%">
+                                            -
+                                            <input type="text" title="태어난 일 입력" value="12" maxlength="2"
+                                                   style="width:15%">
+                                        </td>
+                                        <th scope="row">국적</th>
+                                        <td><input type="text" title="국적 입력" value="한국" style="width:80%"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- (e)tbl-type1 -->
+
+                                <table class="tbl-type1 tal">
+                                    <caption>이 표는 ... 구성되어 있습니다.</caption>
+                                    <colgroup>
+                                        <col style="width:13%">
+                                        <col style="width:37%">
+                                        <col style="width:13%">
+                                        <col style="width:37%">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">등록년도&#47;학기</th>
+                                            <td class="txt_grey">2015년 &#47; 1학기</td>
+                                            <th scope="row">학번&#47;이름</th>
+                                            <td class="txt_grey">20150001 &#47; 송길동</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">이수학기</th>
+                                            <td class="txt_grey">1학기</td>
+                                            <th scope="row">총 신청학점</th>
+                                            <td class="txt_grey">6학점</td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="4" scope="row">신청강좌</th>
+                                            <td class="txt_grey">자바프로그래밍 1 (3학점)</td>
+                                            <th rowspan="4" scope="row" class="bg_gray">
+                                                <div class="pr">
+                                                    <div class="span_money">고지금액</div>
+                                                </div>
+                                            </th>
+                                            <td rowspan="4" class="txt_blue">
+                                                <div class="pr">
+                                                    <div class="span_money_v1">210,000 <span>원</span></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt_grey">자바프로그래밍 2 (3학점)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt_grey">자바프로그래밍 1 (3학점)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="txt_grey">자바프로그래밍 2 (3학점)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <!-- (s)tbl-type1 -->
+                            <div class="tbl-zone1">
+                                <table class="tbl-type1 tal">
+                                    <caption>이 표는 ... 로 구성되어 있습니다.</caption>
+                                    <colgroup span="6" style="width:16%"></colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td>남</td>
+                                        <th scope="row">생년월일</th>
+                                        <td>생년월일</td>
+                                        <th scope="row">국적</th>
+                                        <td>한국</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성명(영문)</th>
+                                        <td><input type="text" title="성명(영문) 입력" value="Kim jaehee" style="width:80%">
+                                        </td>
+                                        <th scope="row">주민등록번호</th>
+                                        <td>
+                                            <input type="text" title="주민등록번호 앞자리 입력" value="831012" maxlength="6"
+                                                   style="width:30%">
+                                            ~
+                                            <input type="password" title="주민등록번호 뒷자리 입력" value="9999999" maxlength="7"
+                                                   style="width:40%">
+                                        </td>
+                                        <th scope="row">병역</th>
+                                        <td><input type="text" title="병역 입력" value="미필" style="width:80%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">성별</th>
+                                        <td><input type="text" title="성별 입력" value="남" style="width:80%"></td>
+                                        <th scope="row">생년월일</th>
+                                        <td>
+                                            <input type="text" title="태어난 년도 입력" value="1983" maxlength="4"
+                                                   style="width:20%">
+                                            -
+                                            <input type="text" title="태어난 월 입력" value="10" maxlength="2"
+                                                   style="width:15%">
+                                            -
+                                            <input type="text" title="태어난 일 입력" value="12" maxlength="2"
+                                                   style="width:15%">
+                                        </td>
+                                        <th scope="row">국적</th>
+                                        <td><input type="text" title="국적 입력" value="한국" style="width:80%"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- (e)tbl-type1 -->
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">기본 세로형 리스트 테이블</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>td의 default 정렬은 left 이지만 table의 클래스에 tac 를 적용하여 전체 센터정렬화 시킨후 각각 컬럼마다 정렬을 재정의합니다.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, explicabo.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ 기본 테이블 타입2 View</span></p>
+                        <div class="preview">
+                            <div class="tbl-zone1">
+                                <!-- (s)tbl-type2 -->
+                                <table class="tbl-type2 tac">
+                                    <caption>이 표는 ... 로 구성되어 있습니다.</caption>
+                                    <colgroup>
+                                        <col style="width:7%">
+                                        <col style="width:11%">
+                                        <col style="width:10%">
+                                        <col style="width:12%">
+                                        <col style="width:13%">
+                                        <col style="width:13%">
+                                        <col style="width:14%">
+                                        <col style="width:11%">
+                                        <col style="width:9%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">학번</th>
+                                            <th scope="col">성명</th>
+                                            <th scope="col">학년</th>
+                                            <th scope="col">현재학적</th>
+                                            <th scope="col">학적변동</th>
+                                            <th scope="col">변동(예정)학기</th>
+                                            <th scope="col">처리일</th>
+                                            <th scope="col">상태값</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tr_selecter">
+                                            <td>2</td>
+                                            <td>20130002</td>
+                                            <td><a href="#">김김길동</a></td>
+                                            <td>1학년</td>
+                                            <td class="tal">재학</td>
+                                            <td>성적불량 재적</td>
+                                            <td>2014년 2학기</td>
+                                            <td>2013.03.02</td>
+                                            <td>
+                                                <select title="Certificate 명 선택" style="width:100%">
+                                                <option value="">NEXT cs</option>
+                                            </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>20130001</td>
+                                            <td><a href="#">홍길동</a></td>
+                                            <td>1학년</td>
+                                            <td class="tal">재학</td>
+                                            <td>휴학</td>
+                                            <td>2014년 1학기</td>
+                                            <td>2013.03.02</td>
+                                            <td>
+                                                <input type="text" title="인터십 시작일 입력" value="2011-01-01" dir="ltr" style="width:50%">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- (e)tbl-type2 -->
+                            </div>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <div class="tbl-zone1">
+                            <!-- (s)tbl-type2 -->
+                            <table class="tbl-type2 tac">
+                                <caption>이 표는 ... 로 구성되어 있습니다.</caption>
+                                <colgroup>
+                                    <col style="width:7%">
+                                    <col style="width:11%">
+                                    <col style="width:10%">
+                                    <col style="width:12%">
+                                    <col style="width:13%">
+                                    <col style="width:13%">
+                                    <col style="width:14%">
+                                    <col style="width:11%">
+                                    <col style="width:9%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">학번</th>
+                                    <th scope="col">성명</th>
+                                    <th scope="col">학년</th>
+                                    <th scope="col">현재학적</th>
+                                    <th scope="col">학적변동</th>
+                                    <th scope="col">변동(예정)학기</th>
+                                    <th scope="col">처리일</th>
+                                    <th scope="col">상태값</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="tr_selecter">
+                                    <td>2</td>
+                                    <td>20130002</td>
+                                    <td><a href="#">김김길동</a></td>
+                                    <td>1학년</td>
+                                    <td class="tal">재학</td>
+                                    <td>성적불량 재적</td>
+                                    <td>2014년 2학기</td>
+                                    <td>2013.03.02</td>
+                                    <td>
+                                        <select title="Certificate 명 선택" style="width:100%">
+                                            <option value="">NEXT cs</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>20130001</td>
+                                    <td><a href="#">홍길동</a></td>
+                                    <td>1학년</td>
+                                    <td class="tal">재학</td>
+                                    <td>휴학</td>
+                                    <td>2014년 1학기</td>
+                                    <td>2013.03.02</td>
+                                    <td>
+                                        <input type="text" title="인터십 시작일 입력" value="2011-01-01" dir="ltr" style="width:50%">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- (e)tbl-type2 -->
+                        </div>
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">Vertical Scrollable Table with fixed header </h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>버튼이 중앙 정렬 하나만 있을 경우를 대비하여 버튼 랩퍼에 min-height 값을 설정한다.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, explicabo.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Vertical scroll type View</span></p>
+                        <div class="preview">
+
+                                <!-- (s)tbl-scroll-wrap -->
+                                <div class="tbl-scroll-wrap" style="height:170px">
+                                    <div class="tbl-scroll-headerBg"></div>
+                                    <div class="tbl-scroll-inner">
+                                        <table cellspacing="0" class="tbl-scroll-type1 tac">
+                                            <caption>학력정보 리스트</caption>
+                                            <colgroup>
+                                                <col style="width:7%">
+                                                <col style="width:44%">
+                                                <col style="width:8%">
+                                                <col style="width:8%">
+                                                <col style="width:8%">
+                                                <col style="width:12%">
+                                                <col style="width:10%">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th scope="col"><span style="width:7%">학년</span></th>
+                                                <th scope="col"><span style="width:44%">강의명</span></th>
+                                                <th scope="col"><span style="width:8%">분반</span></th>
+                                                <th scope="col"><span style="width:8%">이수구분</span></th>
+                                                <th scope="col"><span style="width:8%">학점</span></th>
+                                                <th scope="col"><span style="width:12%">담당교수</span></th>
+                                                <th scope="col"><span style="width:10%">제한인원</span></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                                <tr>
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문1</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr class="tr_selecter">
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문2</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문1</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr class="tr_selecter">
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문2</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문1</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr class="tr_selecter">
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문2</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문1</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                <tr class="tr_selecter">
+                                                    <td>1학년</td>
+                                                    <td>자바 프로그램 입문2</td>
+                                                    <td>01</td>
+                                                    <td>전공필수</td>
+                                                    <td>3</td>
+                                                    <td>홍길동</td>
+                                                    <td>60</td>
+                                                </tr>
+                                                </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- (s)tbl-scroll-wrap -->
+
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <!-- (s)tbl-scroll-wrap -->
+                        <div class="tbl-scroll-wrap" style="height:170px">
+                            <div class="tbl-scroll-headerBg"></div>
+                            <div class="tbl-scroll-inner">
+                                <table cellspacing="0" class="tbl-scroll-type1 tac">
+                                    <caption>학력정보 리스트</caption>
+                                    <colgroup>
+                                        <col style="width:7%">
+                                        <col style="width:44%">
+                                        <col style="width:8%">
+                                        <col style="width:8%">
+                                        <col style="width:8%">
+                                        <col style="width:12%">
+                                        <col style="width:10%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"><span style="width:7%">학년</span></th>
+                                        <th scope="col"><span style="width:44%">강의명</span></th>
+                                        <th scope="col"><span style="width:8%">분반</span></th>
+                                        <th scope="col"><span style="width:8%">이수구분</span></th>
+                                        <th scope="col"><span style="width:8%">학점</span></th>
+                                        <th scope="col"><span style="width:12%">담당교수</span></th>
+                                        <th scope="col"><span style="width:10%">제한인원</span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- (s)tbl-scroll-wrap -->
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">Horizontal Scrollable Table </h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>버튼이 중앙 정렬 하나만 있을 경우를 대비하여 버튼 랩퍼에 min-height 값을 설정한다.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, explicabo.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Horizontal Scroll type View</span></p>
+                        <div class="preview">
+                            <!-- (s) tbl-hz-scroll -->
+                            <div class="tbl-zone1 tbl-hz-scroll">
+                                <!-- [D] 가로스크롤이 들어가야 될 경우 <table>에 style="width:width값%" 형식으로 주시면 됩니다. -->
+                                <table class="tbl-type2 tac" style="width:125%">
+                                    <caption>강좌별 학생 성적 리스트</caption>
+                                    <colgroup>
+                                        <col style="width:8%">
+                                        <col style="width:9%">
+                                        <col/>
+                                        <col style="width:6%">
+                                        <col style="width:8%">
+                                        <col style="width:8%">
+                                        <col style="width:10%">
+                                        <col style="width:10%">
+                                        <col style="width:8%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">학번</th>
+                                        <th scope="col">학생명</th>
+                                        <th scope="col">전공</th>
+                                        <th scope="col">학년</th>
+                                        <th scope="col">학적상태</th>
+                                        <th scope="col">재수강</th>
+                                        <th scope="col">성취도</th>
+                                        <th scope="col">등급</th>
+                                        <th scope="col">코멘트</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>99999999</td>
+                                                <td>홍길동길동</td>
+                                                <td class="l">자바 프로그램 입문 1</td>
+                                                <td>1</td>
+                                                <td>재학</td>
+                                                <td>재수강</td>
+                                                <td>not bad</td>
+                                                <td>Verygood</td>
+                                                <td><a href="#">작성</a></td>
+                                            </tr>
+                                        </tbody>
+                                </table>
+                            </div>
+                            <!-- (e)tbl-hz-scroll -->
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <!-- (s) tbl-hz-scroll -->
+                            <div class="tbl-zone1 tbl-hz-scroll">
+                                <!-- [D] 가로스크롤이 들어가야 될 경우 <table>에 style="width:width값%" 형식으로 주시면 됩니다. -->
+                                <table class="tbl-type2 tac" style="width:125%">
+                                    <caption>강좌별 학생 성적 리스트</caption>
+                                    <colgroup>
+                                        <col style="width:8%">
+                                        <col style="width:9%">
+                                        <col/>
+                                        <col style="width:6%">
+                                        <col style="width:8%">
+                                        <col style="width:8%">
+                                        <col style="width:10%">
+                                        <col style="width:10%">
+                                        <col style="width:8%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">학번</th>
+                                        <th scope="col">학생명</th>
+                                        <th scope="col">전공</th>
+                                        <th scope="col">학년</th>
+                                        <th scope="col">학적상태</th>
+                                        <th scope="col">재수강</th>
+                                        <th scope="col">성취도</th>
+                                        <th scope="col">등급</th>
+                                        <th scope="col">코멘트</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>99999999</td>
+                                        <td>홍길동길동</td>
+                                        <td class="l">자바 프로그램 입문 1</td>
+                                        <td>1</td>
+                                        <td>재학</td>
+                                        <td>재수강</td>
+                                        <td>not bad</td>
+                                        <td>Verygood</td>
+                                        <td><a href="#">작성</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- (e)tbl-hz-scroll -->
+                </div>
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">Both scrollable table with fixed header</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>버튼이 중앙 정렬 하나만 있을 경우를 대비하여 버튼 랩퍼에 min-height 값을 설정한다.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, explicabo.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Both scroll type View</span></p>
+                        <div class="preview">
+                            <!-- (s)tbl-both-scroll -->
+                            <div class="tbl-both-scroll">
+                                <!-- x축 스크롤를 하기위해 width 값을 콘텐츠(디자인)에 따라 %로 설정해 줍니다. -->
+                                <div class="tbl-scroll-outer" style="width:125%">
+                                    <div class="tbl-scroll-headerBg"></div>
+                                    <!--y축 스크롤을 하기 위해 height 값을 콘텐츠(디자인)에 따라 설정해 줍니다.-->
+                                    <div class="tbl-scroll-inner" style="height:128px;">
+                                        <table cellspacing="0" class="tbl-scroll-type1 tac">
+                                            <caption>이 표는 ... 구성되어 있습니다.</caption>
+                                            <colgroup>
+                                                <col style="width:7%">
+                                                <col style="width:44%">
+                                                <col style="width:8%">
+                                                <col style="width:8%">
+                                                <col style="width:8%">
+                                                <col style="width:12%">
+                                                <col style="width:10%">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th scope="col"><span style="width:7%">학년</span></th>
+                                                <th scope="col"><span style="width:44%">강의명</span></th>
+                                                <th scope="col"><span style="width:8%">분반</span></th>
+                                                <th scope="col"><span style="width:8%">이수구분</span></th>
+                                                <th scope="col"><span style="width:8%">학점</span></th>
+                                                <th scope="col"><span style="width:12%">담당교수</span></th>
+                                                <th scope="col"><span style="width:10%">제한인원</span></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                            <tr>
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문1</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr class="tr_selecter">
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문2</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문1</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr class="tr_selecter">
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문2</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문1</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            <tr class="tr_selecter">
+                                                <td>1학년</td>
+                                                <td>자바 프로그램 입문2</td>
+                                                <td>01</td>
+                                                <td>전공필수</td>
+                                                <td>3</td>
+                                                <td>홍길동</td>
+                                                <td>60</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- (e)tbl-both-scroll -->
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <!-- (s)tbl-both-scroll -->
+                        <div class="tbl-both-scroll">
+                            <!-- x축 스크롤를 하기위해 width 값을 콘텐츠(디자인)에 따라 %로 설정해 줍니다. -->
+                            <div class="tbl-scroll-outer" style="width:125%">
+                                <div class="tbl-scroll-headerBg"></div>
+                                <!--y축 스크롤을 하기 위해 height 값을 콘텐츠(디자인)에 따라 설정해 줍니다.-->
+                                <div class="tbl-scroll-inner" style="height:128px;">
+                                    <table cellspacing="0" class="tbl-scroll-type1 tac">
+                                        <caption>이 표는 ... 구성되어 있습니다.</caption>
+                                        <colgroup>
+                                            <col style="width:7%">
+                                            <col style="width:44%">
+                                            <col style="width:8%">
+                                            <col style="width:8%">
+                                            <col style="width:8%">
+                                            <col style="width:12%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col"><span style="width:7%">학년</span></th>
+                                            <th scope="col"><span style="width:44%">강의명</span></th>
+                                            <th scope="col"><span style="width:8%">분반</span></th>
+                                            <th scope="col"><span style="width:8%">이수구분</span></th>
+                                            <th scope="col"><span style="width:8%">학점</span></th>
+                                            <th scope="col"><span style="width:12%">담당교수</span></th>
+                                            <th scope="col"><span style="width:10%">제한인원</span></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!-- [D] 활성화시 tr에 클레스 "tr_selecter" 추가 -->
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문1</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        <tr class="tr_selecter">
+                                            <td>1학년</td>
+                                            <td>자바 프로그램 입문2</td>
+                                            <td>01</td>
+                                            <td>전공필수</td>
+                                            <td>3</td>
+                                            <td>홍길동</td>
+                                            <td>60</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- (e)tbl-both-scroll -->
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">테이블</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>...</li>
+                            <li>...</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ table type 3</span></p>
+                        <div class="preview">
+                            <div class="tbl-zone1">
+                                <!-- (s)tbl-type3 -->
+
+                                <!-- (e)tbl-type3 -->
+                            </div>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+            </div>
+        </article>
+    </section>
+    <hr/>
+    <footer>
+        <div class="author">
+        </div>
+    </footer>
+</div>
+<!-- 버튼 스타일 정의 -->
+<style>
+    /* table_Type common */
+    .tbl-zone1 table {width:100%;border:1px solid #d0d4d9;line-height:16px}
+    .tbl-zone1 th, td { padding:10px 10px 7px; border-right: 0;}
+    .tbl-zone1 th { background-color:#eff0f2; color:#333; border-top:1px solid #dee0e3; }
+    .tbl-zone1 td { color:#666; border-top:1px solid #edeef0}
+    .tbl-zone1 tr:first-child th, .tbl-zone1 tr:first-child td { border-top: 0;}
+    .tbl-zone1 a {color:#666; }
+    .tbl-zone1 a:hover {color:#333; }
+    /* 테이블 정렬이 모두 센터일 경우는 table class에 tac 적용, left일 경우는 tal 적용 */
+
+    .tbl-type2 th:first-child,.tbl-type2 td:first-child,.bbs_tbl_type3 th:first-child,.bbs_tbl_type3 td:first-child,.bbs_tbl_type4 th:first-child,.bbs_tbl_type4 td:first-child,.bbs_tbl_type7 th:first-child,.bbs_tbl_type7 td:first-child,.bbs_tbl_type7v2 td:first-child,.bbs_tbl_type8 td:first-child,.bbs_tbl_type8v2 td:first-child{border-left:0}
+    .bbs_tbl_type3 tr:hover,.bbs_tbl_type7 tr:hover,.bbs_tbl_type7v2 tr:hover,.bbs_tbl_type8 tr:hover,.bbs_tbl_type8v2 tr:hover,.tbl-scroll-inner tr:hover{background-color:#f9fafa}
+
+
+    /* table_Type 1 */
+    .tbl-type1 th{ }
+    .tbl-type1 td{ }
+    .tbl-type1 td input[type=text],.tbl-type1 td input[type=password],.tbl-type1 td a.fron,.tbl-type1 td select{/* margin:-6px 0 -2px*/ }
+    .tbl_type1v1 th,.tbl_type1v1 td{border-left:0}
+    .tbl-type1 a{ }
+    .tbl-type1 a:hover{ }
+
+    /* table_Type 2 */
+    .tbl-type2 th, .tbl-type2 td {padding:10px 9px 7px; }
+    .tbl-type2 th{ border-width:0 0 1px 1px; border-color:#dcdee2; border-style:solid; }
+    .tbl-type2 td{ border-width:1px 0 0 1px;border-color:#edeef0 #dcdee2; border-style:solid; }
+    .tbl-type2 td input[type=text],.tbl-type2 td select,.tbl-type2 td a.fron{margin:-6px 0 -2px}
+
+    /* scrollable table with fixed heading (common) */
+    .tbl-scroll-wrap { position:relative;width:100%; padding-top:33px; border:1px solid #d0d4d9; line-height:16px}
+    .tbl-scroll-headerBg {position:absolute; top:0; right:0; left:0; height:33px; border-bottom:1px solid #d9dbdb; background-color:#eff0f2}
+    .tbl-scroll-inner { overflow-x:hidden; overflow-y:auto; height:100%}
+    .tbl-scroll-type1 { width:100%; background-color:#fff;border-spacing:0; border: 0; }
+    .tbl-scroll-type1 caption { padding: 0;}
+    .tbl-scroll-type1 thead th { margin: 0; padding: 0; text-align: left; }/* ie7 때문에 */
+    .tbl-scroll-type1 thead th span { display:block; text-align: center; position:absolute; top:0; padding:10px 0 7px; border-left:1px solid #e5e7ea; color:#333; }
+    .tbl-scroll-type1 th:first-child span{ border-left:none }
+    .tbl-scroll-type1 td {padding:10px 5px 7px; border-top:1px solid #edeef0; color:#666; }
+    .tbl-scroll-type1 td + td {border-left:1px solid #edeef0}
+    .tbl-scroll-type1 a {color:#666}
+    .tbl-scroll-type1 a:hover {color:#000}
+
+    /* both scroll setting */
+    .tbl-both-scroll { position: relative; width: 100%; overflow-x: scroll; border:1px solid #d0d4d9;  }
+    .tbl-scroll-outer { position: relative; padding-top: 33px; *overflow:hidden;/* ie7 */}
+
+    /* table horizontal scroll */
+    .tbl-hz-scroll { position: relative; overflow-x:scroll; overflow-y:hidden ;width:100%}
+
+    .tbl-scroll-type1 tr:hover td,.tbl-type1 tr:hover td,.tbl-type2 tr:hover td {cursor:default}
+
+
+</style>
+
+
+</body>
+</html>

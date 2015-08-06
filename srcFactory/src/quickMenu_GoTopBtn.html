@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+		html,body{
+			font-size:9pt;
+			font-family:"굴림";	
+			height: 2000px;	
+			margin: 0;padding: 0;
+		}
+		div, p{
+			border:1px #eeeeee solid;
+			margin:10px;
+		}
+	</style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+	
+<body>
+	<div id="sample_page" class="page" >
+		샘플 페이지(div, id=sample_page, class=page)
+		<div id="header">				
+			헤더 영역(div, id=header)
+		</div>
+		<div id="content" class="sample_content">
+			컨텐츠 영역(div, id=content, class=sample_content)
+			<div> 
+				JavaScript란?(div)
+				<p id="data_1">1. 자바스크립트 Core(p, id=data_1)</p>
+				<p id="data_2">2. 자바스크립트  BOM(p, id=data_2)</p>
+				<p id="data_3">3. 자바스크립트 DOM(p, id=data_3)</p>
+				을 배운다는것
+			</div>
+			<div class="content_data">
+				자바스크립트에서 배울 내용(div, class=content_data)
+				<p>1. 자바스크립트 DOM(p)</p>
+				<p>2. 자바스크립트 Ajax(p)</p>
+			</div>				
+			<div class="content_data">
+				jQuery에서 배울 내용(div, class=content_data)
+				<p>1. jQuery DOM(p)</p>
+				<p>2. jQuery Ajax(p)</p>
+			</div>				
+		</div>
+		<div id="footer">				
+			푸터 영역(div, id=footer)
+		</div>
+		<div id="quick">스크롤 퀵 메뉴</div>
+		<div class="po">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos esse aut repellendus fugiat excepturi adipisci obcaecati suscipit fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adissimos esse aut repellendus fugiat excepturi adipisci obcaecati suscipit fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adissimos esse aut repellendus fugiat  adipisci obcaecati suscipit fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adissimos esse aut repellendus fugiat  adipisci it fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adissimos esse aut repellendus fugiat  adipisci obccipit fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consecteturi obccipit fugit ea quae.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos esse aut repellendus fugiat excepturi adipisci obcaecati suscipit fugit ea quae.</p>
+			<div class="por">
+				<div class="sp">
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트 콘텐츠 테스트<br />
+					<span>포지션 값</span>
+				</div>
+			</div>
+		</div>
+		<p class="btn_top"><a href="#none">top</a></p>
+	</div>
+	<style>
+	#quick {position: absolute;right: 0;top: 100px;height: 200px;background: #cfa;z-index: 2;}
+	#footer {background: black;opacity:.5;color:#fff;width: 1000px;height: 40px;margin-top: 0;}
+	#sample_page {margin-top:0}
+	.po {border:1px solid blue;position: relative;}
+	.por {position: relative;}
+	.sp span {position: absolute;left: 500px;top: 50px;width: 100px;height: 100px;background: #ccc;}
+	.btn_top {position:fixed;right:50px;bottom: 50px;width: 50px;height: 50px;background: #555;color: #fff;line-height:50px;display:none}
+	.btn_top a {color: #fff;display: block;text-align: center;font-size: 20px;}
+	</style>
+	<script>
+
+		$(function(){
+
+			var UI = {
+				init : function(){
+					this.quickMenuFn();
+					this.topBtn();
+				},
+				
+				initialize : function(){
+					this.id = {
+						target : {quick : '#quick', stickyTop : '#footer'},
+						topBtnClass : 'btn_top'
+					};
+					this.init();
+				},
+				
+				quickMenuFn : function(){
+					var quick = $(this.id.target.quick);
+					var qTop = parseInt(quick.css('top'));
+
+					$(window).scroll(function(){
+						var winTop = $(window).scrollTop();
+						
+						quick.stop().animate({
+							top : winTop + qTop
+						},400);
+
+					})
+				},
+				
+				topBtn : function(){
+					var btnLocation = $('.' + this.id.topBtnClass);
+					var timerId = 0;
+					
+					$(window).on('scroll',function(){
+						var winTop = $(window).scrollTop();
+						if(winTop > 200) {
+							btnLocation.fadeIn();
+							clearInterval(timerId);
+							timerId = setInterval(btnEffet, 2000);
+						} else {
+							btnLocation.fadeOut();
+							clearInterval(timerId);
+						}
+						
+					});
+					
+					function btnEffet(){
+						btnLocation.fadeTo('300',0.3).fadeTo('300',1);
+					}
+					
+					this.scrollTop(btnLocation);
+				},
+				
+				scrollTop : function(eTarget, speed) {
+					var speed = speed || null;
+					eTarget.on('click',function(){
+						$('html, body').animate({
+							scrollTop : $("body").offset().top
+						}, speed)
+					})
+				}
+				
+			}
+			
+			$(function(){				
+				UI.initialize();
+			})
+			
+		})
+		
+
+	</script>	
+</body>
+</html>

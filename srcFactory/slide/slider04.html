@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>Slider Guide</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style type="text/css">
+        * { margin: 0; padding: 0;}
+        #slider { margin: 100px auto;}
+        ul {list-style: none}
+        .slide-wrap {position:relative; width:350px; height:450px; overflow:hidden;}
+        ul.slide-list{ position:absolute; left:0px; }
+        ul.slide-list li {position:relative; float:left; width:350px; height:450px;}
+
+        a#prev2 {position:absolute; left:15px; top:220px; z-index:20;}
+        a#next2 {position:absolute; right:30px; top:220px; z-index:20;}
+    </style>
+</head>
+<body>
+
+<div id="slider" style="position:relative; width:350px;">
+    <a href="#" id="prev2" class="prev"><img src="../images/btn_left_arr.png" alt="����"></a>
+    <div class="slide-wrap">
+        <ul id="photo" class="slide-list mt15" style="">
+            <li><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpg" alt=""></li>
+            <li><img src="../images/4.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+        </ul>
+    </div>
+    <a href="#" id="next2" class="next"><img src="../images/btn_right_arr.png" alt="����"></a>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function rollingInfinite(containerID, slideID){
+
+        // �Ѹ��� ��ü�� ������ ���Ƶд�.
+        var el = $('#'+containerID).find('#'+slideID);
+        var lastChild,
+            speed = 3000,
+            timer = 0;
+
+        el.data('prev', $('#'+containerID).find('.prev'));	//������ư�� data()�޼��带 �����Ͽ� �����Ѵ�.
+        el.data('next', $('#'+containerID).find('.next'));	//������ư�� data()�޼��带 �����Ͽ� �����Ѵ�.
+        el.data('size', el.children().outerWidth());		//�Ѹ���ü�� �ڽĿ����� ���̸� �����Ѵ�.
+        el.data('len', el.children().length);				//�Ѹ���ü�� ��ü���� ����
+        el.data('animating',false);
+
+        el.css('width',el.data('size')*el.data('len'));		//�Ѹ���ü�� ��ü���� �����Ѵ�.
+        console.log(el.data())
+
+        //el�� ÷�ε� prev ����Ÿ�� Ŭ���̺�Ʈ�� ���ε��Ѵ�.
+        el.data('prev').bind({
+            click:function(e){
+                e.preventDefault();
+                movePrevSlide();
+            }
+        });
+
+        //el�� ÷�ε� next ����Ÿ�� Ŭ���̺�Ʈ�� ���ε��Ѵ�.
+        el.data('next').on({
+            click:function(e){
+                moveNextSlide();
+                return false;
+            }
+        });
+
+        function movePrevSlide(){
+            if(!el.data('animating')){
+                //�Ѹ���ü�� ������ ���Ҹ� �����Ͽ� �������� ������ �����Ѵ�.
+                var lastItem = el.children().eq(-2).nextAll().clone(true);
+                lastItem.prependTo(el);		//������ ���Ҹ� �Ѹ���ü�� �տ� �ٿ����´�.
+                el.children().eq(-2).nextAll().remove();	//���õ� ���Ҵ� ������ �����Ѵ�
+                el.css('left','-'+(el.data('size')*1+'px'));	//�Ѹ���ü�� left��ġ���� �缳���Ѵ�.
+
+                el.data('animating',true);	//�ִϸ��̼� �ߺ��� ���� ���� ÷�ε� animating ����Ÿ�� true�� �����Ѵ�.
+
+                el.animate({'left': '0px'},'normal',function(){		//�Ѹ���ü�� left:0��ŭ �ִϸ��̼� ��Ų��.
+                    el.data('animating',false);
+                });
+            }
+            return false;
+        }
+
+        function moveNextSlide(){
+            if(!el.data('animating')){
+                el.data('animating',true);
+
+                el.animate({'left':'-'+(el.data('size')*1)+'px'},'normal',function(){	//�Ѹ���ü�� �ִϸ��̼� ��Ų��.
+                    //�Ѹ���ü�� �տ��� ���Ҹ� �����Ͽ� �������� ������ �����Ѵ�.
+                    var firstChild = el.children().filter(':lt('+1+')').clone(true);
+                    firstChild.appendTo(el);	//������ ���Ҹ� �Ѹ���ü�� ���� �ٿ����´�.
+                    el.children().filter(':lt('+1+')').remove();	//���õ� ���Ҹ� �տ��� �����Ѵ�
+                    el.css('left','0px');	////�Ѹ���ü�� left��ġ���� �缳���Ѵ�.
+
+                    el.data('animating',false);
+                });
+            }
+            return false;
+        }
+
+    }
+
+    rollingInfinite('slider', 'photo');
+
+</script>
+
+
+</body>
+</html>

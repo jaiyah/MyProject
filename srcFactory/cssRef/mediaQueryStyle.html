@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>미디어쿼리 스타일 정의</title>
+</head>
+<body>
+
+<style>
+
+    /* 미디어쿼리 min,max 혼합 */
+    @media (min-width: 40em) and (max-width: 50em) {
+        .ss_samsung .footer ul { padding: 0; }
+    }
+
+    /* width setting */
+    @media (min-width: 22.5em) { /* 360px이상 */ } /* 22.5 * 16 */
+    @media (min-width: 30em) { /* 480px이상 */ }
+    @media (min-width: 40em) { /* 640px이상 */ }
+    @media (min-width: 48em) { /* 768px이상 */ }
+    @media (min-width: 64em) { /* 1024px이상 */ }
+
+    @media (max-width: 22.5em) { /* 360px이하 */ }
+    @media (max-width: 30em) { /* 480px이하 */ }
+    @media (max-width: 40em) { /* 640px이하 */ }
+    @media (max-width: 48em) { /* 768px이하 */ }
+    @media (max-width: 64em) { /* 1024px이하 */ }
+
+</style>
+<script>
+    /* demo.js - 2012使yamoo9.com */
+    ;(function($) {
+
+        $('.checkbox').click( function () {
+            var checked = false;
+            if( checked === false) {
+                $(this).css('background-position', '0px -21px');
+                checked = true;
+            } else {
+                $(this).css('background-position', '0px -21px');
+                checked = false;
+            };
+
+        });
+
+    })(window.jQuery);
+</script>
+</body>
+</html>

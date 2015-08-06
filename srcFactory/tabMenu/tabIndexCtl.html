@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>closest demo</title>
+    <style>
+        li {list-style:none}
+        .tab {overflow:hidden}
+        .tab li {float:left;background:#C3BFBF;margin-right:20px}
+        .tab li.on {background:#0000FF}
+        .tab li.on a {color:#fff}
+        .tab li a {display:block;padding:20px}
+        .tab_cont {position:relative;width:400px;height:50px;}
+        .tab_cont li {background:#f2f2f2;position:absolute;left:0; top:0;display:none}
+        /*.tab_cont li.on {display:block}*/
+    </style>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<ul class="tab">
+    <li class="on"><a href="#none">Tab 1111</a></li>
+    <li><a href="#none">Tab 2222</a></li>
+</ul>
+<div class="tab_cont">
+    <ul>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi pariatur numquam error at ipsum dolor ratione consequuntur molestias quis nihil.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur adipisci debitis dignissimos culpa accusamus quo et veritatis corporis obcaecati autem soluta explicabo eum quas molestias blanditiis suscipit commodi odio beatae.</li>
+    </ul>
+</div>
+
+<script>
+    $('.tab_cont li').eq(0).show();
+    $('.tab li').on('click', function() {
+        var num = $(this).index();
+        $('.tab li').removeClass('on');
+        $(this).addClass('on');
+        $('.tab_cont li').hide();
+        // $('.tab_cont li').eq(num).show();
+        $('.tab_cont li:eq('+num+')').show();
+        return false;
+    });
+
+</script>
+
+</body>
+</html>

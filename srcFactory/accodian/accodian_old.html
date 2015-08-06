@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아코디언 메뉴</title>
+<script src="./js/jquery.js"></script>
+<link href="./css/common.css" rel="stylesheet" />
+<style>
+/* 공통 */
+* { margin:0; padding:0 }
+#wrap{margin:30px}
+/* 아코디언1 */
+</style>
+</head>
+
+<body>
+<div id="wrap">
+	<h1>아코디언 메뉴 1</h1>
+	<div class="accodion">
+		<button class="toggle">전체보기</button>
+		<dl>
+			<dt><a href="#a1">question1</a></dt>
+			<dd id="a1">answer1</dd>
+			<dt><a href="#a2">question2</a></dt>
+			<dd id="a2">answer2</dd>
+			<dt><a href="#a3">question3</a></dt>
+			<dd id="a3">answer3</dd>
+		</dl>
+	</div>
+	<br />
+	<h1>아코디언 메뉴 2</h1>
+	<div class="accodion2">
+		<dl>
+			<dt><a href="#a11">question1</a></dt>
+			<dd id="a11">answer1</dd>
+			<dt><a href="#a12">question2</a></dt>
+			<dd id="a12">answer2</dd>
+			<dt><a href="#a13">question3</a></dt>
+			<dd id="a13">answer3</dd>
+		</dl>
+	</div>
+</div>
+<style type="text/css" media="screen">
+	table th,table td {border:1px solid #ccc}
+</style>
+<table border="0" cellspacing="5" cellpadding="5">
+	<thead>
+		<tr>
+			<td>인덱스</td>
+			<td>제목 </td>
+			<td>내용</td>
+			<td>날짜 </td>
+		</tr>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>dfdasf</td>
+				<td>dfdasf</td>
+				<td>dfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dfadfasf</td>
+				<td>dfadfasf</td>
+				<td>dfadfasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dafadfdasf</td>
+				<td>dafadfdasf</td>
+				<td>dafadfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsafafasfd</td>
+				<td>dsafafasfd</td>
+				<td>dsafafasfd</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsafdasfa</td>
+				<td>dsafdasfa</td>
+				<td>dsafdasfa</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>adsfasfasdfsfadsff</td>
+				<td>adsfasfasdfsfadsff</td>
+				<td>adsfasfasdfsfadsff</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>adfadfsdf</td>
+				<td>adfadfsdf</td>
+				<td>adfadfsdf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dasfdasf</td>
+				<td>dasfdasf</td>
+				<td>dasfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsfaf</td>
+				<td>dsfaf</td>
+				<td>dsfaf</td>
+			</tr>
+		</tbody>
+	</thead>
+</table>
+<table border="0" cellspacing="5" cellpadding="5">
+	<thead>
+		<tr>
+			<td>인덱스</td>
+			<td>제목 </td>
+			<td>내용</td>
+			<td>날짜 </td>
+		</tr>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>dfdasf</td>
+				<td>dfdasf</td>
+				<td>dfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dfadfasf</td>
+				<td>dfadfasf</td>
+				<td>dfadfasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dafadfdasf</td>
+				<td>dafadfdasf</td>
+				<td>dafadfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsafafasfd</td>
+				<td>dsafafasfd</td>
+				<td>dsafafasfd</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsafdasfa</td>
+				<td>dsafdasfa</td>
+				<td>dsafdasfa</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>adsfasfasdfsfadsff</td>
+				<td>adsfasfasdfsfadsff</td>
+				<td>adsfasfasdfsfadsff</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>adfadfsdf</td>
+				<td>adfadfsdf</td>
+				<td>adfadfsdf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dasfdasf</td>
+				<td>dasfdasf</td>
+				<td>dasfdasf</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>dsfaf</td>
+				<td>dsfaf</td>
+				<td>dsfaf</td>
+			</tr>
+		</tbody>
+	</thead>
+</table>
+<script type="text/javascript">
+
+// 아코디언 메뉴 - 세로형
+$.fn.accodion = function () {
+	this.find('dt').click(function(){
+		$(this).toggleClass('current').next().slideToggle(200);
+	});
+	this.find('.toggle').toggle(
+		function(){
+			$(this).text('전체닫기').parent(this).find('dt').addClass('current').next().slideDown(200);
+		},
+		function(){
+			$(this).text('전체보기').parent(this).find('dt').removeClass('current').next().slideUp(200);
+		})
+};
+if($('.accodion').length){
+	$(function(){
+		$('.accodion').accodion();
+	})
+}
+
+// 아코디언 메뉴 - 세로형2
+$.fn.accodion2 = function(){
+	this.find('dt').click( function(){
+		$(this).slideUp().siblings('dt').slideDown();
+		$(this).next().addClass('current').delay(400).slideDown().siblings('dd:not(current)').removeClass('current').slideUp()
+	})	
+}
+if($('.accodion2').length){
+	$(function(){
+		$('.accodion2').accodion2();
+	})
+}
+
+
+
+$('table').each(function(){
+	var num = $(this).find('tbody tr td:first-child')
+	num.text(function(idx) {
+		return idx + 1
+	})
+})
+
+
+</script>
+</body>
+</html>

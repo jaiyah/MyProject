@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+</head>
+<body>
+<dl>
+    <dt><span></span>이게 뭔가요?</dt>
+    <dd>나도 몰라...</dd>
+    <dt><span></span>질문입니다...</dt>
+    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum maiores.</dd>
+</dl>
+
+<style>
+    * { margin: 0; padding: 0; }
+    dl { }
+    dt, dd { padding: 10px; }
+    dt { background-color: #cfc; margin-bottom: 5px; }
+    dt span { display: inline-block; width: 5px; height: 5px; background-color: black; vertical-align: middle; margin-right: 10px; }
+    dt.on span { background-color: red; }
+    dd { background-color: tan; margin-bottom: 5px; display: none; }
+</style>
+</body>
+</html>
+<script>
+
+    // 소스 1
+    var acodian = {
+
+        click: function (target) {
+            var _self = this,
+                $target = $(target)
+            $target.on('click', function () {
+                if ($(this).next('dd').css('display') == 'none') {
+                    $('dd').slideUp();
+                    _self.onremove($target);
+
+                    $(this).addClass('on');
+                    $(this).next().slideDown();
+                } else {
+                    $('dd').slideUp();
+                    _self.onremove($target);
+
+                }
+            });
+        },
+        onremove: function ($target) {
+           $target.removeClass('on');
+        }
+
+    };
+    acodian.click('dt');
+
+    // 소스 2
+
+    /*
+    $('dt').on('click', function () {
+
+        if ($(this).hasClass('on')) {
+            slideUp();
+        } else {
+            slideUp();
+            $(this).addClass('on').next().slideDown();
+        }
+        function slideUp() {
+            $('dt').removeClass('on').next().slideUp();
+        };
+    })
+    */
+
+
+    // 소스 3
+    /*
+    $('dt').on('click', function () {
+
+        function slideDown(target) {
+            slideUp();
+            $(target).addClass('on').next().slideDown();
+        }
+
+        function slideUp() {
+            $('dt').removeClass('on').next().slideUp();
+        };
+        $(this).hasClass('on') ? slideUp() : slideDown($(this));
+
+    })
+    */
+
+    /*var acodian = {
+        click : function(target){
+            var $target = $(target);
+            $target.on('click', function(){
+
+                if($(this).hasClass('on')) {
+                    slideUp($target);
+                } else {
+                    slideUp($target);
+                    $(this).addClass('on').next().slideDown();
+                }
+
+                function slideUp($target) {
+                    $target.removeClass('on').next().slideUp();
+                }
+
+            });
+        }
+    };
+    acodian.click('.aco > dt');
+    acodian.click('.aco2 > dt');*/
+</script>

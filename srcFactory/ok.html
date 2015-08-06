@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>viewer</title>
+    <style>
+        html, body{ height:100%; }
+        body{ margin:0; padding:0; display:flex; justify-content:center; align-items:center; }
+        #viewer{ width:1000px; height:600px; background-color:#000; margin-top:calc(-65px / 2); margin-left:240px; position:relative; }
+        #viewer:before, #viewer:after{ content:''; position:relative; display:block; background-color:#000; left:50%; top:582px; }
+        #viewer:before{ height:50px; width:40px; margin-left:calc(-40px / 2); }
+        #viewer:after{ height:20px; width:1040px; margin-left:calc(-1040px / 2); transform:perspective(20px) rotateX(4deg); margin-top:-2px; }
+        .list{ position:absolute; left:0; top:0; bottom:0; width:200px; height:100%; z-index:100; background-color:#000; margin:0; padding:20px 0 0 40px; color:#fff; }
+        iframe{ width:962px; height:542px; background-color:#fff; position:absolute; left:20px; top:20px; border:none; }
+        button{ position:absolute; top:20px; width:calc(962px / 2); height:542px; appearance:none; border:none; z-index:10; color:transparent; background-color:transparent; }
+        button:hover{ background-color:rgba(0, 0, 0, .1); }
+        .prev{ left:20px; }
+        .next{ right:20px; }
+        .on{ background-color:yellow; color:#000; }
+    </style>
+</head>
+<body>
+
+<ul class="list">
+    <li>welcome.html</li>
+    <li>viewer.html</li>
+    <li>welcome1.html</li>
+    <li>viewer1.html</li>
+</ul>
+
+<div id="viewer">
+    <button class="prev">이전</button>
+    <button class="next">다음</button>
+    <iframe src="welcome.html"></iframe>
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    var page = {
+        go: function (el) {
+            if (el.length) {
+                $('iframe').attr('src', el.text());
+                el.addClass('on').siblings().removeClass();
+                li = $('.list li:contains(' + $('iframe').attr('src') + ')');
+            }
+            return li;
+        }
+    }
+
+    var li = $('.list li:contains(' + $('iframe').attr('src') + ')');
+
+    $('.list li:contains(' + $('iframe').attr('src') + ')').addClass('on');
+
+    $('.prev').on('click', function () {
+        page.go(li.prev());
+    });
+    $('.next').on('click', function () {
+        page.go(li.next());
+    });
+
+    $('.list li').on('click', function (e) {
+        page.go($(e.target));
+    });
+
+
+</script>
+</body>
+</html>
+

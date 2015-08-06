@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>텝 메뉴 스타일링</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="my_tab">
+        <ul>
+            <li class=""><a href="#" class="on"><span title="">회원정보수정</span></a></li>
+            <li class=""><a href="#" class=""><span title="">관심과정</span></a></li>
+            <li class=""><a href="#" class=""><span title="">결제내역</span></a></li>
+            <li class=""><a href="#" class=""><span title="">더조은포인트</span></a></li>
+            <li class=""><a href="#" class=""><span title="">회원탈퇴</span></a></li>
+        </ul>
+    </div>
+</div>
+
+
+<style>
+    /*
+        off 이미지는 30px on 이미지는 32px ul에 풀 라인 height 값은 32px
+        off 이미지 height가 30px 임에도 불구하고 ul에 32px을 준 이유는 풀 라인 bg를 나타내기 위해서
+        on a, span 태그에 height 32px을 주고 백그라운드 이미지 또한 32px로 라인이 없는 이미지로 컷팅한다.
+        off 인 기본 a 태그에는 30px 이며 on 인 a 태그에는 height 32px 인 것과 이미지 컷팅 및 제작이 포인트
+    */
+    .container { width: 1000px; margin: 50px auto;}
+    .my_tab { }
+    .my_tab ul { *zomm:1; height: 32px; background: url('./images/tab_bottom_line.png') repeat-x 0 100% }
+    .my_tab ul:after { content: ""; display: block; overflow: hidden; clear: both;}
+    .my_tab ul li { float: left; width: 20%; }
+    .my_tab ul li a { display: block; text-align: center; margin-left: 10px; height: 30px; padding-left: 10px; background: url('./images/tab_left_bg.png') no-repeat left top; cursor: pointer;}
+    .my_tab ul li a span { display:block; width: auto; line-height: 30px; text-indent: -8px; background: url("./images/tab_right_bg.png") no-repeat right top;}
+    .my_tab ul li:first-child a { margin-left: 0;}
+    .my_tab ul li a.on { position: relative; height: 32px; margin-bottom: -1px; color: #000; font-weight: bold; background: url("./images/tab_left_bg.png") no-repeat 0 -33px;}
+    .my_tab ul li a.on span { height: 32px; background: url("./images/tab_right_bg.png") no-repeat 100% -33px; }
+    
+
+
+</style>
+<script>
+
+</script>
+</body>
+</html>

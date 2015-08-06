@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>파일 업로드</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+            /* file upload */
+            *{ margin: 0; padding: 0;}
+            body { margin: 100px;}
+            fieldset, img {border:0}
+            legend { width: 0; height: 0; line-height: 0; overflow: hidden; visibility: hidden; font-size: 0;}
+            fieldset {position:relative; display:inline-block; *display:inline; }
+            fieldset * {vertical-align:middle;}
+        </style>
+</head>
+
+<body>
+
+
+
+<fieldset>
+    <legend>첨부파일</legend>
+    <input type="text" class="ipt" id="file" readonly="readonly" style="width:200px;" />
+    <input type="image" id="fileImg" width="80" height="20" src="http://www.ccprint.ca/images/5978026_orig.jpg" title="파일 올리기" />
+    <input type="file" name="file" id="upload" />
+</fieldset>
+<script type="text/javascript">
+    var fileUpload = function (){
+
+        var $img = $('#fileImg'),
+            imgWidth = $img.attr('width'),
+            $fileField = $('#file'),
+            $upLoad = $('#upload');
+
+        var $file = $upLoad.css({
+            position: "absolute",
+            top: "0px",
+            right: "0px",
+            width: imgWidth + "px",
+            cursor: "pointer",
+            opacity: "0"
+        });
+
+        $file.on('change',function(){
+            var fileName = $(this).val();
+            $fileField.attr("disabled","disabled").val(fileName);
+        });
+
+    }();
+</script>
+</body>
+</html>

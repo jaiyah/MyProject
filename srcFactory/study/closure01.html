@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>파일 업로드</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+        </style>
+</head>
+
+<body>
+<ul>
+    <li style="height: 100px;">ipconfig</li>
+    <li style="height: 50px;">ifconfig</li>
+    <li style="height: 140px;">터미널</li>
+</ul>
+
+<script>
+
+    // 정의,용어 자체는 처음 접근하는 사람에게는 줄 수 있는 정보가 별로 없다. 그래서 구체적인 내용을 보고
+    // 그때 그 정의가 무엇인지 다가오게 된다.
+
+    // 클로저(closure)
+    // 클로저는 내부함수가 외부함수의 맥락(context)에 접근할 수 있는 것을 가리킨다.
+    // 클로저는 자바스크립트를 이용한 고난이도의 테크닉을 구사하는데 필수적인 개념으로 활용된다.
+    // 복잡한 코드를 다루지 않는 사람에게는 몰라도 되는 내용이지만 많은 코드를 작성하거나 다른 이의 코드가 클로저로 작성되었을때..
+    // 분석하기 위해서 또한 중급이상의 개발능력을 갖추기 위해서라도 필요한 개념이다.
+
+
+    // 내부함수
+    // 자바스크립트는 함수 안에서 또 다른 함수를 선언할 수 있다.
+    // 아래의 예제 코드를 보자. 결과는 콘솔창에 coding everybody 가 출력될 것이다.
+
+
+    function factory_movie(title){
+        return {
+            get_title : function (){
+                return title;
+            },
+            set_title : function(_title){
+                if(typeof _title === 'string') {
+                    title = _title;
+                } else {
+                    console.log('타이틀은 문자열이어야 합니다.')
+                }
+            }
+        }
+    }
+    var ghost = factory_movie('Ghost in the shell');
+    var matrix = factory_movie('Matrix');
+
+    console.log(ghost.get_title());
+    console.log(matrix.get_title());
+
+    ghost.set_title('공각기동대');
+
+    ghost.get_title();
+    matrix.get_title();
+
+    // 클로저 구현시 유의해야 할 이슈
+    var arr = [], i = 0;
+
+    // 클로저 잘못된 사용법
+    /*
+    for(; i < 5; i++) {
+        arr[i] = function() {
+            return i;
+        }
+    }
+    */
+
+    for(; i < 5; i++) {
+        arr[i] = function(para) {
+            return function() {
+                return para;
+            }
+        }(i)
+    }
+    for(var key in arr) {
+        console.log(arr[key]());
+    }
+    // console.log(arr[2]())
+
+    Function.prototype.method = function(name, func) {
+        if(!this.prototype[name])
+            this.prototype[name] = func;
+    }
+
+    function Person(arg) {
+        this.name = arg;
+    }
+
+    Person.method('setName', function(value) {
+        this.name = value;
+    });
+
+    Person.method('getName', function() {
+        return this.name;
+    });
+
+    var me = new Person('jaehee!!!');
+    console.log(me.getName());
+    console.log(me.setName('javaScript'));
+    console.log(me.getName());
+
+
+</script>
+
+
+</body>
+</html>

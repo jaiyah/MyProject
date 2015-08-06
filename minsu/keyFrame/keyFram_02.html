@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./jquery-1.9.1.min.js"></script>
+<style>
+	body{background:#262626}
+	*,img,li,ul{margin:0;padding:0;}
+	img{vertical-align:top;}
+	li{list-style:none;}
+	ul{position:absolute;left:0;top:0; width:330px; }
+	.mask{overflow:hidden; position:relative; margin:0 auto ;width:330px;height:487px;border:1px solid red;z-index: 0}
+	.blit{position:relative; width:330px;margin:0 auto; z-index:999;}
+</style>
+  <meta charset="utf-8">
+  <title>Key Frame Animation</title>
+  <script>
+  $(document).ready(function(){
+
+
+  	var $frame = $(".mask ul");
+  	var $imgH = $(".mask img").height();
+  	console.log($imgH);
+  	$(".blit a").on("mouseenter",function(){
+  		//console.log($(this).index());
+
+  		moveImg($(this).index());
+  	});
+
+
+  	function moveImg(idx){
+  		$frame.css("top", ($imgH*-idx)+"px");
+
+  	}
+
+  });
+
+  </script>
+</head>
+<body>
+
+	<div class="mask">
+	<ul><li><img src="./num_0.gif" alt=""></li>
+		<li><img src="./num_1.gif" alt=""></li>
+		<li><img src="./num_2.gif" alt=""></li>
+		<li><img src="./num_3.gif" alt=""></li>
+		<li><img src="./num_4.gif" alt=""></li>
+		<li><img src="./num_5.gif" alt=""></li>
+		<li><img src="./num_6.gif" alt=""></li>
+		<li><img src="./num_7.gif" alt=""></li>
+	</ul>
+	</div>
+
+	<div class="blit">
+		<a href="#none">1</a>
+		<a href="#none">2</a>
+		<a href="#none">3</a>
+		<a href="#none">4</a>
+		<a href="#none">5</a>
+		<a href="#none">6</a>
+		<a href="#none">7</a>
+		<a href="#none">8</a>
+	</div>
+</body>
+</html>

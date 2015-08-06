@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <meta charset="utf-8">
+  <title>Banner_step 2: Click check(console)</title>
+  <style>
+*{ margin:0;padding:0;text-decoration:none}
+li{list-style:none}
+
+.product_con{ position:relative; width:300px; top:100px;margin:0 auto; border:1px solid green }
+.product_con .product_list{/*overflow:hidden;*/ position:relative;margin-left:50px;width:200px; height:200px; border:1px solid red}
+.product_con .product_list li{ position:absolute;left:0;}
+.product_con .product_list li:nth-child(1){left:-200px;}
+.product_con .product_list li:nth-child(2){}
+.product_con .product_list li:nth-child(3){left:200px;}
+
+.product_con .product_list li a{display:block; width:200px;height:200px;background:red}
+.product_con .product_list li:nth-child(1) a{background:#65f078;left:-200px;}
+.product_con .product_list li:nth-child(2) a{background:#f5da5c}
+.product_con .product_list li:nth-child(3) a{background:#fe719c;left:200px;}
+
+.product_con .btn_prev,.product_con .btn_next { position:absolute;top:100px;}
+.product_con .btn_prev { left:0px;}
+.product_con .btn_next { right:0px;}
+
+
+  </style>
+  <script>
+    $(document).ready(function(){     
+        var selNum = 0; 
+        var $proList = $(".product_list li");
+        var totalNum = $proList.length;
+        var $btnprev = $(".product_con .btn_prev");
+        var $btnnext = $(".product_con .btn_next");
+
+        $proList.css({display:"none"});
+        $proList.eq(selNum).fadeIn(1500);
+
+        console.log("전체갯수 : "+totalNum);
+
+
+        // 이전 배너 
+        $btnprev.on("click",function(){
+          
+          if(selNum <=0){
+            selNum =totalNum-1;
+          }else{
+            selNum -=1; 
+          }
+          console.log(selNum);
+        });
+
+      // 다음 배너 
+        $btnnext.on("click",function(){
+          
+          if(selNum >= totalNum-1){
+            selNum = 0;
+          }else{
+            selNum +=1; 
+          }
+          console.log(selNum);
+        }); 
+
+});
+  </script>
+</head>
+<body>
+<div class="product_con">
+    <ul class="product_list">
+        <li><a href="#none">1</a></li>
+        <li><a href="#none">2</a></li>
+        <li><a href="#none">3</a></li>
+    </ul>
+    <a class="btn_prev" href="#none">◀prev</a>
+    <a class="btn_next" href="#none">next▶</a>
+</div>
+</body>
+</html>

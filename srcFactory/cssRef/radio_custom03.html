@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>file type</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+    <div class="box">
+        <div class="ctm-radio checked">
+            <input type="radio" id="smsY" name="smsYN" value="0" title="예" checked="checked">
+            <label for="smsY"><i></i>예</label>
+        </div>
+        <div class="ctm-radio">
+            <input type="radio" id="smsN" name="smsYN" value="0" title="아니오" >
+            <label for="smsN"><i></i>아니오</label>
+        </div>
+
+    </div>
+
+<style>
+
+    .box { margin: 50px auto; width: 500px;}
+    /* radio */
+    .ctm-radio { position:relative; display:inline-block; overflow:hidden ;vertical-align:middle; *display:inline; *zoom:1}
+    .ctm-radio input { position:absolute; width:14px; height:14px; opacity:0; filter:alpha(opacity=0) }
+    .ctm-radio label { display:inline-block; height:20px; padding-right:10px; font-size:12px; line-height:1.6em; line-height:19px\9}
+    .ctm-radio label i { display:inline-block; float:left; width:14px; height:14px; margin:2px 5px 0 0; background:url('./images/radio_bg.gif') no-repeat 0 0; }
+    .ctm-radio.checked label i {background-position:0 -14px}
+
+</style>
+<script>
+
+    /**
+     *---------------------------------
+     * custom radio button
+     * --------------------------------
+     */
+    (function(global, $){
+        console.time('성능');
+        $(runRadio);
+
+        function runRadio() {
+            var radio = RadioCustom();
+            radio.init('.ctm-radio');
+
+        }
+        // CLASS RadioCustom Definition
+        function RadioCustom() {
+
+            if(this === window) return new RadioCustom;
+
+            // Element definition
+            this.$radioBox = null;
+            this.chk = null;
+
+        }
+        // RadioCustom 초기화
+        RadioCustom.prototype.init = function (el) {
+
+            this.$radioBox = $(el);
+            this.chk = 'checked';
+            this.initEvent();
+
+        };
+        // RadioCustom Call Event
+        RadioCustom.prototype.initEvent = function () {
+            var objThis = this;
+            this.$radioBox.on('change', 'input', function () {
+                objThis.addClassRadio(this);
+            })
+        };
+        // RadioCustom class toggle
+        RadioCustom.prototype.addClassRadio = function (ipt) {
+            var $input = $(ipt),
+                    _self = this;
+            $.each($input, function (index, el) {
+                var _$this = $input.eq(index);
+                if (_$this.prop('checked')) {
+                    if (_$this.parent().hasClass('ctm-radio')){
+                        var radioName = _$this.attr('name');
+                        $('input[name='+radioName+']').parent('.ctm-radio').removeClass(_self.chk);
+                    }
+                    _$this.parent().addClass(_self.chk).siblings().removeClass(_self.chk);
+                }
+            })
+        };
+        console.timeEnd('성능');
+    })(window, window.jQuery);
+
+
+
+</script>
+</body>
+</html>

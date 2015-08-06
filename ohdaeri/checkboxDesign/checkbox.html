@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>체크박스 디자인</title>
+<script type="text/javascript" language="javascript" src="jquery-1.8.3.min.js"></script>
+<script type="text/javascript" language="javascript" src="jquery.jqtransform.js"></script>
+<script type="text/javascript" language="javascript">
+ $(function(){
+  $('.inputDesign').jqTransform();
+ });
+</script>
+
+<style>
+
+ /* Checkboxes */
+ span.jqTransformCheckboxWrapper{line-height:0;font-size:0;vertical-align:top}
+ a.jqTransformCheckbox{display:inline-block;height:20px;width:20px;vertical-align:top;line-height:0;font-size:0;background:transparent url(inp_check.png) no-repeat center top;}
+ a.jqTransformChecked{background-position:0 -20px;}
+ .jqTransformHidden{display:none}
+ .checkIn{font-size:12px;font-family:'나눔고딕';line-height:20px}
+ .checkIn label{margin-right:10px}
+ </style>
+</head>
+<body>
+<div class="inputDesign">
+	<div class="checkIn"><label>동의 하시겠습니까?</label><input type="checkbox"/></div>
+</div>
+
+</html>
+</body>

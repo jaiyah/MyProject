@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>radioClass 플러그인</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+<ul>
+    <li><a href="#none">Lorem ipsum dolor sit amet.</a></li>
+    <li><a href="#none">Lorem ipsum dolor sit amet. Lorem ipsum dolor.</a></li>
+    <li><a href="#none">Lorem ipsum dolor sit amet.</a></li>
+    <li><a href="#none">Lorem ipsum dolor sit amet. Lorem ipsum dolor.</a></li>
+</ul>
+
+<script>
+
+    // 전역이 오염되지 않도록 별도의 공간을 생성
+    // 스코프 함수 (즉시 실행되는 함수 내부)
+    (function(global, $){
+
+        'use strict';
+
+        // $.fn.radioClass 플러그인이 존재하지 않는다면?
+        if ( !$.fn.radioClass ) {
+
+            /**
+             * $.fn.radioClass 플러그인 정의
+             * @param  {string} name    radioClass 를 적용할 class 속성 이름
+             * @param  {string} context radioClass 를 적용할 컨텍스트 선택자
+             * @return {jQuery Object}  $() 인스턴스 객체
+             */
+
+            $.fn.radioClass = function(name, context) {
+
+                // context 의 기본 값 설정, 사용자 정의 값이 있으면 덮어쓰기
+                context = context || '';
+
+                // 유효성을 검사합니다.
+                // radioClass 의 첫번째 인자가 문자열이 아니라면 콘솔창에서 에러를 확인할 수 있도록 합니다.
+                if ( $.type(name) !== 'string' ) {
+                    throw new TypeError('전달된 name 인자는 문자열이어야 합니다.');
+                }
+                // radioClass 의 두번째 인자가 문자열이 아니라면 콘솔창에서 에러를 확인할 수 있도록 합니다.
+                if ( $.type(context) !== 'string' ) {
+                    throw new TypeError('전달된 context 인자는 문자열이어야 합니다.');
+                }
+
+                // context가 설정되어 있으면 this 인스턴스 객체로부터
+                // 가장 가까운 DOM 객체를 찾아 jQuery 인스턴스 객체를 반환
+                var _this = context ? this.closest(context) : this;
+
+                // jQuery 플러그인 내부의 this가 참조하는 것은?
+                // this가 참조하는 것은 $() 인스턴스 객체
+                _this.addClass(name);
+
+                // _this 인스턴스 객체의 형제 인스턴스 집합을 찾아서
+                var $siblings = _this.siblings();
+                // 집합 내부를 순환하여 name 클래스 속성 이름 값을 가진 아이템에서 name 클래스 속성을 제거합니다.
+                $.each($siblings, function(index, el) {
+                    var _$sibling = $siblings.eq(index);
+                    if ( _$sibling.hasClass(name) ) {
+                        _$sibling.removeClass(name);
+                    }
+                });
+                // jQuery 체이닝을 위한 this 반환 설정
+                return this;
+
+            }; // 끝: $.fn.radioClass
+
+        } // 끝: if
+
+    })(window, window.jQuery);
+
+
+    $(function () {
+        // 접근성을 위해 a 를 클릭하도록 합니다. (탭 포커스 이동시를 고려)
+        var $ul = $('ul');
+        $ul.on('click','li a', function (e) {
+            e.preventDefault();
+            // a 에 selected 가 되지 않도록 radioClass context 를 li 로 넘겨줍니다.
+            $(this).radioClass('selected', 'li');
+        })
+
+    });
+</script>
+
+</body>
+</html>

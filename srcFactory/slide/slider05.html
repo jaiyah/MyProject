@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>Slider Guide</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style type="text/css">
+        * { margin: 0; padding: 0;}
+        ul {list-style: none}
+        img { width: 100%; height: auto;}
+        body { margin: 200px;}
+        .gallery {position:relative; width:221px; height:256px; margin:0 auto; overflow:hidden;}
+        .gallery ul.slide-cont {position:absolute;}
+        .gallery ul.slide-cont li {float:left; width:221px;}
+        ul.btn_dot {width:110px; margin:20px auto 0; }
+        ul.btn_dot li {float:left; margin-right:5px;}
+        .clearfix { display: block;content: '';clear:both}
+    </style>
+</head>
+<body>
+
+<div class="gallery">
+    <ul class="slide-cont clearfix">
+        <li><a href="#"><img src="../images/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../images/2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../images/3.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../images/4.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../images/2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../images/3.jpg" alt=""></a></li>
+    </ul>
+</div>
+
+<ul class="btn_dot">
+    <li><a href="#"><img src="../images/btn_circle_.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+</ul>
+
+
+<script type="text/javascript">
+    var $list = $('ul.slide-cont');
+    var size = $list.children().outerWidth();
+    var len =  $list.children().length;
+    var speed = 2000;
+    var timer = null;
+    var auto = true;
+    var cnt = 1;
+
+    $list.css('width',len*size);
+
+    if(auto) timer = setInterval(autoSlide, speed);
+
+    $list.children().bind({
+        'mouseenter': function(){
+            if(!auto) return false;
+            clearInterval(timer);
+            auto = false;
+        },
+        'mouseleave': function(){
+            timer = setInterval(autoSlide, speed);
+            auto = true;
+        }
+    })
+
+    $('.btn_dot').children().on({
+        'click': function(){
+            var idx = $('.btn_dot').children().index(this);
+            cnt = idx;
+            autoSlide();
+            return false;
+        },
+        'mouseenter': function(){
+            if(!auto) return false;
+            clearInterval(timer);
+            auto = false;
+        },
+        'mouseleave': function(){
+            timer = setInterval(autoSlide, speed);
+            auto = true;
+        }
+    });
+
+    function autoSlide(){
+        if(cnt>len-1){
+            cnt = 0;
+        }
+
+        $list.animate({'left': -(cnt*size)+'px' },'normal');
+
+        var source2 = $('.btn_dot').children().find('img').attr('src').replace('_.png','.png');
+        $('.btn_dot').children().find('img').attr('src',source2);
+
+        var source = $('.btn_dot').children().find('img').attr('src').replace('.png','_.png');
+        $('.btn_dot').children().eq(cnt).find('img').attr('src',source);
+
+        cnt++;
+    }
+</script>
+
+
+</body>
+</html>

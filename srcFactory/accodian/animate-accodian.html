@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아코디언 메뉴</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<link href="./css/common.css" rel="stylesheet" />
+<style>
+/* 공통 */
+* { margin:0; padding:0 }
+h1 {text-align:center;}
+body { margin-top: 100px;}
+#slider1 {width:250px; margin:10px auto 0;}
+#slider1 ol {padding:10px 0; border:1px solid #eee; border-radius:10px;}
+#slider1 ol li {clear:both; padding:0 10px; line-height:1;}
+#slider1 ol li span.rank {display:inline-block; width:14px; height:12px; margin-right:5px; background-color:#999; border-radius:3px; font-size:10px; color:#fff; line-height:1; text-align:center;}
+#slider1 ol li a {display:block; padding:3px 0; text-decoration: none;color:#ccc}
+#slider1 ol li a:hover {color:red;}
+#slider1 ol li .details {height:95px; padding:5px 0 0;}
+#slider1 ol li .details:after {content: "."; display: block; height: 0px; clear: both; visibility: hidden;}
+#slider1 ol li .details img {float:left; margin-right:10px;}
+#slider1 ol li .details p {padding-top:10px; font-weight:bold; line-height:18px;}
+</style>
+</head>
+
+<body>
+<h1>Best Score</h1>
+<div id="slider1">
+    <ol>
+        <li><a href="#"><span class="rank">1</span> Another Green World</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/13011501.jpg" width="70">
+                <p>브라이언 이노<br>(Brian Eno)</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">2</span> Girl On Fire</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2012-12/12120201.jpg" width="70">
+                <p>앨리샤 키스<br>(Alicia Keys)</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">3</span> I Got a Boy</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/13010601.jpg" width="70">
+                <p>소녀시대</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">4</span> Lonerism</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/13010715.jpg" width="70">
+                <p>테임 임팔라<br>(Tame Impala)</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">5</span> [OST]호빗: 뜻밖의 여정</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/커버.jpg" width="70">
+                <p>호빗: 뜻밖의 여정</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">6</span> Roy Buchanan</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/13011602.jpg" width="70">
+                <p>로이 부캐넌<br>(Roy Buchanan)</p>
+            </div>
+        </li>
+        <li><a href="#"><span class="rank">7</span> Dumb</a>
+            <div class="details">
+                <img src="http://www.izm.co.kr/photo/Album/2013-01/13011310.jpg" width="70">
+                <p>디아블로<br>(Diablo)</p>
+            </div>
+        </li>
+    </ol>
+</div>
+<script>
+
+    fn_accordianToEx('slider1', true, 2000);
+
+    function fn_accordianToEx(containerID, autoStart, speedNum){
+
+        var $container = $('#'+containerID);
+        var $details = $container.find('.details');
+        var $anchor = $container.children().find('li > a');
+        var autoplay = autoStart;
+        var speed = speedNum;
+        var timer = 0;
+        var currentNum = 0;
+        var anchorNum = 0;
+        var len = $details.length;
+
+        $details.not(':first').hide();
+
+        if(autoplay){
+            timer = setInterval(accordian, speed);
+        }
+
+        $anchor.on({
+            click: function(){
+
+                autoplay = false;
+
+                if(!autoplay){
+                    clearInterval(timer);
+                }
+
+                anchorNum = $anchor.index(this);
+                accordian();
+            }
+        });
+
+        $container.on({
+            mouseleave: function(){
+                if(autoStart){
+                    autoplay = true;
+                    timer = setInterval(accordian, speed);
+                }
+            }
+        });
+
+        function accordian(){
+
+            if(!autoplay){
+                if($details.eq(anchorNum).is(':visible') || $details.is(':animated')){
+                    return false;
+                }
+
+                if($details.is(':visible')) $anchor.next().slideUp('normal');
+                $details.eq(anchorNum).slideDown('normal');
+
+                currentNum = anchorNum;
+
+                return false;
+            }
+
+            var oldNum = currentNum;
+            $details.eq(oldNum).slideUp('normal');
+
+            currentNum++;
+            currentNum %= len;
+
+            $details.eq(currentNum).slideDown('normal');
+        }
+    }
+</script>
+</body>
+</html>

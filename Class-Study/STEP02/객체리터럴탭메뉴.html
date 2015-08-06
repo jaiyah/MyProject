@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>객체 리터럴 방식의 탭 메뉴</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    /**
+     * --------------------------------
+     * 함수 단위를 객체 리터럴 방식으로
+     * --------------------------------
+     */
+		
+
+    $(function () {
+        tabMenu.init();
+        tabMenu.initEvent();
+    })
+
+    // var tabMenu = new Object(); 아래와 동일한 방식임.
+    var tabMenu = {
+
+        $tabMenu : null,
+        $menuItem : null,
+        $selectItem : null,
+
+        init : function () {
+            this.$tabMenu = $('#tabMenu1'),
+            this.$menuItem = this.$tabMenu.find('li');
+        },
+
+        initEvent : function () {
+            var _self = this;
+            this.$menuItem.on({
+                'click' : function () {
+                    var $this = $(this);
+                    _self.selectItem($this)
+                }
+            })
+        },
+
+        selectItem : function ($menuItem) {
+            // 기존 아이템 클릭을 비활성화 처리하기
+            if(this.$selectItem) {
+                this.$selectItem.removeClass('select');
+            }
+
+            // 신규 아이템 클릭 활성화 처리하기
+            this.$selectItem = $menuItem,
+            this.$selectItem.addClass('select')
+        }
+    }
+
+</script>
+</head>
+	
+	<body>
+		<ul class="tab-menu" id="tabMenu1">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>		
+		
+		<ul class="tab-menu" id="tabMenu2">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
+	</body>
+</html>

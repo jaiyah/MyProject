@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+    </head>
+
+    <body>
+	<div class="btnGrb">
+		<a href="#layer1" class="lBtn"  text="sk">left Btn</a>
+		<a href="#layer2" class="btn-layerClose">center Btn</a>
+		<a href="#layer3" class="rBtn">right Btn</a>
+	</div>
+	<div class="dim-layer" id="layer1">show Layer1</div>
+	<div class="layer3" id="layer2">show Layer2</div>
+	<div class="layer2" id="layer3">show Layer3</div>
+	<style>
+		.btnGrb {position:relative;width:800px}
+		.btnGrb a {position: absolute;display: block;padding: 5px;border: 1px solid red;}
+		.btnGrb a.lbtn {top:0;left:0}
+		.btnGrb a.btn-layerClose {top:0;left:50%}
+		.btnGrb a.rBtn {top:0;right:0}
+		.dim-layer {position: absolute;width:200px;height:100px;border:1px solid blue;padding: 10px;display: none;}
+		.layer2 {position: absolute;width:200px;height:100px;border:1px solid red;padding: 10px;display: none;}
+		.layer3 {position: absolute;width:200px;height:100px;border:1px solid green;padding: 10px;display: none;}
+	</style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+	$.fn.tooltip = function(options) {
+		return this.each(function(){
+			var that = $(this).find($.fn.tooltip.option.selector),
+				opts = $.extend(true, $.fn.tooltip.option, options || {});
+			options = options || {};	
+	
+			that.on('click', function(e){
+				var	offSet = $(e.target).offset(),
+					targetLink = $(this).attr('href'),
+					target = $($.fn.tooltip.option.targetDefalut+','+$.fn.tooltip.option.target);
+									
+				target.hide();
+				$(targetLink).show();				
+				
+				var thisH = $(this).innerHeight(),
+					thisW = $(this).innerWidth();
+				if(offSet.left >= 400) {
+					target.css({
+						top : offSet.top + thisH,
+						left : offSet.left - target.innerWidth()/2+thisW/2
+					})
+				} else {
+					target.css({
+						top : offSet.top + thisH,
+						left : offSet.left
+					})
+				}							
+			})
+		})
+	}
+	
+	$.fn.tooltip.option = {
+		selector:'.btnGrb>a',
+		targetDefalut:'.layer',
+		target:'.layer'
+	}	
+	
+	$(function(){
+		$('body').tooltip({target:'.layer2,.layer3'});
+	});	
+</script>
+</body>
+</html>

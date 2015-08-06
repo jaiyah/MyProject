@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    	
+    </script>
+</head>
+
+<body>
+
+<div class="outerWrap">
+	<div class="wrap">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div> <br /><br />
+<button id="btn_1">돔레벨 0</button>
+<button id="btn_2">돔레벨 2</button>
+<div class="outerWrap2">
+	<div class="wrap2">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll2">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div>
+<style>
+*{margin: 0;padding: 0;}
+.outerWrap {position: relative;width: 400px;padding: 20px;background: #cfc;border: 5px solid tan;}
+.wrap {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap > p {position: absolute;left: 250px;top: 50px;background: red;padding: 10px;}
+.scroll {border: 20px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+
+.outerWrap2 {position: relative;width: 400px;margin: 20px;padding: 20px;background: #cfc;border: 10px solid blue;}
+.wrap2 {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap2 > p {position: absolute;left: 250px;top: 50px;background: #abc;padding: 10px;}
+.scroll2 {border: 1px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+</style>
+
+<script>
+	
+	/* *************************************************************************************************************************************************** */
+	
+	
+	/*
+	 *** document *** 객체에서 제공하는 위치 및 크기와 관련된 프로퍼티와 메서드
+	*/
+	var docScrollW = document.body.scrollWidth;
+	var docScrollH = document.body.scrollHeight;
+	// 문서의 스크롤을 포함한 모든 너비와 높이 
+	// 브라우저에 스크롤이 있다면 ==> 문서 > 브라우저 (문서는 브라우저보다 너비나 높이가 크다)
+	// 즉, 눈으로 보이는 실제 브라우저 영역보다 문서가 더 크다..스크롤이 있기 때문에..
+	// console.log(docScrollW,docScrollH)
+	
+	
+	/* *************************************************************************************************************************************************** */
+	
+	/*
+	 *** screen ***객체에서 제공하는 위치 및 크기와 관련된 프로퍼티와 메서드 
+	*/
+	var sw = screen.width;
+	var sh = screen.height; // 모니터(screen)의 전체 너비와 높이값 (작업표시줄 포함)
+	var saw = screen.availWidth;
+	var sah = screen.availHeight; // 작업표시줄 미포함된 모니터(screen)의 전체 너비와 높이값 
+	// console.log(sw, sh,saw ,sah);
+	
+	/* *************************************************************************************************************************************************** */
+	
+	
+
+</script>
+</body>
+</html>

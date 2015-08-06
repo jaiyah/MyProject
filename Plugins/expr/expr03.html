@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>expressition 확장하기</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+<ul>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li style="display: none">Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+</ul>
+<style>
+
+    li:first-child {display: inline}
+</style>
+<script>
+    'use strict';
+
+
+    /**
+     * display sudo Expression 확장 (반복문 처리)
+     * jQuery.expr[':'] 확장 - display
+     * http://www.w3schools.com/cssref/pr_class_display.asp
+     * --------------------------------
+     */
+    var filter = 'inline, inline-block, block, list-item, table, inline-table, table-caption, table-row, table-cell, table-column, flex, inline-flex'.split(', '),
+            k      = 0,
+            l      = filter.length;
+
+    for(; k<l; k++) {
+        (function(display_value){
+            $.ex[display_value] = function(el) {
+                return $.$(el).css('display') === display_value;
+            }
+        })(filter[k]);
+    }
+
+
+
+    $('li:inline').css('border', '1px solid red');
+
+
+
+</script>
+
+</body>
+</html>

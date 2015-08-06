@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>notice</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<style type="text/css">
+*{margin:0;padding:0;line-height:160%;color:#666;font-size:12px}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary, time, mark, audio, video {font-family:'돋움', Dotum, '굴림', Gulim, AppleGothic, Sans-serif}
+a {text-decoration:none}
+img{border:0 none}
+.blind{position:absolute;width:0;height:0;overflow:hidden;line-height:0}
+#wrap{position:relative; width: 1000px; margin: 200px auto 0;}
+.banner_wrap{overflow:hidden;position:relative;width:1100px;height:80px;margin:0 auto;z-index:0}
+.banner_wrap ul{position:absolute;top:0;left:0;z-index:20}
+.banner li{float:left;height:70px;overflow:hidden}
+.banner li.ban01{width:208px;}
+.banner li.ban02{width:192px}
+.banner li.ban03{width:202px}
+.banner li.ban04{width:207px}
+.banner li.ban05{width:180px}
+.banner li .img{height:70px}
+.banner li.over .img img{margin-top:-73px}
+
+.thmb_board{position:absolute;bottom:-40px;left:0;width:100%;height:31px;z-index:30;overflow:hidden;background:url(../images/bg_thmb_main.png) repeat-x}
+.thmb_board .thmb_wrap{width:1100px;margin:0 auto}
+.thmb_board .thmb{position:relative;display:inline-block;.display:inline;zoom:1;width:540px;}
+.thmb_board .thmb .bt{position:absolute;top:7px;left:406px;width:16px;height:16px;background:url(../images/sp_thmb_main.png) no-repeat 0 -130px}
+.thmb_board .thmb .bt.close{display:none;background-position:0 -100px}
+.thmb_board .notice h3{width:53px;height:18px;margin:7px 0 6px}
+.thmb_board .thmb h3{width:53px;height:18px;margin:7px 0 6px;background:url(../images/sp_thmb_main.png) no-repeat}
+.thmb_board .thmb.notice h3{background-position:0 -20px}
+.thmb_board .thmb ul{display:block;padding:10px 0 0 2px}
+.thmb_board .thmb ul li{margin:0 0 2px;padding-left:8px}
+.thmb_board .thmb ul li a{display:inline-block;.display:inline;zoom:1;max-width:272px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.thmb_board .thmb ul li *{vertical-align:middle}
+.thmb_board .more{position:absolute;top:104px;left:383px;width:43px;height:16px}
+.thmb_board .more a{padding-left:10px;font-size:11px;color:#898989;line-height:18px;vertical-align:middle}
+.thmb_board.show{height:153px;background-position:0 20px} /*부모의 31px을 show를 했을때 높이값 153으로 list항목을 block처리하고 plus버튼 none처리 minus버튼 block처리 */
+.thmb_board.show .thmb ul{display:block}
+.thmb_board.show .thmb_wrap{margin-top:20px}
+.thmb_board.show .bt.open{display:none}
+.thmb_board.show .thmb .bt.close{display:block}
+.thmb_board.hide ul{position:absolute;top:-3px;left:62px;overflow:hidden} /* 처음화면은 li항목하나만 보이므로 높이정하고 나머지는 overflow:hidden시키고 포지션값으로 위치조정 */
+.thmb_board.hide ul li{padding-left:0;background:none}
+</style>
+</head>
+
+<body>
+<div id="wrap">
+	<div class="banner_wrap">
+		<ul class="banner">
+			<li class="ban01">
+				<p class="img">
+					<a href="#" title="KDB소식 바로가기"><img src="../images/sp_main_ban01.gif" alt="KDB소식-KDB산업은행의 다양한 이야기가 담겨 있는 사보입니다." /></a>
+				</p>
+			</li>
+			<li class="ban02">
+				<p class="img">
+					<a href="#" title="채용 바로가기"><img src="../images/sp_main_ban02.gif" alt="채용-큰 꿈과 미래를 위한 힘찬 도전을 기다리고 있습니다." /></a>
+				</p>
+			</li>
+			<li class="ban03">
+				<p class="img">
+					<a href="#" title="산은아카데미 바로가기"><img src="../images/sp_main_ban03.gif" alt="산은아카데미-프로패셔널한 육성 프로그램으로 글로벌 인재로 도약하세요." /></a>
+				</p>
+			</li>
+			<li class="ban04">
+				<p class="img">
+					<a href="#" title="수상내역 바로가기"><img src="../images/sp_main_ban04.gif" alt="수상내역-고객에게 더 큰 행복을 드리기 위해 끊임없이 노력하겠습니다." /></a>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<div class="thmb_board hide">
+		<div class="thmb_wrap">
+			<div class="thmb prdata">
+				<h3><span class="blind">보도자료</span></h3>
+				<a href="#none" class="bt open">&nbsp;</a>
+				<ul>
+					<li><a href="#">이덕희 선수,「BNP 파리바 국제 주니어 테니스 주니어 테니스 주니어 테니스</a></li>
+					<li><a href="#">KDB산업은행, 사무라이본드와 딤섬본드 동시발행</a></li>
+					<li><a href="#">KDB산업은행, 아산지점 개점 06-13</a></li>
+				</ul>
+				<span class="more"><a href="#">더보기</a></span>
+				<a href="#none" class="bt close">&nbsp;</a>
+			</div>
+			<div class="thmb notice">
+				<h3><span class="blind">새소식</span></h3>
+				<a href="#none" class="bt open">&nbsp;</a>
+				<ul>
+					<li><a href="#">산업은행 금융공동망업무 일시중단 안내</a></li>
+					<li><a href="#">산업은행 IRA 가입이벤트</a></li>
+					<li><a href="#">국가보훈처 호국보훈 백만인 참여 프로젝트국가보훈처 호국보훈 백만인 참여 프로젝트</a></li>
+				</ul>
+				<span class="more"><a href="#">더보기</a></span>
+				<a href="#none" class="bt close">&nbsp;</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+(function($){
+	$('.banner_wrap ul li').bind('mouseenter keyup',function(){
+			$('.banner_wrap ul li').removeClass("over");
+			$(this).addClass("over");
+	});
+	$(".thmb_board .thmb .open").bind('click focusin',function(){
+		$('.thmb_board').removeClass("hide");
+	$('.thmb_board').addClass("show");			
+	});
+	$(".thmb_board .thmb .close").bind('click',function(){
+		$('.thmb_board').removeClass("show");
+		$('.thmb_board').addClass("hide");
+	});
+	$(".thmb_board .notice .close").bind('focusin',function(){
+		$('.thmb_board').removeClass("show");
+		$('.thmb_board').addClass("hide");
+	});
+	
+})(jQuery);
+
+</script>
+</body>
+</html>

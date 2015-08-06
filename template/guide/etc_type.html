@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="utf-8">
+    <title>Etc type</title>
+    <link rel="stylesheet" href="css/guide.css"/>
+    <link type="text/css" rel="stylesheet" href="css/shCore.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="./js/jquery-1.10.2.min.js"></script>
+    <script src="./js/guide.js"></script>
+    <script src="./js/shCore.js"></script>
+    <script src="./js/shBrushJScript.js"></script>
+    <script src="./js/shBrushCss.js"></script>
+    <script src="./js/shBrushXml.js"></script>
+</head>
+<body>
+<a href="#wrap" class="skip">≫ &nbsp; 메뉴 건너 뛰기</a>
+<header>
+    <div id="header">
+        <hgroup>
+            <h1><span class="gd-bar"></span>Etc Style</h1>
+            <h2>Publishing</h2>
+        </hgroup>
+    </div>
+</header>
+
+<div id="wrap">
+    <section>
+        <h3>Guide Style</h3>
+        <p class="listBtnArea"> <a href="./IA.html" class="on">Impormation Architeture</a></p>
+    </section>
+    <hr />
+    <section class="guide-wrap">
+        <article>
+            <div class="guide-tap">
+                <ul>
+                    <li><a href="layout_.html" class=""><span>Layout Structure</span></a></li>
+                    <li><a href="title_font_type.html" class=""><span>Title & Font Type</span></a></li>
+                    <li><a href="tab_type.html" class=""><span>Tab Type</span></a></li>
+                    <li><a href="button_type.html" class=""><span>Button Type</span></a></li>
+                    <li><a href="list_type.html" class=""><span>List type</span></a></li>
+                    <li><a href="table_type.html" class=""><span>Table Type</span></a></li>
+                    <li><a href="#" class=""><span>View Type</span></a></li>
+                    <li><a href="form_type.html" class=""><span>Form Type</span></a></li>
+                    <li><a href="popup_type.html" class=""><span>Pop-up Type</span></a></li>
+                    <li><a href="#" class=""><span>Scroll Type</span></a></li>
+                    <li><a href="etc_type.html" class="on"><span>Etc Type</span></a></li>
+                </ul>
+            </div>
+            <div class="guide-contents">
+                <div class="guide-type">
+                    <h2 class="guide_tit">Image Replacement Technique</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>IR 기법은 조직도,도표,다이어그램등과 같은 의미가 포함되어 있는 복잡한 구조를 가진 것을 통이미지로 대체한후 전경에 상응하는 텍스트를 제공하여 주는 기법입니다. </li>
+                            <li>클래서 ir_txt 내부에 전경에 상응하는 대체 텍스트를 작성합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ IR type view</span></p>
+                        <div class="preview">
+                            <div class="ir_wrap">
+                                <div class="ir_img"><img src="./img/ir_test.jpg" alt="" /></div>
+                                <div class="ir_txt">
+                                    <ol>
+                                        <li>태조 재세(1335~1408) 재위(1392~1398)
+                                            <ul>
+                                                <li>신의왕후 한씨(1337~1391)</li>
+                                                <li>신덕왕후 강씨(?~1396)</li>
+                                            </ul>
+                                        </li>
+                                        <li>정종 재세(1357~1419) 재위(1398~1400)
+                                            <ul>
+                                                <li>정안왕후 김씨(1355~1412)</li>
+                                            </ul>
+                                        </li>
+                                        <li>태종 재세(1367~1422) 재위(1400~1418)
+                                            <ul>
+                                                <li>원경왕후 민씨(1365~1420)</li>
+                                            </ul>
+                                        </li>
+                                        <li>세종 재세(1397~1450) 재위(1418~1450)
+                                            <ul>
+                                                <li>소헌왕후 심씨(1395~1446)</li>
+                                            </ul>
+                                        </li>
+                                        <li>문종 재세(1414~1452) 재위(1450~1452)
+                                            <ul>
+                                                <li>현덕왕후 권씨(1418~1441)</li>
+                                            </ul>
+                                        </li>
+                                        <li>단종 재세(1441~1457) 재위(1452~1455)
+                                            <ul>
+                                                <li>정순왕후 송씨(1440~1521)</li>
+                                            </ul>
+                                        </li>
+                                        <li>세조 재세(1417~1468) 재위(1455~1468)
+                                            <ul>
+                                                <li>정희왕후 윤씨(1418~1483)</li>
+                                            </ul>
+                                        </li>
+                                        <li>예종 재세(1450~1469) 재위(1468~1469)
+                                            <ul>
+                                                <li>장순왕후 한씨(1445~1461)</li>
+                                                <li>안순왕후 한씨(?~1498)</li>
+                                                <li>덕종(추존) (1438~1457)</li>
+                                                <li>소혜왕후 한씨 (1437~1504)</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <div class="ir_wrap">
+                             <div class="ir_img"><img src="./img/ir_test.jpg" alt="" /></div>
+                             <div class="ir_txt">
+                                 <ol>
+                                     <li>태조 재세(1335~1408) 재위(1392~1398)
+                                         <ul>
+                                             <li>신의왕후 한씨(1337~1391)</li>
+                                             <li>신덕왕후 강씨(?~1396)</li>
+                                         </ul>
+                                     </li>
+                                     <li>정종 재세(1357~1419) 재위(1398~1400)
+                                         <ul>
+                                             <li>정안왕후 김씨(1355~1412)</li>
+                                         </ul>
+                                     </li>
+                                     <li>태종 재세(1367~1422) 재위(1400~1418)
+                                         <ul>
+                                             <li>원경왕후 민씨(1365~1420)</li>
+                                         </ul>
+                                     </li>
+                                     <li>세종 재세(1397~1450) 재위(1418~1450)
+                                         <ul>
+                                             <li>소헌왕후 심씨(1395~1446)</li>
+                                         </ul>
+                                     </li>
+                                     <li>문종 재세(1414~1452) 재위(1450~1452)
+                                         <ul>
+                                             <li>현덕왕후 권씨(1418~1441)</li>
+                                         </ul>
+                                     </li>
+                                     <li>단종 재세(1441~1457) 재위(1452~1455)
+                                         <ul>
+                                             <li>정순왕후 송씨(1440~1521)</li>
+                                         </ul>
+                                     </li>
+                                     <li>세조 재세(1417~1468) 재위(1455~1468)
+                                         <ul>
+                                             <li>정희왕후 윤씨(1418~1483)</li>
+                                         </ul>
+                                     </li>
+                                     <li>예종 재세(1450~1469) 재위(1468~1469)
+                                         <ul>
+                                             <li>장순왕후 한씨(1445~1461)</li>
+                                             <li>안순왕후 한씨(?~1498)</li>
+                                             <li>덕종(추존) (1438~1457)</li>
+                                             <li>소혜왕후 한씨 (1437~1504)</li>
+                                         </ul>
+                                     </li>
+                                 </ol>
+                             </div>
+                         </div>
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">테이블</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>...</li>
+                            <li>...</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ table type 3</span></p>
+                        <div class="preview">
+
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+            </div>
+
+        </article>
+    </section>
+    <hr />
+    <footer>
+        <div class="author">
+        </div>
+    </footer>
+</div>
+<style>
+    .ir_wrap {position: relative;width: 100%;height: 100%;}
+    .ir_wrap .ir_img {position: absolute;left: 0;right: 0;}
+    .ir_wrap .ir_txt {overflow: auto;left: 0;right: 0;}
+</style>
+
+<script>
+
+    // Image replace technique
+    function irWrap() {
+        var irElm = $('.ir_txt');
+        if (irElm.length != 0 ) {
+            irElm.each(function(){
+                // ir_img
+                var $flag = $(this).prev(),
+                    $img = $flag.find('img');
+                if($flag.hasClass('ir_img')) {
+                    $(this).height($img.height()).width($img.width());
+                }
+            })
+        }
+    }
+    $(window).on('load', function(){
+        irWrap()
+    })
+
+</script>
+
+</body>
+</html>

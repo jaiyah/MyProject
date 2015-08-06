@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="imageslider.css">
+    <style>
+    
+        @charset "UTF-8";
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-size: 11px;
+            color: #000;
+        }
+        
+        .title {
+            font-size: 30px;
+            margin: 5px 0 0 30px;
+        }
+        
+        a, a:visited {
+            text-decoration: none;
+            color: #000000;
+        }
+        
+        #imageSlider1 {
+            margin-left:50px;
+            margin-top:50px;
+            width:920px;
+        }
+    
+    </style> 
+	
+    <script  type="text/javascript" src="./libs/jquery-1.11.0.min.js"></script>
+    <script  type="text/javascript" src="./libs/jquery.easing.1.3.js"></script>    
+    <script>
+    
+
+        $(document).ready(function(){
+
+            var slider1 = new ImageSlider('#imageSlider1')
+           
+        });
+
+        function ImageSlider(selector) {
+            // 속성을 만들어 놓고 쓰는 습관을 들이자,
+            this.$slider = null;
+            this.$imageList = null;
+            this.currentIndex = -1;
+            this.imageWidth = 0;
+            this.$indexItems = null;
+            this.init(selector);
+            this.initImage();
+            this.initEvent();
+
+            this.showImageAt(1);
+        }
+
+        ImageSlider.prototype.init = function(selector) {
+
+            this.$slider = $(selector);
+            this.$imageList = this.$slider.find('.image-list img');
+
+            this.imageWidth = this.$slider.find('.image-list').innerWidth();
+
+            this.$indexItems = this.$slider.find('.index-nav li a');
+        }
+
+        ImageSlider.prototype.initImage = function () {
+            this.$imageList.css('opacity', 0.1)
+        }
+
+        ImageSlider.prototype.initEvent = function() {
+            var objThis = this;
+
+            $('.slider-btn-next').click(function(){
+                objThis.nextImage();
+            })
+
+            $('.slider-btn-prev').click(function(){
+                objThis.prevImage();
+            })
+
+            this.$indexItems.mouseenter(function(e) {
+                e.preventDefault();
+                var index = objThis.$indexItems.index(this);
+                var direction = "next";
+                if(objThis.currentIndex > index) {
+                    direction = 'prev';
+                }
+                objThis.showImageAt(index, direction);
+            })
+
+        }
+
+        ImageSlider.prototype.showImageAt = function(index, direction) {
+
+            // 사라지는 이미지 인덱스, 나타나는 이미지 인덱스 값 구하기
+            var hideIndex = this.currentIndex;
+            var showIndex = index;
+            console.log(index);
+
+
+            // 인덱스 값에 해당하는 이미지 구하기
+            var $hideImage = this.$imageList.eq(hideIndex);
+            var $showImage = this.$imageList.eq(showIndex);
+
+
+            if(direction == 'prev' || direction == 'next') {
+                var endHideX = -this.imageWidth;
+                var startShowX = this.imageWidth;
+                if(direction == 'prev') {
+                    endHideX = this.imageWidth;
+                    startShowX = -this.imageWidth;
+                }
+
+                // 현재 이미지 사라지게 하기
+                if($hideImage) {
+                    // 테스트 하기
+                    /*$hideImage.css({
+                     opacity : 0
+                     })*/
+                    $hideImage.stop().animate({
+                        opacity : 0,
+                        left : endHideX
+                    },500)
+                }
+                $showImage.css({
+                    opacity :0,
+                    left : startShowX
+                });
+
+
+                // 신규 이미지 나타나게 하기
+                $showImage.stop().animate({
+                    opacity : 1,
+                    left : 0
+                },500)
+
+            } else {
+                if($hideImage) {
+                    $hideImage.css({
+                        opacity : 1
+                    },500)
+                }
+            }
+            // 함수 호출 위치 중요함
+            this.showIndexItemAt(index);
+
+            // 신규 이미지 나타나게 하기
+            this.currentIndex = index;
+
+        }
+
+        ImageSlider.prototype.nextImage = function() {
+            //this.currentIndex++; 이 코드를 사용하지 않는 이유는 계속 값이 바뀔수 있기 때문이다. 한곳에서 컨트롤하기 위해
+            var index = this.currentIndex + 1;
+            if(index >= this.$imageList.length) {
+                index = 0;
+            }
+
+            this.showImageAt(index, 'next');
+        }
+
+        ImageSlider.prototype.prevImage = function() {
+            //this.currentIndex++; 이 코드를 사용하지 않는 이유는 계속 값이 바뀔수 있기 때문이다. 한곳에서 컨트롤하기 위해
+            var index = this.currentIndex -1;
+            if(index < 0 ) {
+                index = this.$imageList.length -1;
+            }
+
+            this.showImageAt(index, 'prev');
+        }
+
+        ImageSlider.prototype.showIndexItemAt = function(index) {
+            if(this.currentIndex != -1) {
+                this.$indexItems.eq(this.currentIndex).removeClass('select');
+            }
+            this.$indexItems.eq(index).addClass('select')
+        }
+
+    </script>	
+		 
+</head>
+
+<body>	
+	
+    <div class="image-slider" id="imageSlider1">    
+        <div class="slider-body">
+            <div class="image-list">
+                <img src="images/banner01.png" >
+                <img src="images/banner02.png" >
+                <img src="images/banner03.png" >
+                <img src="images/banner04.png" >
+                <img src="images/banner05.png" >                                 
+            </div>
+            
+            <ul class="index-nav">                         
+                <li><a href="#" alt="1">1</a></li>
+                <li><a href="#" alt="2">2</a></li>
+                <li><a href="#" alt="3">3</a></li>
+                <li><a href="#" alt="4">4</a></li>
+                <li><a href="#" alt="4">5</a></li>  
+            </ul>       
+        </div>      
+        
+        <div class="slider-btn-prev"><img src="images/btn_prev.png"></div>       
+        <div class="slider-btn-next"><img src="images/btn_next.png"></div>                                                   
+    </div>     
+
+</body>
+</html>
+

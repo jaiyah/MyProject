@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+
+    'use strict';
+    /**
+     * --------------------------------
+     * $.merge 유틸리티
+     * cancat 메소드와 비슷하다.
+     * 2개의 인자만 받는다.
+     * 배열을 합쳐줌
+     * --------------------------------
+     */
+    var newArr = $.merge(['a', 9], ['wow', 9]);
+    console.log(newArr);
+
+    /**
+     * --------------------------------
+     * $.unique 유틸리티
+     * 배열중에 동일한 요소를 제거하여 하나만 반환하여 준다.
+     * --------------------------------
+     */
+    //
+    $.unique(newArr)
+    console.log(newArr);
+
+
+    /**
+     * --------------------------------
+     * $.merge Inherit Overriding
+     * 2개의 인자만 받는 것을 2개이상 받도록 확장
+     * --------------------------------
+     */
+
+    $.extend($, {
+        'merge' : (function () {
+            // Refer Inheritance (Private definition)
+            var originMerge = $.merge;
+            
+            // Closure
+            return function () {
+                var args = arguments,
+                    len  = args.length,
+                    k    = 1;
+                for (; k < len; k++) {
+                    if (args[k]) {
+                        originMerge(args[0], args[k]);
+                    }
+                }
+                return args[0];
+            }
+        }())
+    })
+
+
+    var arr = $.merge([1, true],['str'],[2,false],[4,5,6,7]);
+    console.log(arr);
+
+
+
+
+</script>
+</body>
+</html>

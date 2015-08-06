@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+    </head>
+
+    <body>
+	<p><a href="../layout/mobile_layout.html" onclick="popup(this.href,400,500,'팝업1','scroll'); return false;">팝업보기</a></p>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+
+    function popup(url, w, h, name, option) {
+        var pozX, pozY;
+        var sw = screen.availWidth;
+        var sh = screen.availHeight;
+        var scroll = 0;
+        if (option == 'scroll') {
+            scroll = 1;
+        }
+        pozX = (sw - w) / 2;
+        pozY = (sh - h) / 2;
+        window.open(url, name, "location=0,status=0,scrollbars=" + scroll + ",resizable=1,width=" + w + ",height=" + h + ",left=" + pozX + ",top=" + pozY);
+    }
+
+	
+</script>
+</body>
+</html>

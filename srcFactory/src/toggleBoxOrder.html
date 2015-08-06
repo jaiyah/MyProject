@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>박스 순서 바꾸기 데모</title>
+	<link rel="stylesheet" href="boxOrder.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+	<a href id="toggleBoxOrderBtn" role="button">Toggle Box<br> Order</a>
+
+	<div id="box-container">
+		<div class="box order-1">BOX 1</div>
+		<div class="box order-2">BOX 2</div>
+		<div class="box order-3">BOX 3</div>
+		<div class="box order-4">BOX 4</div>
+	</div>
+	<!-- /.box-container -->
+
+<script>
+
+    (function($){
+
+        // DOM 객체 참조
+        var $toggleBtn = $('#toggleBoxOrderBtn'),
+            $container = $('#box-container');
+
+        // 토글 버튼 클릭 이벤트 핸들러 연결
+        $toggleBtn.on('click', toggleBoxOrder);
+
+        // 박스 순서를 바꾸는 함수
+        function toggleBoxOrder(e) {
+            // 브라우저 기본동작 차단
+            e.preventDefault();
+            // 컨테이너 요소에서 자식 요소들 $children 변수에 참조
+            var $children = $container.children();
+            // BOX1-4 요소를 DOM에서 일시 제거(Detach)
+            $children.detach();
+            // BOX 순서를 바꾼 후(배열 자료형으로 변환), DOM에 다시 추가
+            $container.append($children.toArray().reverse());
+        }
+
+    })(window.jQuery);
+
+</script>
+</body>
+</html>

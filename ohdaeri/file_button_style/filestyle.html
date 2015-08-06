@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>DramaticHTML Motion J</title>
+<style>
+*{margin:0;padding:0;}
+html, body{position:relative;width:100%;height:100%;padding:50px;}
+img{border:0;}
+li{list-style:none;}
+
+</style>
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="jquery.filestyle.js"></script>
+<script>
+(function($){
+	$(document).ready(function(){
+		 $("input[type=file]").filestyle({ 
+			 image: "choose-file.gif",
+			 imageheight : 21,
+			 imagewidth : 76,
+			 width : 250
+		 });
+	});
+})(jQuery);
+</script>
+</head>
+<body>
+<input type="file" />
+
+</body>
+</html>

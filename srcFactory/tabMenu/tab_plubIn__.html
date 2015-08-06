@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>탭 플러그인</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<style>
+    * { margin: 0; padding: 0;}
+    ul {list-style: none}
+    .hidden_obj { position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0 }
+    .tab_wrap { width: 500px; overflow: hidden;}
+    .tab_plugIn { overflow: hidden;}
+    .tab_plugIn:after {display:block;content:'';clear:both }
+    .tab_plugIn li { float: left; width:33.2%; background: #cfcfcf;}
+    .tab_plugIn li.on { background: #58647a;}
+    .tab_plugIn li a { display: block; padding: 10px; border: 1px solid #e4e4e4;color:#2f3743;text-decoration: none;}
+    [id^=tab] { padding: 10px; background: #a6c4e8; min-height: 100px; display: none;}
+    [id=tab1] { display: block;}
+</style>
+
+<body>
+
+<div class="tab_wrap">
+    <ul class="tab_plugIn">
+        <li class="on"><a href="#tab1">공지사항</a></li>
+        <li><a href="#tab2">이용안내</a></li>
+        <li><a href="#tab3">QnA</a></li>
+    </ul>
+    <div id="tab1" class="tabGrp">
+        <h3 class="hidden_obj">공지사항</h3>
+
+        <div class="tab_cont">
+            공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.
+            공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.
+        </div>
+    </div>
+    <div id="tab2" class="tabGrp">
+        <h3 class="hidden_obj">이용안내</h3>
+
+        <div class="tab_cont">
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+        </div>
+    </div>
+    <div id="tab3" class="tabGrp">
+        <h3 class="hidden_obj">QnA</h3>
+
+        <div class="tab_cont">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolor et natus sit
+            soluta? Illo incidunt molestias vero! Aliquid, exercitationem!
+        </div>
+    </div>
+</div>
+
+<div class="tab_wrap">
+    <ul class="tab_plugIn">
+        <li><a href="#tab4">공지사항</a></li>
+        <li><a href="#tab5">이용안내</a></li>
+        <li><a href="#tab6">QnA</a></li>
+    </ul>
+    <div id="tab4" class="tabGrp">
+        <h3 class="hidden_obj">공지사항</h3>
+
+        <div class="tab_cont">
+            공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.
+            공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.공지사항 콘텐츠입니다.
+        </div>
+    </div>
+    <div id="tab5" class="tabGrp">
+        <h3 class="hidden_obj">이용안내</h3>
+
+        <div class="tab_cont">
+            이용안내  <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+            이용안내 콘텐츠 <br/>
+        </div>
+    </div>
+    <div id="tab6" class="tabGrp">
+        <h3 class="hidden_obj">QnA</h3>
+
+        <div class="tab_cont">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolor et natus sit
+            soluta? Illo incidunt molestias vero! Aliquid, exercitationem!
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function($){
+
+    $.fn.tabModule = function(options) {
+
+        return this.each(function(){
+            var that = $(this);
+            var opts = $.extend({}, $.fn.tabModule.option, options || {});
+
+            /*
+             $.each(that.find(opts.selector), function(idx, value){
+             var hash = $(value).attr('href').split('#')[1];
+             $(value).attr('href', '#' + hash);
+
+             });
+            */
+
+            that.find(opts.selector).on('click focus', function(){
+                var target = $(this);
+
+                if(!target.siblings().length) {
+                    target.parent().addClass(opts.active).siblings().removeClass(opts.active);
+                    //$('.' + opts.tabCont).hide(opts.speed);
+                    /*$(target.attr('href')).show(opts.speed);
+                    $(target.parent().siblings().find(opts.selector).attr('href')).hide(opts.speed);*/
+                    $(target.attr('href')).show( opts.speed ).siblings( '.' +opts.tabContents ).hide( opts.speed );
+                    $(target).parent().addClass( opts.active ).siblings().removeClass( opts.active );
+                }
+
+                 /*if($(target.attr('href')).is(':hidden')) {
+                 $(target.attr('href')).show( opts.speed ).siblings( '.' +opts.tabCont ).hide( opts.speed );
+                 $(target).parent().addClass( opts.active ).siblings().removeClass( opts.active );
+                 }*/
+
+                return false;
+
+            });
+
+            var currIdx = 0;
+            if (opts.autoRolling == true) {
+                that.find(opts.selector).eq(opts.visibleCont - 1).trigger('click');
+                setInterval(function () {
+                    var nextIdx = currIdx + 1 ;
+                    if (nextIdx == $('.' + opts.tabContents).length) {
+                        nextIdx = 0;
+                    }
+                    currIdx = nextIdx;
+                    that.find(opts.selector).eq(currIdx).trigger('click');
+                }, opts.roofTime);
+            } else {
+                that.find(opts.selector).eq(opts.visibleCont - 1).trigger('click');
+            }
+        });
+    }
+
+    $.fn.tabModule.option = {
+        active : 'on',
+        selector : 'a',
+        tabContents : 'tabGrp',
+        speed : 0,
+        visibleCont : 1,
+        autoRolling : false,
+        roofTime : 3000
+    }
+
+})(jQuery)
+
+    $('.tabList').tabModule();
+
+</script>
+
+</body>
+</html>

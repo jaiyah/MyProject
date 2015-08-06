@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+    </head>
+
+    <body>
+	<p><a href="../layout/mobile_layout.html" onclick="winPop(this.href, {name:'팝업1',width:300,height:500}); return false;">팝업보기</a></p>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(function(){
+
+})
+	function winPop(url, opts) {
+		
+		var popupName = opts.name || 'popup';
+		var options = '';
+		options += 'width=' + (opts.width ? opts.width : 200) + ', height=' + (opts.height ? opts.height : 200);
+		options += opts.left && opts.width ? ', left=' + opts.left : ', left=' + ( (screen.availWidth - opts.width) / 2);
+		options += opts.top && opts.height ? ', top=' + opts.top : ', top=' + ( (screen.availHeight - opts.height) / 2);
+		options += opts.scrollbars ? ', scrollbars=' + opts.scrollbars : ', scrollbars=no';
+		options += opts.resizable ? ', resizable=' + opts.resizable : ', resizable=no';
+        console.log(popupName);
+		window.open(url, popupName, options);
+	}
+
+	
+</script>
+</body>
+</html>

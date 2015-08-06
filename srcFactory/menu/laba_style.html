@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>라바램프 스타일 메뉴</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+        * { margin: 0; padding: 0;}
+        body { padding: 20px; background: #eeece7;}
+        ul {list-style: none}
+        #page-wrap { width: 960px; margin: 30px auto; padding: 3em; background: #cfcfcf;
+            box-shadow: 0px 0px 2px #61615f inset; border-radius: 20px;
+        }
+        #navigation { padding: 3px; position: relative; width: 100px;}
+        #navigation li { border-right: 3px solid #eee; margin-bottom: 10px;}
+        #navigation li:last-child { border: 0;}
+        #navigation li a { border: 0; text-decoration: none; padding: 10px; font: 14px/1 Verdana;color:#a49e96; position: relative; z-index: 1; display: block;}
+    </style>
+</head>
+<body>
+<div id="page-wrap">
+    <nav id="navigation">
+        <ul>
+            <li class="focus"><a href="">Home</a></li>
+            <li><a href="#none">Interview</a></li>
+            <li><a href="#none">Lecture</a></li>
+            <li><a href="#none">WebBlog</a></li>
+            <li><a href="#none">Contact us</a></li>
+            <li><a href="#none">Company</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+
+    var $nav = $('#navigation'),
+        $current_item = $nav.find('.focus'),
+        $lava = $('<li class="lava" />'),
+        gab = 20;
+
+    var lavaStyle = [{
+        'border-radius':'6px','background-image':'-webkit-linear-gradient(-90deg, #887963, #0b0a09)',
+        'box-shadow':'0px 0px 2px #69635a'}, {'background-image':'-webkit-linear-gradient(-90deg, #374351, #3d8bec'}];
+
+    var timer = null;
+    $lava.css(lavaStyle[0]);
+    $lava.css({
+        position : 'absolute',
+        top : $current_item.position().top,
+        left : $current_item.position().left,
+        width : $current_item.outerWidth(),
+        height : $current_item.outerHeight(),
+        backgroundColor : '#eee'
+    }).appendTo($nav.find('ul'));
+
+    $nav.find('li').on('mouseenter focusin click', function(evt){
+        var idx = $(this).index() % 2;
+        $lava.css(lavaStyle[idx]);
+        $lava.animate({
+            top: $(this).position().top,
+            height: $(this).outerHeight()
+        }, {
+            duration: 400,
+            specialEasing: 'easeInOutElastic',
+            queue: false
+        });
+
+        if(evt.type == 'click') {
+            if($(this).hasClass('focus')) return;
+            $(this).addClass('focus').siblings().removeClass('focus');
+            $current_item = $nav.find('.focus');
+        }
+        clearTimeout(timer);
+
+    });
+
+    $nav.on('mouseleave focusout', function(){
+        var idx = $(this).find('.focus').index() % 2;
+        timer = setTimeout(function(){
+            $lava.css(lavaStyle[idx]);
+            $lava.animate({
+                top : $current_item.position().top,
+                height : $current_item.outerHeight()
+            }, 200);
+        }, 1500);
+    });
+
+
+</script>
+</body>
+</html>

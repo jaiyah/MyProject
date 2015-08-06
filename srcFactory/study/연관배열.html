@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>파일 업로드</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+            li { display: block;}
+        </style>
+</head>
+
+<body>
+<p><a href="#none">버튼</a></p>
+<ul>
+    <li>ipconfig</li>
+    <li>ifconfig</li>
+    <li>터미널</li>
+</ul>
+
+<script>
+
+
+    $('p > a').on('click',function () {
+        var target = $('ul');
+        target[target.css('display') == 'block' ? 'hide' : 'show']();
+        return false
+    })
+
+</script>
+
+
+</body>
+</html>

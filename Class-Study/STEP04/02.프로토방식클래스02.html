@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+
+
+        /**
+         * --------------------------------
+         * 프로토타입 방식의 클래스 단위 프로그래밍
+         * --------------------------------
+         */
+
+        /**
+         * ------------------------------------
+         * 01 - 클래스 생성하기
+         * 02 - 변수를 프로퍼티로 만들기
+         * 03 - 함수를 메서드로 만들기
+         * 04 - 객체 내부에서 프로퍼티와 메서드 사용하기
+         * 05 – 첫 번째 탭메뉴 인스턴스 생성하기
+         * 06 – 객체 외부에서 프로퍼티와 메서드 사용하기
+         * ------------------------------------
+         */
+
+        $(function () {
+
+            creatTab('#tabMenu1');
+            creatTab('#tabMenu2');
+
+        })
+
+        function creatTab(el) {
+            var tabMenu = new TabMenu();
+            tabMenu.init(el);
+            tabMenu.initEvent();
+        }
+
+        function TabMenu() {
+
+            // 요소 리스트
+            this.$tabMenu = null;
+            this.$menuItem = null;
+            this.$selectItem = null;
+
+        }
+
+        // 요소 초기화
+        TabMenu.prototype.init = function (el) {
+            this.$tabMenu = $(el);
+            this.$menuItem = this.$tabMenu.find('li');
+
+        }
+
+        // 이벤트 등록
+        TabMenu.prototype.initEvent = function () {
+            // 내부 함수 컨텍스트에서 this 값이 달라지므로 this 를 다른 변수에 참조시킨다.
+            var self = this;
+            this.$menuItem.click(function () {
+                self.setSelect($(this));
+            })
+        }
+        
+        TabMenu.prototype.setSelect = function ($menuItem) {
+            // 기존 선택된 아이템이 있다면 비활성 처리하기
+            if(this.$selectItem) {
+                this.$selectItem.removeClass('select');
+            }
+
+            // 신규 선택된 아이템에 활성화 처리하기
+            this.$selectItem = $menuItem;
+            this.$selectItem.addClass('select');
+        }
+
+
+
+
+
+
+
+    </script>
+</head>
+    
+    <body>
+        <ul class="tab-menu" id="tabMenu1">
+            <li class="menuitem1">google</li>
+            <li class="menuitem2">facebook</li>
+            <li class="menuitem3">pinterest</li>
+            <li class="menuitem4">twitter</li>
+            <li class="menuitem5">airbnb</li>
+            <li class="menuitem6">path</li>
+        </ul>       
+        
+        <ul class="tab-menu" id="tabMenu2">
+            <li class="menuitem1">google</li>
+            <li class="menuitem2">facebook</li>
+            <li class="menuitem3">pinterest</li>
+            <li class="menuitem4">twitter</li>
+            <li class="menuitem5">airbnb</li>
+            <li class="menuitem6">path</li>
+        </ul>
+    </body>
+</html>

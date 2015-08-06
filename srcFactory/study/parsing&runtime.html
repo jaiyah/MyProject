@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 프로그램 실행 단계</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+
+<body>
+<script>
+
+    // 파싱단계에서 변수 add가 정의되고 함수의 코드블럭({})에 대한 참조가 할당된다.
+    // 파싱 단계에서는 함수의 구현 코드인 코드블럭이 실행되지는 않는다.
+    function add(a,b) {
+        // 런타임에 지역 변수 c에 a+b의 값이 할당된다.
+        var c = a+b;
+        return c;
+    }
+    add(2,3);
+
+
+    console.log(square(4)); // 16출력
+    var square = 0;      // 컴파일(파싱)할 때 정의된 square 변수를 런타임에 덮어쓴다.
+    function square(x) { // 함수 정의
+        return x*x
+    }
+    console.log(square(2)); // Uncaught TypeError: number is not a function
+
+    // 1. 컴파일(파싱)단계에서 전역 변수인 square와 함수인 square가 정의된다.
+    // 가장먼저 square 변수가 정의되고 다음으로 square 함수가 정의되면서 전역변수인 square를
+    // 함수 변수인 square가 덮어쓰게 된다.
+    // 그래서 최종적인 파싱단계에서는 함수 변수인 square 만 남게 된다. 여기까지가 파싱단계
+    // 2. 코드 실행단계
+    // square는 함수를 정의하고 있는 코드 블럭을 가리키고 square(4)를 실행하게 되면 16을 출력한다.
+    // 그러나 다음 문장인 var square = 0; 에서 런타임 중에 0이 할당된다.
+    // 그 다음 square(2)를 실행하려고 하면 square 변수는 코드 블럭을 참조하고 있지 않고 0 이 할당되어 있기 때문에
+    // 숫자는 함수가 아니다.. 라는 메시지가 출력된 것이다.
+    // 그리고 함수의 코드블럭은 이미 square(4)에서 호출하여 실행되고 종료되어 가비지 컬렉션으로 이동되었다.
+
+    // 파싱 단계를 마치고 나면 프로그램이 실행되는데, 프로그램을 실행하다가 함수 호출을 만나면 해당 함수 레벨의
+    // 파싱 단계를 반복한다.
+    // 즉, 함수의 코드에서 그 함수의 지역변수와 함수 변수를 정의하고 나서 비로소 함수 코드를 실행한다.
+
+
+
+</script>
+</body>
+</html>

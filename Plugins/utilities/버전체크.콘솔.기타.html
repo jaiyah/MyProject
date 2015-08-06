@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+    'use strict';
+
+    /**
+     * --------------------------------------------
+     version 프로퍼티를 추가하여 jQuery 의 버전을 체크합니다.
+     * --------------------------------------------
+     */
+
+    if(!$.version) {
+        $.version = $().jquery;
+    }
+
+
+    /**
+     * --------------------------------
+     * console.log() 를 $ 로 확장하기
+     * --------------------------------
+     */
+    // STEP 01
+    if( !$.log ) {
+        $.log = function (arg) {
+            if(window.console) {
+                console.log(arg);
+            }
+        }
+    }
+    // STEP 02
+    $.log = (function(){
+        if( console ) {
+            return function() {
+                console.log.apply(console, arguments);
+            };
+        }
+    }());
+
+
+    /**
+     * --------------------------------
+     * console.group 을 jQuery 로 확장하기
+     * --------------------------------
+     */
+    $.group = (function(){
+        if( console && console.group ) {
+            return function(name) {
+                console.group(name);
+            };
+        }
+    })();
+    $.groupEnd = (function(){
+        if( console && console.groupEnd ) {
+            return function() {
+                console.groupEnd();
+            };
+        }
+    })();
+
+
+    /**
+     * --------------------------------
+     * jQuery 애니메이션 속도 확장
+     * --------------------------------
+     */
+
+    $.log($.fx.speeds); // {_default: 400, slow: 600, fast: 200}
+    $.fx.speeds['very-fast'] = 100;
+    $.fx.speeds['very-slow'] = 800;
+    $.fx.speeds['1s'] = 1000;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>텝 메뉴 스타일링</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="my_tab">
+        <ul>
+            <li class=""><a href="#" class=""><span title="">회원정보수정</span></a></li>
+            <li class=""><a href="#" class=""><span title="">관심과정</span></a></li>
+            <li class=""><a href="#" class=""><span title="">결제내역</span></a></li>
+            <li class=""><a href="#" class=""><span title="">더조은포인트</span></a></li>
+            <li class="on"><a href="#" class=""><span title="">회원탈퇴</span></a></li>
+        </ul>
+    </div>
+</div>
+
+
+<style>
+    .container { width: 100%; margin: 50px auto;}
+    .my_tab { }
+    .my_tab ul { *zomm:1; border-bottom: 1px solid darkred;}
+    .my_tab ul:after { content: ""; display: block; overflow: hidden; clear: both;}
+    .my_tab ul li { float: left; width: 19%; padding-right:1%;background: url('./images/tab_rdBgright.png') no-repeat 100% 0; }
+    .my_tab ul li a { display: block; margin-left: 10%; background: url('./images/tab_rdBg.png') no-repeat;color: #000; text-align: center; height: 30px; cursor: pointer;}
+    .my_tab ul li a span { display: inline-block; margin-right: -10px; line-height: 30px;}
+    .my_tab ul li:first-child a { margin-left: 0;}
+    .my_tab ul li.on {background: url('./images/tab_rdBgright.png') no-repeat 100% -33px;}
+    .my_tab ul li.on a { color: #000; font-weight: bold; background: url('./images/tab_rdBg.png') no-repeat 0 -33px;}
+
+    @media (min-width:992px ) {
+        .container { width: 1000px; margin: 50px auto;}
+    }
+
+</style>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+    'use strict';
+
+    /**
+     * -----------------------------------
+     * jQuery css 메서드 Inherit Overriding
+     * -----------------------------------
+     */
+
+    // $.fn.css 를 상속 및 사용자 정의 오버라이딩하기 위해 클로저를 이용
+
+    $.fn.extend({
+        'css' : (function () {
+            var inheritCss = $.fn.css;
+            return function () {
+                var arg = arguments[0];
+                if ( typeof arg === 'string' && arg.match(/:/) && !arguments[1] ) {
+                    return $.each(this, function (idx, el) {
+                        el.style.cssText = arg;
+                    })
+                } else {
+                    return inheritCss.apply(this, arguments);
+                }
+            }
+        })()
+    })
+
+    
+    $('li:first').css('border:1px solid red; font-size:14px').css({
+        'color' : 'blue',
+        'line-height' : '24px'
+    }).parent().css('border','2px solid blue').closest('body').css({
+        border : '10px solid gray'
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

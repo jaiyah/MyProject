@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>함수 단위의 탭메뉴 프로그래밍</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+    /**
+     * --------------------------------
+     * 함수 단위 프로그래밍으로 만들어진 탭메뉴
+     * --------------------------------
+     */
+
+    // 탭 메뉴 관련 변수들
+    var $tabMenu = null,
+        $tabItems = null,
+        $selectItem = null;
+
+    $(function () {
+
+        // 텝 메뉴 요소 초기화
+        init();
+
+        // 텝 메뉴 요소 이벤트 등록
+        initEvent();
+
+    })
+
+    // 탭메뉴 요소 초기화
+    function init() {
+
+        $tabMenu = $('#tabMenu1'),
+        $tabItems = $tabMenu.find('li');
+
+    }
+
+    // 이벤트 등록
+    function initEvent() {
+
+        $tabItems.on({
+            'click' : function () {
+                var $this = $(this);
+                setSelectItem($this);
+            }
+        })
+
+    }
+
+    function setSelectItem($menuItem) {
+
+        // 기존 선택한 아이템이 있다면 비활성화 처리한다
+        console.log($selectItem);
+        if($selectItem) {
+            $selectItem.removeClass('select')
+        }
+
+        // 클릭한 신규 아이템 처리하기
+        $selectItem = $menuItem;
+        $selectItem.addClass('select');
+    }
+
+
+
+</script>
+</head>
+	
+	<body>
+		<ul class="tab-menu" id="tabMenu1">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>		
+		
+		<ul class="tab-menu" id="tabMenu2">
+			<li class="menuitem1">google</li>
+			<li class="menuitem2">facebook</li>
+			<li class="menuitem3">pinterest</li>
+			<li class="menuitem4">twitter</li>
+			<li class="menuitem5">airbnb</li>
+			<li class="menuitem6">path</li>
+		</ul>
+	</body>
+</html>

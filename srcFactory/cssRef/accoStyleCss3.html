@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CSS3를 이용한 아코디언 메뉴</title>
+</head>
+<body>
+<div>
+    Hover over me<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+    foo bar<br>
+</div>
+<style>
+    div {
+        max-height:1.2em;
+        background:slategray;
+        color:white;
+
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        -webkit-transition: 1s;
+        transition: 1s;
+    }
+
+    div:hover {
+        max-height:999px;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>아코디언메뉴 객체생성실습</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <style type="text/css">
+        body { font-family:'Verdana'; font-size:12px; letter-spacing:-1px; }
+        a { color:#888888; text-decoration:none; }
+        .group,
+        .box { width:600px; margin:0 auto; }
+        .box .title { display:block;  }
+        .box .title a { display:block; padding:10px; background-color:#ffcccc; border-bottom:1px solid red; }
+        .box .cont { padding:10px; background-color:#bbddf7; border-bottom:1px solid skyblue; }
+    </style>
+</head>
+<body>
+
+	<div class="group g1">
+		<h1>그룹1</h1>
+		<div class="box">
+			<strong class="title title1"><a href="#">타이틀1</a></strong>
+			<div class="cont">내용1</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀2</a></strong>
+			<div class="cont">내용222222222222222</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀3</a></strong>
+			<div class="cont"> 내용33333333333</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀4</a></strong>
+			<div class="cont">44444</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀5</a></strong>
+			<div class="cont">55555555555555555</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀6</a></strong>
+			<div class="cont">내용66666666666666666666</div>
+		</div>
+	</div>
+
+	<div class="group g2">
+		<h1>그룹2</h1>
+		<div class="box">
+			<strong class="title title1"><a href="#">타이틀1</a></strong>
+			<div class="cont">내용1</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀2</a></strong>
+			<div class="cont">내용222222222222222</div>
+		</div>
+		<div class="box">
+			<strong class="title"><a href="#">타이틀3</a></strong>
+			<div class="cont"> 내용33333333333</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var group = $(".group");
+
+			group.each(function(){
+				var _group = new groupBox(this);
+			});
+
+			function groupBox(groupElement){
+
+				var box = $(groupElement).find(".box");
+				var title = $(groupElement).find(".box .title a");
+
+				box.each(function(index){
+					var _newBox = new rootBox(this);
+					if (index > 0){
+						_newBox.close();
+					}
+				});			
+			}
+
+
+			function rootBox(boxElement){
+				var _this = this;
+				var _boxElement = $(boxElement);
+				var _anchor = $(_boxElement).find(".title a");
+				var _cont = $(_boxElement).find(".cont");
+				var displayed = false;
+				_groupParent = $(_boxElement).parent();
+		
+				_anchor.bind("click", _anchorClickEvent);
+
+				function _anchorClickEvent(){
+					if (displayed == false){
+						_this.open();
+					}else{
+						_this.close();
+					}
+				}			
+
+				_this.open = function(){
+					_cont.css({"display":"block"});
+					displayed = true;				
+				}
+				_this.close = function(){
+					_cont.css({"display":"none"});
+					displayed = false;			
+				}
+			}
+		});
+	</script>
+</body>
+</html>

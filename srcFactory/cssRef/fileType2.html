@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>file type</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+
+        .box { margin: 50px auto; width: 500px;}
+        .filetype { position:relative; display:inline-block; vertical-align:top; *margin-right:4px; }
+        .filetype * { vertical-align: middle;}
+        .filetype .file-text { position:relative; width:350px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+            display:inline-block; height:20px; background-color:#ecefef; margin:0; border:1px solid #cdd3d4; line-height:20px; z-index:10;}
+        .filetype .file-select { position:absolute; top:0; right:0; width:80px; overflow:hidden; }
+        .filetype .file-select .input-file { width:60px; filter:alpha(opacity=0); opacity:0; height:20px; }
+        .filetype .file-text + .file-btn { display:inline-block; background-color:#cdd3d4; height:22px; line-height:22px; padding:0 15px;
+            color:#fff !important; cursor:pointer; *margin-left:4px;}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+        <span class="filetype">
+            <span class="file-text"></span>
+            <span class="file-btn">찾아보기</span>
+            <span class="file-select"><input type="file" class="input-file" size="3" onchange="uploadChange(this);"></span>
+        </span>
+    </div>
+
+
+    <script>
+
+        function uploadChange(file) {
+            var el = file.parentNode.parentNode.getElementsByTagName("*");
+            for( var i = 0; i < el.length; i++ ){
+                var node = el[i];
+                if( node.className == "file-text" ){
+                    node.innerHTML = file.value;
+                    break;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

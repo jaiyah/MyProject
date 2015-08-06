@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>네스티드 탭메뉴</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<style type="text/css">
+
+    /* Common */
+    body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,a,button,select{margin:0;padding:0}
+    body,input,textarea,select,button,table{font-family:'돋움',dotum,AppleGothic,sans-serif;font-size:12px}
+    body{word-break:break-all}
+    img,fieldset{border:0}
+    img{vertical-align:top}
+    ul,ol{list-style:none}
+    em,address{font-style:normal}
+    a{text-decoration:none}
+    a:hover,a:active,a:focus{text-decoration:underline}
+
+    /* Common Add */
+    select{height:16px;font-size:11px}
+    caption,legend,.blind,#skipnavi{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;text-align:left}
+    input[type=text]{height:13px;padding:3px 5px 0;border:1px solid #ccc;font-size:11px}
+    textarea,.scroll_area{scrollbar-3dlight-color:#fff;scrollbar-arrow-color:#9e9e9f;scrollbar-track-color:#fafafa;scrollbar-darkshadow-color:#fff;scrollbar-face-color:#fff;scrollbar-highlight-color:#dbdbdb;scrollbar-shadow-color:#dbdbdb}
+    hr{display:none}
+
+    /* Skip Navigation */
+    #u_skip{position:relative;margin:0 auto;z-index:1000}
+    #u_skip a{position:absolute;left:0;top:-50px;width:128px;background:url(../images/sp_u_skip.png) repeat-x 0 -11px;border:1px solid #4ec53d;text-align:center;outline:none}
+    #u_skip a:active,#u_skip a:focus{top:-10px;pxtext-decoration:none;cursor:pointer;zoom:1}
+    #u_skip span{display:inline-block;padding:2px 6px 0 0;background:url(../images/sp_u_skip.png) no-repeat 100% 11px;font-size:11px;letter-spacing:-1px;color:#fff;line-height:26px}
+
+    *{font-size:12px;}
+a,a:focus{color:#929292;text-decoration:none}
+.skip{position:absolute;left:0;top:0;text-indent:-5000px;line-height:0}
+/*tab 부분 시작*/
+.tab-list {position:relative; overflow:hidden;zoom:1; width:305px; height:233px; margin:20px;}
+.tab-list h1 {background:url('../images/sh_tab_bg.png') no-repeat;height:26px}
+.tab-list h1 a {display:inline-block;float:left;height:26px;width:90px}
+.tab-list .tab1 a {width:91px }
+.tab-list .tab2 {position:absolute;top:0;left:90px;width:88px;background-position:-90px 0}
+.tab-list.show_tab .tab1 {background-position:0 -50px}
+.tab-list.show_tab .tab2 {background-position:-90px -50px}
+.tab-list .tab-conts {width:100%; position:absolute; top:37px; left:0;}
+.tab-list .more{position:absolute; right:0; top:-2px;}
+.tab-list .sub-tab a {display:inline-block;padding-left:8px; font-size:11px;font-weight:normal}
+.tab-list .sub-tab a:hover,.tab-list .sub-tab a.current {background:url(../images/bu_red_arrow.gif) no-repeat 0 50%;color:red}
+.tab-list .sub-tab a:hover {color:#f03c6b;  text-decoration:none;}
+.tab-list .sub-tab.stit1 {position:absolute;top:5px;right:40px;}
+.tab-list .sub-tab.stit2 {position:absolute;top:5px;right:0;}
+.tab-conts {}
+.tab-conts ul li {width:305px; overflow:hidden;padding:3px 0;}
+.tab-conts ul li img { margin-right:4px;vertical-align:middle}
+.tab-conts ul li span { width:285px;vertical-align:middle; }
+.tab-conts ul li.last p {background:none;}
+
+#MoveDirection2 {direction: RTL;border:1px solid red;}
+</style>
+</head>
+
+<body>
+<div class="tab-list">
+	<h1 class="tab1"><a href="#none" onclick="Events(1); return false;"><span class="skip">g마켓</span></a></h1>
+		<h2 class="sub-tab stit1 gmarket"><a  href="#none" class="current sub1" onclick="Events(1); return false;">남자</a></h2>
+		<div id="example1" class="tab-conts" style="display:block;">
+			<ul>
+				<li>
+					<img alt="1" src="../images/p_number1.gif">
+					<span><a href="#none">빅뱅과 함께하세요~</a></span>
+				</li>
+				<li>
+					<img alt="2" src="../images/p_number2.gif">
+					<span><a href="#none">빅뱅과 함께하세요~</a></span>
+				</li>
+				<li>
+					<img alt="3" src="../images/p_number3.gif">
+					<span><a href="#none">스마트뱅킹을 사용하기 위하여</a></span>
+				</li>
+				<li>
+					<img alt="4" src="../images/p_number4.gif">
+					<span><a href="#none">빅뱅과 함께하세요~</a></span>
+				</li>
+				<li>
+					<img alt="5" src="../images/p_number5.gif">
+					<span><a href="#none">빅뱅과 함께하세요~</a></span>
+				</li>
+				<li class="last">
+					<img alt="6" src="../images/p_number6.gif">
+					<span><a href="#none">빅뱅과 함께하세요~</a></span>
+				</li>
+			</ul>
+			<div class="more"><a href="#none"><img alt="더보기" src="../images/btn_more.gif"></a></div>
+		</div>
+		<h2 class="sub-tab stit2 gmarket"><a href="#none" class="sub2" onclick="Events(2); return false;">여자</a></h2>
+		<div id="example2" class="tab-conts" style="display: none;">
+			<ul>
+				<li>
+					<img alt="1" src="../images/p_number1.gif">
+					<span><a href="#none">쇼핑은 아이쇼핑으로....</a></span>
+				</li>
+				<li>
+					<img alt="2" src="../images/p_number2.gif">
+					<span><a href="#none">여자들이여 g마켓으로 오라</a></span>
+				</li>
+				<li>
+					<img alt="3" src="../images/p_number3.gif">
+					<span><a href="#none">쇼핑은 아이쇼핑으로....</a></span>
+				</li>
+				<li>
+					<img alt="4" src="../images/p_number4.gif">
+					<span><a href="#none">여자들이여 g마켓으로 오라</a></span>
+				</li>
+				<li class="last">
+					<img alt="5" src="../images/p_number5.gif">
+					<span><a href="#none">쇼핑은 아이쇼핑으로....</a></span>
+				</li>
+			</ul>
+			<div class="more"><a href="#none"><img alt="더보기" src="../images/btn_more.gif"></a></div>
+		</div>
+	<h1 class="tab2"><a href="#none" onclick="Events(3); return false;"><span class="skip">11번가</span></a></h1>
+		<h2 style="display:none;" class="sub-tab stit1 street"><a href="#none" class="sub3" onclick="Events(3); return false;">여름</a></h2>
+		<div  id="example3" class="tab-conts" style="display: none;">
+			<ul>
+				<li>
+					<img alt="1" src="../images/p_number1.gif">
+					<span><a href="#none">11번가 오프라인매장보다 뛰어나다...</a></span>
+				</li>
+				<li>
+					<img alt="2" src="../images/p_number2.gif">
+					<span><a href="#none">여름이 겨울 같다...</a></span>
+				</li>
+				<li>
+					<img alt="3" src="../images/p_number3.gif">
+					<span><a href="#none">11번가 오프라인매장보다 뛰어나다...</a></span>
+				</li>
+				<li>
+					<img alt="4" src="../images/p_number4.gif">
+					<span><a href="#none">여름이 겨울 같다..</a></span>
+				</li>
+				<li class="last">
+					<img alt="5" src="../images/p_number5.gif">
+					<span><a href="#none">여름이 겨울 같다...</a></span>
+				</li>
+			</ul>
+			<div class="more"><a href="#none"><img alt="더보기" src="../images/btn_more.gif"></a></div>
+		</div>
+		<h2 style="display:none;" class="sub-tab stit2 street"><a href="#none" class="sub4" onclick="Events(4); return false;">겨울</a></h2>
+		<div id="example4" class="tab-conts" style="display: none;">
+			<ul>
+				<li>
+					<img alt="1" src="../images/p_number1.gif">
+					<span><a href="#none">따뜻한 겨울보내기...</a></span>
+				</li>
+				<li>
+					<img alt="2" src="../images/p_number2.gif">
+					<span><a href="#none">따뜻한 겨울보내기...</a></span>
+				</li>
+				<li>
+					<img alt="3" src="../images/p_number3.gif">
+					<span><a href="#none">블라블라...쇼핑하기</a></span>
+				</li>
+				<li>
+					<img alt="4" src="../images/p_number4.gif">
+					<span><a href="#none">따뜻한 겨울보내기...</a></span>
+				</li>
+				<li class="last">
+					<img alt="5" src="../images/p_number5.gif">
+					<span><a href="#none">전자어음 이용 매뉴얼</a></span>
+				</li>
+			</ul>
+			<div class="more"><a href="#none"><img alt="더보기" src="../images/btn_more.gif"></a></div>
+		</div>
+</div>
+<script type="text/javascript">
+
+((function($){
+
+    // 메인탭 클릭시 bg활성화,  sub-tab 묶음2개 show,hide 및 활성화(arrow)
+    $(".tab-list .tab1 a").bind('click keyup',function(){
+        $('.tab-list').removeClass("show_tab").find('.street').hide().end().find('.gmarket').show();
+        $('.sub1').addClass('current');
+        $('.sub2').removeClass('current');
+    });
+    $(".tab-list .tab2 a").bind('click keyup',function(){
+        $('.tab-list').addClass("show_tab").find('.gmarket').hide().end().find('.street').show();
+        $('.sub3').addClass('current');
+    	$('.sub4').removeClass('current');
+
+    //sub-tab 클릭했을때의 활성화(arrow)
+    $('.tab-list .sub-tab .sub1').click(function(){
+     	$(this).addClass('current');
+     	$('.sub2').removeClass('current');
+    });
+    $('.sub2').click(function(){
+     	$(this).addClass('current');
+     	$('.sub1').removeClass('current');
+    });
+    $('.sub3').click(function(){
+     	$(this).addClass('current');
+     	$('.sub4').removeClass('current');
+    });
+    $('.sub4').click(function(){
+     	$(this).addClass('current');
+     	$('.sub3').removeClass('current');
+    });
+
+});
+
+}))(jQuery);
+function Events (str) {
+
+if( str === 1 ){
+    $("#example2, #example3, #example4").hide();
+    $("#example1").show();
+} else if( str === 2){
+    $("#example1, #example3, #example4").hide();
+    $("#example2").show();
+} else if( str === 3){
+    $("#example1, #example2, #example4").hide();
+    $("#example3").show();
+} else if( str === 4){
+    $("#example1, #example2, #example3").hide();
+    $("#example4").show();
+}
+}
+
+</script>
+<div id='MoveDirection2'>
+    동해 물과 백두산이 마르고 닳도록<br>
+    하느님이 보우하사 우리나라 만세<br>
+    무-궁화 삼-천리 화려강산<br>
+    대한 사람 대한으로 길이 보전하세<br><br>
+    남산위에 저소나무 철갑을 두른 듯<br>
+    바람 서리 불변함은 우리 기상일세<br>
+    무-궁화 삼-천리 화려강산<br>
+    대한 사람 대한으로 길이 보전하세
+</div>
+
+</body>
+</html>

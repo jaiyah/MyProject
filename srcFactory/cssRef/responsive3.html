@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<div class="wrap">
+    <ul>
+        <li>
+            <div class="thumb">
+                <div class="clip-center">
+                    <span><img src="./images/i2.media.daumcdn.jpg" alt=""/></span>
+                </div>
+            </div>
+            <div class="fluid-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet eius expedita inventore iste
+                laboriosam, minima nam quia repellat voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque eum maxime officia omnis optio quaerat sequi sint tenetur. Repellat!
+            </div>
+        </li>
+    </ul>
+</div>
+
+<style>
+    * { margin: 0; padding: 0;}
+    .wrap { width: 1024px; margin: auto;}
+    ul { width: 100%; }
+    li { height: 150px; }
+    li .thumb { float: left; width: 50%; overflow: hidden; position: relative; }
+    li .thumb img { max-width: 100%; width: auto; height: 150px;}
+    li .fluid-txt { overflow: hidden;text-overflow: ellipsis;/*white-space: nowrap*/; }
+    /* img by display size */
+    .thumb img{width:100%; vertical-align:top}
+    .clip-center{overflow:hidden}
+    .clip-center img{height:100%}
+    .clip-center span{display:inline-block;position:relative;left:50%;height:100%}
+    .clip-center span img{position:relative;left:-50%; width:auto;}
+    .legacy-ie .clip-center span {float:none;}
+
+    .grid-row .fluid-txt{display:block;padding-left:20px;padding-right:20px}
+
+
+    @media (max-width: 767px) {
+        .wrap { width: 100%;}
+    }
+    @media (max-width:767px){
+        li .thumb { width: 30%;}
+        .clip-center img{height:auto;width:100%}
+        .clip-center span{display:block; width:100%; float:none;position:static;height:auto}
+        .clip-center span img{position:static; width:100%; height:auto !important}
+        span.media-desktop,
+        img.media-desktop,
+        span.media-tablet,
+        img.media-tablet{visibility:hidden;display:none !important}
+        span.media-mobile,
+        img.media-mobile{visibility:visible;display:inline-block}
+    }
+    .tbl {display:table;width:100%}
+    .tbl-cell{display:table-cell}
+
+    
+</style>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="euc-kr">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <style>
+        body, ul, ul li{ margin:0; padding:0; list-style:none; }
+        ul li{ display:inline-block; padding:10px; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+
+        var total = 100,
+            i;
+        $(function(){
+            $(".list").data({ "first":"1", "last": "11" });
+            page(1,11);
+            num();
+            $(".num").on("click","li",function(){
+                var firstNum = parseInt($(this).text()*10-9);
+                var lastNum = parseInt($(this).text()*10+1);
+                $(".list").data({ "first":firstNum, "last": lastNum });
+                page(firstNum,lastNum);
+            });
+        });
+        function page(a, b){
+            $(".list").empty();
+            $(".list").data({ "first":a, "last":b });
+            for(i=a; i<b; i++){
+                var div = "<div>"+i+"</div>";
+                $(".list").append(div);
+            }
+        }
+        function num(){
+            for(i=1; i<=Math.ceil(total/10); i++){
+                var li = "<li>"+i+"</li>";
+                $(".num").append(li);
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="list"></div>
+<ul class="num"></ul>
+</body>
+</html>

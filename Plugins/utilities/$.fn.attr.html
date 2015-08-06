@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>Attr Inherit Overriding</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+    'use strict';
+
+    /**
+     * -----------------------------------
+     * jQuery attr 메서드 Inherit Overriding
+     * -----------------------------------
+     */
+
+    $.fn.extend({
+
+        'attr': (function(){
+            // $.fn.attr 인스턴스 메소드 originAttr 에 백업
+            var originAttr = $.fn.attr;
+
+            // $.fn.attr 재정의
+            return function() {
+                var arg = arguments[0];
+                if ( $.type(arg) === 'object' ) {
+                    $.each(this, function(index, el) {
+                        $.each(arg, function(prop, value) {
+                            el.setAttribute(prop, value);
+                        });
+                    });
+                } else {
+                    return originAttr.apply(this, arguments);
+                }
+            };
+        })()
+
+    });
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

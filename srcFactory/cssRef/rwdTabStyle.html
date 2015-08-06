@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>탭 메뉴</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        /* 공통 */
+        * { margin:0; padding:0 }
+        .b2b-tabswrap {}
+        .b2b-tabswrap .b2b-tabs {width:100%; height:auto; position:relative; }
+        .b2b-tabswrap .b2b-tabs li {float:left;display:block;width:100%; }
+        .b2b-tabswrap .b2b-tabs li h3 {background:gray; position:relative;width:calc(100% - 1px);border-bottom:1px solid #fff; top:0; left:0;padding:12px 0;transition: all 0.3s ease 0s;-moz-transition: all 0.3s ease 0s;-webkit-transition: all 0.3s ease 0s; }
+        .b2b-tabswrap .b2b-tabs li h3:hover {background:#4a4a4a; }
+        .b2b-tabswrap .b2b-tabs li.m1 h3{}
+        .b2b-tabswrap .b2b-tabs li.m2 h3{}
+        .b2b-tabswrap .b2b-tabs li.m3 h3 {}
+        .b2b-tabswrap .b2b-tabs li.m4 h3 {}
+        .b2b-tabswrap .b2b-tabs li h3 a {display:block;color:#fff;text-align:center;}
+        .b2b-tabswrap .b2b-tabs .b2b-tabcont { position:relative; width:100%;margin:10px 0;background:red;display:none; }
+        .b2b-tabswrap .b2b-tabs li.on h3 {background:#4a4a4a;  }
+        .b2b-tabswrap .b2b-tabs li.on .b2b-tabcont {background:gray;display:block  }
+        @media (min-width: 64em) {
+            .b2b-tabswrap .b2b-tabs li h3 {position:absolute;width: calc( 100%/4 ); border-left:1px solid #fff;}
+            .b2b-tabswrap .b2b-tabs li.m1 h3{border:0 none}
+            .b2b-tabswrap .b2b-tabs li.m2 h3{ left:25%;}
+            .b2b-tabswrap .b2b-tabs li.m3 h3 { left:50%;}
+            .b2b-tabswrap .b2b-tabs li.m4 h3 { left:75%;}
+            .b2b-tabswrap .b2b-tabs .b2b-tabcont {margin-top:80px;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="b2b-tabswrap">
+    <ul class="b2b-tabs">
+        <li class="m1">
+            <h3 class="m1"><a href="#">Why choose Samsung Printers?</a></h3>
+            <div class="b2b-tabcont">content 1</div>
+        </li>
+        <li class="m2">
+            <h3 ><a href="#">Why choose Samsung Supplies?</a></h3>
+            <div class="b2b-tabcont">content 2222</div>
+        </li>
+        <li class="m3 on">
+            <h3><a href="#">Why choose Samsung Solutions?</a></h3>
+            <div class="b2b-tabcont">content 333</div>
+        </li>
+        <li class="m4">
+            <h3><a href="#">Why choose Samsung Services?</a></h3>
+            <div class="b2b-tabcont">content 444</div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

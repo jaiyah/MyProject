@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>radioClass 플러그인</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+<ul>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+</ul>
+
+<script>
+    
+    if (!$.fn.radioClass) {
+
+        // $.fn 객체의 radioClass 메소드 정의
+        // $ 가 jQuery 의 Alias(별칭)이듯이 fn 은 prototype 의 Alias(별칭) 입니다.
+        // console.log($.fn === $.prototype); // true
+        $.fn.radioClass = function(name) {
+
+
+            // 플러그인 함수 내부에서 this 는 jQuery 인스턴스 객체를 가리킵니다.
+            // $('a.me').radioClass()의 경우, this는 $('a.me')를 가리킵니다.
+            // 플러그인이 연결된 jQuery 인스턴스 객체에 name 클래스 속성을 추가합니다.
+            this.addClass(name);
+
+            // radioClass 의 목적 그대로 형제 요소노드에서는 name 클래스 속성을
+            // 제거해야 하니 형제 요소노드를 찾아 변수 $siblings 에 참조합니다.
+            // jQuery 인스턴스 메소드 중, .siblings()는 형제 요소노드를 찾아서
+            // 집합(jQuery 인스턴스 객체)을 반환합니다.
+            var $siblings = this.siblings();
+
+            // Query 유틸리티 메소드 $.each()를 사용하여
+            // $siblings 집합을 탐색하여 수집된 요소노드 개수만큼 반복 처리합니다.
+            // 쉽게 말해 반복 구문(for, while 문 등)을 사용.
+            // ECMAScript v5 [].forEach() 문과 유사합니다. (전달인자 순서는 반대)
+            $.each($siblings, function(index, item) {
+
+                // $() 팩토리 함수를 가급적 사용하지 않는 것이 성능 고려에 있어
+                // 주요한 점이니, .eq() 인스턴스 메소드를 사용하여 수집된
+                // $siblings 에서 index 에 해당되는 원소(item)을 꺼내
+                // $item 변수에 참조합니다.
+                var $item =  $siblings.eq(index);
+                console.log($item);
+                // $item에 참조된 요소에 name 클래스 속성 값이 포함되어 있는지 확인합니다.
+                // name 클래스 속성 값을 확인하는 이유는 성능 즉, DOM 탐색을 최소화하기 위함입니다.
+                // 클릭한 곳에 class 가 반영되어 있을 것이고
+                // 형제들 중에서 class 가 반영된 형제만 removeClass 를 한다는 것입니다.
+                // class 가 반영되지도 않은 형제들까지 모두 removeClass 를 할 필요가 없기 때문이며
+                // 형제들 모두 removeClass 를 한다면 DOM 탐색이 많아지기 때문에 그만큼 성능저하가 생기게 됩니다.
+                if ( $item.hasClass(name) ) {
+
+                    // name 클래스 속성이 포함되어 있다면, 이를 제거합니다.
+                    $item.removeClass(name);
+                }
+
+                // 네이티브 DomScript 에서는 아래와 같은 방법을 사용합니다.
+                // IE 10+ 이상 부분 지원합니다. (IE Edge 부터 완벽 지원)
+                // if (item.classList.contains(name) ) {
+                //  item.classList.remove(name);
+                // }
+
+            });
+
+            // jQuery 체이닝(Chaning)을 고려한다면, this 를 반환합니다.
+            // this는 jQuery 인스턴스 객체입니다.
+            return this;
+
+        }
+
+    }
+    
+    $(function () {
+        var lists = $('ul li');
+        lists.on({
+            'click' : function () {
+
+                // 플러그인을 호출합니다.
+                // this 는 DOM 객체를 가리키기 때문에 (this DOM 객의 HTMLLIElement)
+                // jQuery 래퍼객체로 감싸줌으로써 jQuery 의 인스턴스 객체를 생성합니다.
+                $(this).radioClass('on');
+            }
+        })
+
+    });
+
+
+    /*radioClass : function(opts) {
+        $.fn.radioClass.defaults = {className: 'on'};
+        opts = $.extend({}, $.fn.radioClass.defaults, opts || {})
+        return this.each(function () {
+            $(this).siblings('.' + opts.className).removeClass(opts.className).end().addClass(opts.className);
+        });
+    }*/
+
+</script>
+
+</body>
+</html>

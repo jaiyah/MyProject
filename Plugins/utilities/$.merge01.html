@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+
+    'use strict';
+    /**
+     * --------------------------------
+     * $.merge 유틸리티
+     * cancat 메소드와 비슷하다.
+     * 2개의 인자만 받는다.
+     * 배열을 합쳐줌
+     * --------------------------------
+     */
+    var newArr = $.merge(['a', 9], ['wow', 9]);
+    console.log(newArr);
+
+    /**
+     * --------------------------------
+     * $.unique 유틸리티
+     * 배열중에 동일한 요소를 제거하여 하나만 반환하여 준다.
+     * --------------------------------
+     */
+    //
+    $.unique(newArr)
+    console.log(newArr);
+
+
+    /**
+     * --------------------------------
+     * $.merge Inherit Overriding
+     * 2개의 인자만 받는 것을 2개이상 받도록 확장
+     * --------------------------------
+     */
+
+    $.merge = (function () {
+        // $.orgin 프로퍼티를 정의
+        // $.orgin 프로퍼티가 있다면 $.orgin 을 참조하고 없다면 빈 객체리터럴을 참조
+        $.origin = $.origin || {};
+        $.origin.merge = $.merge;
+        
+        return function () {
+            var args = arguments, // @param 참조
+                len  = args.length,
+                i    = 1;
+
+            for (; i < len; i++) {
+                if (args[i]) { // 두번째 인자 값을 넘겨 받았다면
+                    // 두번째 배열인자가 넘어오면 arg[0] 에 merge 된 것이 담기고
+                    // 세번째 배열인자가 넘어오면 arg[0] 기존에 merge 된 곳에 arg[2] 이 merge 된다.
+                    $.origin.merge(args[0], args[i]);
+                }
+            }
+
+            return args[0]; // 합쳐진 첫번째 배열만 반환한다.
+        }
+
+
+    })();
+
+    var arr = $.merge([1, true],['str'],[2,false]);
+    console.log(arr);
+
+
+
+
+</script>
+</body>
+</html>

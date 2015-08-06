@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+    'use strict';
+
+
+    /**
+     * -----------------------------------------------------------
+     * 요소를 탐색할 때 탐색했던 요소를 다시 탐색하지 않기 위한 유틸리티 메소드 설정
+     * $.$(), $.data() 사용자 유틸리티 메서드를 정의
+     * 목적 : 같은 Element 인지 아닌지를 체크하여 같은 Element 는 참조한다.
+     * -----------------------------------------------------------
+     */
+
+    $.extend($, {
+        '$': function(el) {
+            // 유효성검사 (Validation)
+            if (el.jquery) {el = el[0]; }
+            if (typeof el === 'string') {el = $.selector(el); }
+            if (!el || !el.nodeName) { throw new TypeError('타입오류: DOM객체 또는 $() 필요'); }
+            // 처리 코드
+            return $.data(el, 'this') || $.data(el, 'this', $(el));
+        }
+    });
+
+
+    $('ul').on('click','li', function () {
+        // console.log($.$(this));
+        $(this).css('border','1px solid red');
+    })
+
+
+
+</script>
+</body>
+</html>

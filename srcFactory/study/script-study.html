@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>스크립</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+            li { display: block;}
+        </style>
+</head>
+
+<body>
+<p><a href="#none">버튼</a></p>
+<ul>
+    <li>ipconfig</li>
+    <li>ifconfig</li>
+    <li>터미널</li>
+</ul>
+
+<script>
+
+    // 강제로 인스턴스 생성(compulsion instance)하기 (안전장치 ㅋ)
+    function Func(age) {
+        if(!(this instanceof arguments.callee)){
+            return new arguments.callee(age)
+        }
+        this.value = age ? age : 0;
+    }
+
+    var a = new Func(10);
+    var b = Func(100);
+
+
+
+    // trim method (호환성을 위한 코드) compatibility code
+
+    if(!String.prototype.trim) {
+        String.prototype.trim = function() {
+            return String(this).replace(/^\s+|\s$/g, "");
+        };
+    }
+
+    // 단순한 함수 타입 콜백
+    var emitter = {
+        // 여러 개의 콜백 함수를 등록할 수 있게 배열로 관리
+        callbacks : [],
+        // 콜백 함수의 등록 메소드
+        register : function(fn) {
+            this.callbacks.push(fn);
+        },
+        // 이벤트 발생 처리
+        onOpen : function() {
+             for (var f in this.callbacks) {
+                 this.callbacks[f]();
+            }
+        }
+    }
+    function myClass(msg) {
+        this.msg = msg;
+        this.show = function() {
+            console.log(this.msg + 'is called');
+        }
+    }
+
+
+</script>
+</body>
+</html>

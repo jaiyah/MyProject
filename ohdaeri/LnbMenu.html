@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> new document </title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<style type="text/css">
+ * { margin:0; padding:0; }
+ img { border:0; }
+ ul li { list-style:none; color:#424242; }
+ ul li a { display:block; color:#424242; }
+
+ .wrap { width:700px; margin:0 auto; margin-top:100px; }
+ .wrap h2 { width:200px; height:60px; }
+
+ .lnb { width:200px; border-bottom:2px solid #424242; }
+ .lnb .depth1 .depth2 a { width:100%; height:32px; padding-left:30px; 
+       background:url('http://www.lig.co.kr/images/common/lnb/lnb_bul.gif') no-repeat 10px 50%; 
+       font-family:'Dotum'; font-size:12px; line-height:32px; text-decoration:none; }
+ .lnb .depth1 .depth2.on a { background-image:url('http://www.lig.co.kr/images/common/lnb/lnb_bul_on.gif');
+        font-weight:bold; letter-spacing:-1; }
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+   var _submenu = $('.submenu');
+   var _depth2 = $('.depth2');
+   var _depth1 = $('.depth1');
+   var _beforeImg = null;
+   var _afterImg = null;
+   var _beforeActiveImg = null;
+   var _afterActiveImg = null;
+   var _this = null;
+   var _activedDepth1 = $('.lnb .depth1.first')[0];
+
+   _submenu.hide();
+   
+   $('.depth1 .submenu.first').show();
+   $('.depth1 .submenu.first .depth2.first').addClass('on');
+
+   $(_depth2).bind('mouseover',function(){
+    $(_depth2).removeClass('on')
+    $(this).addClass('on');
+   });
+
+   $(_depth1).bind('click',function(){
+
+    if ( _activedDepth1 == this ){
+     return;
+    }
+    else{
+     _this = $(this);
+     onChangeOff(_activedDepth1);
+     offChangeOn(_this);
+     $('.submenu').slideUp();
+     $(_this).find('> ul.submenu').slideDown();
+    }
+   });
+
+   function onChangeOff(_activedDepth1){
+    _beforeActiveImg = $(_activedDepth1).find('img').attr('src');
+    _afterActiveImg = _beforeActiveImg.replace('_on.gif','.gif');
+    $(_activedDepth1).find('img').attr('src', _afterActiveImg);
+   }
+
+   function offChangeOn(_this){
+    _beforeImg = $(_this).find('img').attr('src');
+    _afterImg = _beforeImg.replace('.gif','_on.gif');
+    $(_this).find('img').attr('src', _afterImg);
+    _activedDepth1 = $(_this)[0];
+   }
+  });
+</script>
+</head>
+ 
+<body>
+
+ <div class="wrap">
+  <h2><img src="http://www.lig.co.kr/images/common/lnb/tit_CU6.gif" alt="회사소개" /></h2>
+  <ul class="lnb">
+   <li class="depth1 first"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU601_on.gif" alt="회사정보" /></a>
+    <ul class="submenu first">
+     <li class="depth2 first"><a href="javasciprt:;">LIG손해보험은?</a></li>
+     <li class="depth2"><a href="javasciprt:;">LIG역사관</a></li>
+     <li class="depth2"><a href="javasciprt:;">윤리경영</a></li>
+     <li class="depth2"><a href="javasciprt:;">사옥안내</a></li>
+     <li class="depth2"><a href="javasciprt:;">계열사</a></li>
+     <li class="depth2"><a href="javasciprt:;">해외지점/법인</a></li>
+    </ul>
+   </li>
+   <li class="depth1 first"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU602.gif" alt="CEO" /></a>
+    <ul class="submenu">
+     <li class="depth2"><a href="javasciprt:;">CEO 소개</a></li>
+     <li class="depth2"><a href="javasciprt:;">CEO 메세지</a></li>
+    </ul>
+   </li>
+   <li class="depth1"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU603.gif" alt="홍보센터" /></a>
+    <ul class="submenu">
+     <li class="depth2"><a href="javasciprt:;">CI/BI소개</a></li>
+     <li class="depth2"><a href="javasciprt:;">뉴스</a></li>
+     <li class="depth2"><a href="javasciprt:;">대외수상</a></li>
+     <li class="depth2"><a href="javasciprt:;">광고</a></li>
+    </ul> 
+   </li>
+   <li class="depth1"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU604.gif" alt="사회공헌" /></a>
+    <ul class="submenu">
+     <li class="depth2"><a href="javasciprt:;">사회공헌소개</a></li>
+     <li class="depth2"><a href="javasciprt:;">사회복지</a></li>
+     <li class="depth2"><a href="javasciprt:;">환경보호활동</a></li>
+     <li class="depth2"><a href="javasciprt:;">교통사고예방활동</a></li>
+     <li class="depth2"><a href="javasciprt:;">사회공헌내역</a></li>
+    </ul>   
+   </li>
+   <li class="depth1"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU605.gif" alt="LIG문화지원" /></a>
+    <ul class="submenu">
+     <li class="depth2"><a href="javasciprt:;">LIG스포츠</a></li>
+     <li class="depth2"><a href="javasciprt:;">LIG아트홀</a></li>
+    </ul>    
+   </li>
+   <li class="depth1"><a href="javascript:;"><img src="http://www.lig.co.kr/images/common/lnb/lnb_CU606.gif" alt="채용정보" /></a>
+    <ul class="submenu">
+     <li class="depth2"><a href="javasciprt:;">임직원채용</a></li>
+     <li class="depth2"><a href="javasciprt:;">LC채용</a></li>
+     <li class="depth2"><a href="javasciprt:;">TC채용</a></li>
+     <li class="depth2"><a href="javasciprt:;">TRC채용</a></li>
+     <li class="depth2"><a href="javasciprt:;">AFC채용</a></li>
+     <li class="depth2"><a href="javasciprt:;">법인 CRC</a></li>
+    </ul>    
+   </li>
+  </ul>
+ </div>
+
+</body>
+</html>

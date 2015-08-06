@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="common/css/common.css" />
+<link rel="stylesheet" type="text/css" href="common/css/guide.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="common/js/guide.js"></script>
+<style>
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table,td {
+	border: 1px solid #ddd;
+	font-size: 11px
+}
+
+td {
+	padding: 3px 4px;
+}
+
+td a {
+	color: #527fdb
+}
+
+td a:hover {
+	color: #bd3e3e
+}
+
+tr:hover {
+	background-color: #dfdfdf;
+}
+
+td:nth-child(1) span {
+	color: #dd0000
+}
+
+h3 {
+	margin: 1em 0;
+	font-size: 1.6em;
+}
+
+.guide_content>ul li {
+	line-height: 1.6;
+}
+
+.guide_content>ul>li {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.guide_content li {
+	font-size: .75rem;
+	font-weight: normal;
+}
+
+.guide_content>ul ul {
+	margin: 10px 0 10px 30px;
+}
+</style>
+</head>
+<body>
+		<h3>IA</h3>
+		<table>
+			<tr>
+				<td>����</td>
+				<td></td>
+				<td>/mobile/main.jsp</td>
+			</tr>
+			<tr>
+				<td>��������</td>
+				<td>��������</td>
+				<td>/mobile/boardList.jsp?mts=N&amp;board_no=42</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>����Ʈ��</td>
+				<td>/mobile/boardList.jsp?mts=N&amp;board_no=130</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Ȱ����</td>
+				<td>/mobile/boardList.jsp?mts=N&amp;board_no=129</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>�̺�Ʈ</td>
+				<td>/mobile/boardList_event.jsp?mts=N&amp;board_no=42</td>
+			</tr>
+			<tr>
+				<td>�̿��ȳ�</td>
+				<td>�ű԰�</td>
+				<td>/mobile/fee.jsp?mts=N</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>������</td>
+				<td>/mobile/useInfo.jsp?mts=N</td>
+			</tr>
+			<tr>
+				<td>������</td>
+				<td></td>
+				<td>/mobile/customerCt.jsp?mts=N</td>
+			</tr>
+			<tr>
+				<td>����ã��</td>
+				<td>����</td>
+				<td>/mobile/officeSchNew.jsp?mts=N</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>����</td>
+				<td>/mobile/branch/mapAll.jsp?mts=N</td>
+			</tr>
+		</table>
+
+	</div>
+	<script>
+		$('td:last-child').each(function() {
+			if ($(this).text().indexOf('/') != -1) {
+				var url = 'http://localhost:8080' + $(this).text();
+				$(this).wrapInner('<a href='+url+' target="_blank" />');
+			}
+			;
+		});
+		$('td:first-child').each(function(i) {
+			var i = i + 1;
+			$(this).html('<span>' + i + '</span> ' + $(this).text());
+		});
+	</script>
+</body>
+</html>

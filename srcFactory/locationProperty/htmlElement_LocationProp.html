@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    	
+    </script>
+</head>
+
+<body>
+
+<div class="outerWrap">
+	<div class="wrap">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div> <br /><br />
+<button id="btn_1">돔레벨 0</button>
+<button id="btn_2">돔레벨 2</button>
+<div class="outerWrap2">
+	<div class="wrap2">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll2">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div>
+<style>
+*{margin: 0;padding: 0;}
+.outerWrap {position: relative;width: 400px;padding: 20px;background: #cfc;border: 5px solid tan;}
+.wrap {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap > p {position: absolute;left: 250px;top: 50px;background: red;padding: 10px;}
+.scroll {border: 20px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+
+.outerWrap2 {position: relative;width: 400px;margin: 20px;padding: 20px;background: #cfc;border: 10px solid blue;}
+.wrap2 {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap2 > p {position: absolute;left: 250px;top: 50px;background: #abc;padding: 10px;}
+.scroll2 {border: 1px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+</style>
+
+<script>
+	
+	 /* 
+	 	*** HTML Element 에서 제공되는 위치 및 크기와 관련된 프로퍼티와 메서드
+	 */
+	$('.wrap').bind('click', function(e){
+		// 이 소스상 e가 이벤트 객체를 가리킨다. => function(e)
+		
+		var offset = $(e.target).offset();
+		// target : 이벤트객체의 프로퍼티로 실제 이벤트를 발생시킨 대상을 가리킨다
+		// type : 이벤트 객체의 프로퍼티로 이벤트가 발생한 이벤트 이름이다.
+		console.log(offset);
+		
+
+		
+	});
+	// offset 그룹
+	$('.wrap p').on('click',function(e){
+		var offParent = e.target.offsetParent;
+		// 타켓의 부모(상위) 엘리먼트 중 position값을 가지고 있는 요소(엘리먼트)를 반환한다.(위치값이 아니라 요소를 반환한다에 주의)
+		
+		var offWid = e.target.offsetWidth;
+		var offHei = e.target.offsetHeight;
+		// 타켓 엘리먼트의 너비와 높이값 (단, 마진제외, border,padding,스크롤바 포함)
+		var offWid = e.target.offsetWidth; // 마진만 제외한 넓이값(보더까지 포함)
+		var offHei = e.target.offsetHeight; // 마진만 제외한 높이값(보더까지 포함)
+		
+		var offLeft = e.target.offsetLeft;
+		var offtop = e.target.offsetTop;
+		// 부모엘리먼트 즉, 기준값(position:relative,absolute)을 가지는 부모인 offsetParent를 기준으로 해당 타켓요소(엘리먼트)가 위치한 x,y좌표 
+		
+	})
+	
+	// scroll 그룹
+	$('.scroll').on('click', function(e){
+		
+		var scrollW = e.target.scrollWidth;
+		var scrollH = e.target.scrollHeight;
+		// 스크롤 되는 영역까지의 넓이와 높이를 반환한다.
+		
+		var scrollLeft = e.target.scrollLeft;
+		var scrollTop = e.target.scrollTop;
+		// 스크롤바의 좌표값, 즉 스크롤바가 이동한 left 나 top 값
+		
+	});
+	
+	// client 그룹
+	$('.outerWrap').bind('click', function(e){
+		var clientWid = e.target.clientWidth; // 보더,마진을 제외한 넓이값
+		var clientHei = e.target.clientHeight; // 보더,마진을 제외한 높이값
+		console.log(clientWid, clientHei);
+		var clientL = e.target.clientLeft;
+		var clientT = e.target.clientTop;
+        console.log(clientL, clientT)
+		// 요소(엘리먼트) 내부에서 타켓이 위치한 x,y 좌표값인데 border-left값, border-top값과 같다.
+		
+		var rect = e.target.getBoundingClientRect();
+		// Document를 기준으로 요소의 left, right,top,bottom, width,height값을 반환
+		// 여기서 Document라 함은 브라우저창의 가시적인 영역이 아니라 브라우저에서 스크롤되는 영역까지를 말한다.. 즉, 문서상..(여기선 html..)
+		// $(e.target).css('left', rect.right)
+		//console.log(rect);
+	});
+	
+
+</script>
+</body>
+</html>

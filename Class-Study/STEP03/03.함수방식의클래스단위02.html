@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+
+        /**
+         * --------------------------------
+         * 함수 방식의 클래스 프로그래밍
+         * --------------------------------
+         */
+
+        $(function () {
+
+            creatTab('#tabMenu1');
+            creatTab('#tabMenu2');
+
+        })
+
+        // 탭 메뉴 인스턴스 생성
+        function creatTab(selector) {
+            var tabMenu = new TabMenu();
+            tabMenu.init(selector);
+            tabMenu.initEvent();
+        }
+
+        function TabMenu() {
+
+            this.$tabMenu = null;
+            this.$menuItems = null;
+            this.$selectItem = null;
+
+            // 요소 초기화
+            this.init = function (el) {
+                this.$tabMenu = $(el);
+                this.$menuItems = this.$tabMenu.find('li');
+            }
+
+            this.initEvent = function () {
+                var self = this;
+                this.$menuItems.on({
+                    'click' : function () {
+                        self.setSelect($(this));
+                    }
+                })
+            }
+
+            this.setSelect = function ($menuItem) {
+
+                if(this.$selectItem) {
+                    this.$selectItem.removeClass('select');
+                }
+
+                this.$selectItem = $menuItem;
+                this.$selectItem.addClass('select')
+
+            }
+
+        }
+
+        
+        
+    </script>
+</head>
+    
+    <body>
+        <ul class="tab-menu" id="tabMenu1">
+            <li class="menuitem1">google</li>
+            <li class="menuitem2">facebook</li>
+            <li class="menuitem3">pinterest</li>
+            <li class="menuitem4">twitter</li>
+            <li class="menuitem5">airbnb</li>
+            <li class="menuitem6">path</li>
+        </ul>       
+        
+        <ul class="tab-menu" id="tabMenu2">
+            <li class="menuitem1">google</li>
+            <li class="menuitem2">facebook</li>
+            <li class="menuitem3">pinterest</li>
+            <li class="menuitem4">twitter</li>
+            <li class="menuitem5">airbnb</li>
+            <li class="menuitem6">path</li>
+        </ul>
+    </body>
+</html>

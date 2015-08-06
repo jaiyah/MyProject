@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<p><a href="#none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, qui!</a></p>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+</ul>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+</ul>
+
+<script>
+
+    console.time('Non Cached');
+
+    var i = 0;
+    for(; i < 10000; i++) {
+        var $test = $('div');
+    }
+
+    console.timeEnd('Non Cached');
+
+
+
+    console.time('Cached');
+
+    var i = 0;
+    var $test = $('div');
+
+    for(; i < 10000; i++) {
+        var s = $test;
+    }
+
+    console.timeEnd('Cached');
+
+
+</script>
+
+</body>
+</html>

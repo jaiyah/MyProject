@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>텝 메뉴 스타일링</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="my_tab">
+    <ul>
+        <li><a href="#" class="stab1"><span title="회원전보수정"></span></a></li>
+        <li><a href="#" class="stab2 on"><span title="관심과정"></span></a></li>
+        <li><a href="#" class="stab3"><span title="결제내"></span></a></li>
+        <li><a href="#" class="stab4"><span title="더조은포인트"></span></a></li>
+        <li><a href="#" class="stab5"><span title="회원탈퇴"></span></a></li>
+    </ul>
+</div>
+
+
+<style>
+
+    .my_tab { width: 1000px; margin: 50px auto;}
+    .my_tab ul { *zomm:1;background: url("./images/bdb_bg.png") repeat-x 0 100%;}
+    .my_tab ul:after { content: ""; display: block; overflow: hidden; clear: both;}
+    .my_tab ul li { float: left; width: 20%;}
+    .my_tab ul li a { display: block; color: #000;border:solid #c6c9ca; border-width: 1px 1px 0 0; text-align: center; height: 31px; cursor: pointer;}
+    .my_tab ul li a.on { position: relative; height: 32px; margin: 0 0 0 -1px;border: 1px solid #535f63; border-bottom:none; background: url("./images/bdb_onBg.png") repeat-x 0 100%}
+    .my_tab ul li:first-child a { border-left: 1px solid #c6c9ca;}
+    .my_tab ul li:first-child a.on { border-left: 1px solid #535f63; margin-left: 0;}
+    .my_tab ul li a span { display: inline-block; line-height: 30px; }
+    .my_tab ul li a[class^="stab"] span { margin-top: 8px; height: 15px;background: url('./images/my_tab.gif') no-repeat; }
+    .my_tab ul li a.on span{ margin-top: 12px;}
+    .my_tab ul li a.stab1 span { width: 71px; background-position: 0 0;}
+    .my_tab ul li a.stab2 span { width: 46px; background-position: -71px 0;}
+    .my_tab ul li a.stab3 span { width: 47px; background-position: -117px 0;}
+    .my_tab ul li a.stab4 span { width: 70px; background-position: -164px 0;}
+    .my_tab ul li a.stab5 span { width: 49px; background-position: -234px 0;}
+    .my_tab ul li a.stab1.on span { background-position: 0 -15px;}
+    .my_tab ul li a.stab2.on span { background-position: -71px -15px;}
+    .my_tab ul li a.stab3.on span { background-position: -117px -15px;}
+    .my_tab ul li a.stab4.on span { background-position: -164px -15px;}
+    .my_tab ul li a.stab5.on span { background-position: -234px -15px;}
+
+
+
+
+
+
+    .main_quick ul li[class^="main_quick"] {position: absolute; width: 101px; height:89px; background: url(/images/common/ico_main.png) no-repeat; text-indent:-9999px; cursor:pointer;}
+    .main_quick ul li.main_quick1 {top: 30px; right: 101px; background-position:0 0;}
+    .main_quick ul li.main_quick1:hover {background-position:-225px 0;}
+    .main_quick ul li.main_quick2 {top: 30px; right: 0; background-position:-101px 0;}
+    .main_quick ul li.main_quick2:hover {background-position:-326px 0;}
+    .main_quick ul li.main_quick3 {top: 119px; right: 101px; background-position:0 -89px;}
+    .main_quick ul li.main_quick3:hover {background-position:-225px -89px;}
+    .main_quick ul li.main_quick4 {top: 119px; right: 0; background-position:-101px -89px;}
+    .main_quick ul li.main_quick4:hover {background-position:-326px -89px;}
+    .main_quick ul li.main_quick5 {top: 208px; right: 101px; background-position:0 -178px;}
+    .main_quick ul li.main_quick5:hover {background-position:-225px -178px;}
+    .main_quick ul li.main_quick6 {top: 208px; right: 0; background-position:-101px -178px;}
+    .main_quick ul li.main_quick6:hover {background-position:-326px -178px;}
+    .main_quick ul li.main_quick7 {height: 90px; top: 297px; right: 101px; background-position:0 -267px;}
+    .main_quick ul li.main_quick7:hover {background-position:-225px -267px;}
+    .main_quick ul li.main_quick8 {height: 90px; top: 297px; right: 0; background-position:-101px -267px;}
+    .main_quick ul li.main_quick8:hover {background-position:-326px -267px;}
+</style>
+<script>
+
+</script>
+</body>
+</html>

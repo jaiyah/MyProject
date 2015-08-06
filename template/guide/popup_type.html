@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="utf-8">
+    <title>팝업 스타일</title>
+    <link rel="stylesheet" href="css/guide.css"/>
+    <link type="text/css" rel="stylesheet" href="css/shCore.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="./js/jquery-1.10.2.min.js"></script>
+    <script src="./js/guide.js"></script>
+    <script src="./js/shCore.js"></script>
+    <script src="./js/shBrushJScript.js"></script>
+    <script src="./js/shBrushCss.js"></script>
+    <script src="./js/shBrushXml.js"></script>
+</head>
+<body>
+<a href="#wrap" class="skip">≫ &nbsp; 메뉴 건너 뛰기</a>
+<header>
+    <div id="header">
+        <hgroup>
+            <h1><span class="gd-bar"></span>Pop-up Type</h1>
+            <h2>Publishing</h2>
+        </hgroup>
+    </div>
+</header>
+
+<div id="wrap">
+    <section>
+        <h3>Guide Style</h3>
+        <p class="listBtnArea"> <a href="./IA.html" class="on">Impormation Architeture</a></p>
+    </section>
+    <hr />
+
+    <section class="guide-wrap">
+        <article>
+            <div class="guide-tap">
+                <ul>
+                    <li><a href="layout_.html" class=""><span>Layout Structure</span></a></li>
+                    <li><a href="title_font_type.html" class=""><span>Title & Font Type</span></a></li>
+                    <li><a href="tab_type.html" class=""><span>Tab Type</span></a></li>
+                    <li><a href="button_type.html" class=""><span>Button Type</span></a></li>
+                    <li><a href="list_type.html" class=""><span>List type</span></a></li>
+                    <li><a href="table_type.html" class=""><span>Table Type</span></a></li>
+                    <li><a href="#" class=""><span>View Type</span></a></li>
+                    <li><a href="form_type.html" class=""><span>Form Type</span></a></li>
+                    <li><a href="popup_type.html" class="on"><span>Pop-up Type</span></a></li>
+                    <li><a href="#" class=""><span>Scroll Type</span></a></li>
+                    <li><a href="#" class=""><span>IR Type</span></a></li>
+                </ul>
+            </div>
+            <div class="guide-contents">
+                <div class="guide-type">
+                    <h2 class="guide_tit">Default Layer Pop-up</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>button type의 hash 값과 띄우고자 하는 레이어 팝업의 id 값을 매핑시켜줍니다.</li>
+                            <li>...</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ 일반 레이어 팝업 보기</span></p>
+                        <div class="preview">
+                            <a class="btn btype03 btn-popup" href="#layer1"><span>default layer pop-up</span></a>
+                            <br/><br/>
+                            <a class="btn btype03 btn-popup" href="#layer2"><span>dimmed layer pop-up</span></a>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <!-- popup mark-up 은 body 하단에 위치 -->
+                        <div id="layer1" class="pop-layer">
+                            <div class="dimBg"></div>
+                            <div class="pop-container">
+                                <div class="pop-conts">
+                                    <!--content //-->
+                                    <p class="ctxt mb20">Thank you.<br>
+                                        Your registration was submitted successfully.<br>
+                                        Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                                        Hope to see you soon!
+                                    </p>
+
+                                    <div class="btn-r">
+                                        <a href="#" class="btn-layerClose">Close</a>
+                                    </div>
+                                    <!--// content-->
+                                </div>
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <div class="dim-layer">
+                            <div class="dimBg"></div>
+                            <div id="layer2" class="pop-layer">
+                                <div class="pop-container">
+                                    <div class="pop-conts">
+                                        <!--content //-->
+                                        <p class="ctxt mb20">Thank you.<br>
+                                            Your registration was submitted successfully.<br>
+                                            Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                                            Hope to see you soon!
+                                        </p>
+
+                                        <div class="btn-r">
+                                            <a href="#" class="btn-layerClose">Close</a>
+                                        </div>
+                                        <!--// content-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </pre>
+                </div>
+                <hr class="line"/>
+
+                <div class="guide-type">
+                    <h2 class="guide_tit">Window Pop-up</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>onclick="winPop(this.href,'팝업 네임', 300, 400, { left: 100,top: 100 }); return false;"</li>
+                            <li>마지막 파라미터인 객체(left,top)를 생략하면 기본으로 스크린 창의 중앙에 팝업이 띄워집니다.</li>
+                            <li>href 값은 팝업을 띄울 파일 디렉터리를 설정합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ 윈도우 팝업 보기</span></p>
+                        <div class="preview">
+                            <a class="btn btype03" href="./popupType1.html" onclick="winPopup(this.href, '팝업 네임', 300, 400); return false;"><span>window pop-up</span></a>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                        <!-- 첫번째 파라미터는 팝업 디렉터리, 두번째 파라미터는 팝업 이름, 세번째는 팝업의 width 값, 네번째는 팝업의 height 값 -->
+                        <a class="btn btype03" href="./popupType1.html" onclick="winPopup(this.href, '팝업 네임', 300, 400); return false;">
+                            <span>window pop-up</span>
+                        </a>
+
+                        <!-- 다섯번째 파라미터는 윈도우 창의 위치값을 객체타입으로 설정합니다. 마지막 파라미터를 넘겨주지 않을 경우 기본적으로 스크린 창의 중앙정렬입니다. -->
+                        <a class="btn btype03" href="./popupType1.html" onclick="winPopup(this.href, '팝업 네임', 400, 600), {left:200, top:200}; return false;">
+                            <span>window pop-up</span>
+                        </a>
+                    </pre>
+                </div>
+                <hr class="line"/>
+            </div>
+
+        </article>
+    </section>
+    <hr />
+    <footer>
+        <div class="author">
+        </div>
+    </footer>
+</div>
+<!-- popup mark-up 은 body 하단에 위치 -->
+<div id="layer1" class="pop-layer">
+    <div class="pop-container">
+        <div class="pop-conts">
+            <!--content //-->
+            <p class="ctxt mb20">Thank you.<br>
+                Your registration was submitted successfully.<br>
+                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                Hope to see you soon!
+            </p>
+
+            <div class="btn-r">
+                <a href="#" class="btn-layerClose">Close</a>
+            </div>
+            <!--// content-->
+        </div>
+    </div>
+</div>
+<br/><br/>
+<div class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="layer2" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <!--content //-->
+                <p class="ctxt mb20">Thank you.<br>
+                    Your registration was submitted successfully.<br>
+                    Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                    Hope to see you soon!
+                </p>
+
+                <div class="btn-r">
+                    <a href="#" class="btn-layerClose">Close</a>
+                </div>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    /* layer pop-up style */
+    .pop-layer {display:none; position: fixed; top: 50%; left: 50%; width: 410px; height:auto;  background-color:#fff; border: 5px solid #3571B5; z-index: 10;}
+    .pop-layer .pop-container {padding: 20px 25px;}
+    .pop-layer p.ctxt {color: #666; line-height: 25px;}
+    .pop-layer .btn-r {width: 100%; margin:10px 0 20px; padding-top: 10px; border-top: 1px solid #DDD; text-align:right;}
+
+    .dim-layer {display:none; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:100;}
+    .dim-layer .dimBg {position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50);}
+    .dim-layer .pop-layer {display:block;}
+
+    a.btn-layerClose {display:inline-block; height:25px; padding:0 14px 0; border:1px solid #304a8a; background-color:#3f5a9d; font-size:13px; color:#fff; line-height:25px;}
+    a.btn-layerClose:hover {border: 1px solid #091940; background-color:#1f326a; color:#fff;}
+
+
+
+    /* anchor style button */
+    .btn { position: relative; cursor: pointer; display: inline-block; height: 22px; line-height: 22px; padding-left: 15px; background: url("./img/btn_spr_l.png") no-repeat; }
+    .btn span { display: block; height: 100%; padding-right: 15px; background: url("./img/btn_spr_r.png") no-repeat 100% 0; }
+    .btn span .icon { vertical-align: baseline;}
+    .btype03 { height: 30px; line-height: 31px; background-position: 0 -80px; color: #ffffff;}
+    .btype03 span{ background-position: 100% -80px;}
+</style>
+
+<script>
+
+    var $btn_popup = $('.btn-popup');
+    $btn_popup.click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+        console.log($href)
+        return false;
+    })
+
+    function layer_popup(el){
+
+        var $el = $(el);		// 레이어의 id를 $el 변수에 저장
+        var isDim = $el.prev().hasClass('dimBg');	// dimmed 레이어를 감지하기 위한 boolean 변수
+
+        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+        var $elWidth = ~~($el.outerWidth()),
+                $elHeight = ~~($el.outerHeight()),
+                docWidth = $(document).width(),
+                docHeight = $(document).height();
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
+        }
+
+        $el.find('a.btn-layerClose').click(function(){
+            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+            return false;
+        });
+
+        $('.layer .dimBg').click(function(){
+            $('.dim-layer').fadeOut();
+            return false;
+        });
+
+    }
+
+    /*
+    * window pop-up
+    * */
+//    onclick="winPop(this.href,'팝업 네임', 300, 400, { left: 100,top: 100 }); return false;"
+    function winPopup(url, name, w, h, poz) {
+        var pozX = null,
+            pozY = null,
+            poz = poz || {};
+        var sw = screen.availWidth;
+        var sh = screen.availHeight;
+
+        pozX = poz.left || (sw - w) / 2;
+        pozY = poz.top || (sh - h) / 2;
+
+        window.open(url, name, "location=0, status=0," + ",resizable=1, width=" + w + ",height=" + h + ",left=" + pozX + ",top=" + pozY);
+    }
+
+
+</script>
+
+</body>
+</html>

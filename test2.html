@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="middle">
+    <h1 class="hidden">포트 폴리오</h1>
+</div>
+
+<div class="item_thumb">
+    <a href="#none" class="link_thumb"><img src="i2.media.daumcdn.jpg" alt="" class="thumb_g"/></a>
+</div>
+
+
+<script>
+
+
+    var x = 'global';
+    function fn() {
+        alert(x);
+
+        var x = 'local';
+        alert(x);
+    }
+
+    fn();
+
+    /**
+     * --------------------------------
+     * 콜백 함수
+     * --------------------------------
+     */
+
+    // Main Program
+    function MainProgram() {
+        var arg;
+        // 필요한 데이터와 콜백 함수 객체를 인자로 라이브러리 함수를 호출한다.
+        LibraryFn(arg, CallbackFn);
+    }
+
+    // 콜백 함수 정의
+    function CallbackFn(result) { // 라이브러리 함수로부터 결과를 받는다.
+        // result 이용
+    }
+
+    // Library 함수
+    function LibraryFn(arg, callback) { // 필요한 데이터와 콜백 함수를 인자로 받는다.
+        var data;
+        // 라이브러리 코드 수행
+
+
+
+        // 콜백 함수 호출
+        callback(data);
+    }
+
+    /*
+     * 메인 프로그램이 호출되면 메인 프로그램 내부에서 라이브러리 함수를 호출하고
+     * 라이브러리 함수를 호출하면 인자로 데이터와 콜백함수(참조)를 전달하게 되고
+     * 라이브러리 함수가 호출,실행되면서 라이브러리 코드가 수행된 후 전달받은 콜백함수가 실행된다.
+     *
+    */
+
+    /**
+     * --------------------------------
+     * 리팩토링
+     * --------------------------------
+     */
+
+    // Main Program
+    function MainProgram1() {
+        var arg;
+        // 콜백 함수를 익명함수 구조로 전달한다.
+        LibraryFn1(arg, function (resutl) {
+            // result 를 이용하여 구현
+        })
+    }
+
+    // Library 함수
+    function LibraryFn1(arg, callback) { // 필요한 데이터와 콜백 함수를 인자로 받는다.
+        var data;
+        // 라이브러리 코드 수행
+
+
+
+        // 콜백 함수 호출
+        callback(data);
+    }
+
+
+
+</script>
+
+</body>
+</html>

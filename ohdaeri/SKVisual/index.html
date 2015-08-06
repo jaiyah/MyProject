@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+</head>
+<body>
+
+
+<script type="text/javascript"> 
+ $(document).ready(function(){
+
+  var _thumbActivePosition = null;
+  var _timer = null;
+  var _currenViewIndex = -1;
+  var _SPEED = '500';
+  var _timerSPEED = '3000';
+  var _bigImg = $('.imgView .img');
+
+  $('.imgView .img li:last-child').prependTo('.imgView .img');
+  $(_bigImg).css({marginLeft:'-717px'});
+  _currenViewIndex = $('.imgView .img li').eq(1)[0];
+
+  if (_timer!=null){
+   clearInterval(_timer);
+   _timer = null;
+  }
+
+  $('.btn.stop').bind('click', function(){
+   clearInterval(_timer);
+  });
+
+  $('.btn.continue').bind('click', function(){
+   if (_timer!=null){
+    clearInterval(_timer);
+    _timer = null;
+   }
+
+   _timer = setInterval(function(){  
+    imgChangeRight();
+   }, _timerSPEED);    
+  });
+
+
+  _timer = setInterval(function(){  
+   imgChangeRight();
+  }, _timerSPEED);    
+
+
+  $('.btn.left').bind('click', clickEvent );
+  $('.btn.right').bind('click', clickEvent );
+
+
+  function clickEvent(e){
+   if ($(this).hasClass('right')){
+    imgChangeRight();
+   }
+   else{
+    imgChangeLeft();
+   }
+  }
+  
+
+  function imgChangeRight(){
+
+   $(_bigImg).stop().animate({ marginLeft : '-=717px'}, _SPEED, function(){
+    $(_bigImg).css('margin-left','-717px');
+    $('.imgView .img li:first-child').appendTo(_bigImg);
+   });
+
+   _currenViewIndex = $('.imgView .img li').eq(-1)[0];
+   thumPosition(_currenViewIndex);
+  }
+  
+  function imgChangeLeft(){
+
+   $(_bigImg).stop().animate({ marginLeft : '+=717px' }, _SPEED, function(){
+    $(_bigImg).css('margin-left','-717px');
+    $('.imgView .img li:last-child').prependTo(_bigImg);
+   });
+
+   _currenViewIndex = $('.imgView .img li').eq(0)[0];
+   thumPosition(_currenViewIndex);    
+  }
+
+  
+  function thumPosition(_currenViewIndex){
+   if ($(_currenViewIndex).hasClass('start')){
+    _thumbActivePosition = '0';
+   }
+   else{
+
+    if ($(_currenViewIndex).hasClass('middle')){
+     _thumbActivePosition = '61px';
+    }
+    else{
+     _thumbActivePosition = '122px';  
+    }
+   }
+   $('.activeBar').animate({left:_thumbActivePosition}, _SPEED);
+  }
+
+ });
+</script>
+
+
+
+<style type="text/css">
+ * { margin:0; padding:0; }
+ html { overflow-y:scroll; }
+ ul li { list-style:none; }
+
+ .img li { float:left; }
+ .img:after { display:block; content:''; clear:both; }
+ .contents { position:relative; margin:100px 0 0 100px;}
+ .imgView { position:relative; overflow:hidden; float:left; width:717px; height:362px; margin-right:29px; }
+ .imgView .img { width:2151px; }
+
+ .imgView .direction .btn { position:absolute; top:175px; cursor:pointer; }
+ .imgView .direction .btn.left { left:30px; }
+ .imgView .direction .btn.right { right:30px; }
+ .imgView .play { overflow:hidden; position:absolute; right:15px; bottom:15px; }
+ .imgView .play .btn { float:left; cursor:pointer; }
+ .imgView .play .btn.stop { margin-right:2px; }
+
+ .thumbnail { position:relative; float:left; margin-top:53px; }
+ .thumbnail .img { z-index:50; position:relative; width:179px; }
+ .thumbnail .img li { margin-right:4px; cursor:pointer; }
+ .thumbnail .img .last { margin-right:0; }
+ .thumbnail .activeBar { z-index:100; position:absolute; left:0; top:0; width:57px; height:55px; background:url('images/activeBar.png') no-repeat; cursor:pointer; }
+</style>
+
+<!-- (s) contents -->
+<div class="contents">
+
+ <!-- (s) imgView -->
+ <div class="imgView">
+  <ul class="direction">
+   <li class="btn left"><img alt="" src="http://www.sk.co.kr/Image/main/arr_left_off.png"/></li>
+   <li class="btn right"><img alt="" src="http://www.sk.co.kr/Image/main/arr_right_off.png"/></li>
+  </ul>
+  <ul class="img">
+   <li class="start"><img alt="" src="http://www.sk.co.kr/Image/main/img_mainvisual_01.jpg" /></li>
+   <li class="middle"><img alt="" src="http://www.sk.co.kr/Image/main/img_mainvisual_05.jpg" /></li>
+   <li class="end"><img alt="" src="http://www.sk.co.kr/Image/main/img_mainvisual_03.jpg" /></li>
+  </ul>
+  <ul class="play">
+   <li class="btn stop"><img alt="" src="http://www.sk.co.kr/Image/main/btn_stop_off.gif"/></li>
+   <li class="btn continue"><img alt="" src="http://www.sk.co.kr/Image/main/btn_play_off.gif"/></li>
+  </ul>
+ </div>
+ <!-- (e) imgView -->
+
+ <!-- (s) thumbnail -->
+ <div class="thumbnail">
+  <div class="activeBar"></div>
+  <ul class="img">
+   <li class="first"><img alt="" src="http://www.sk.co.kr/Image/main/ex_pic_01.jpg" /></li>
+   <li class="second"><img alt="" src="http://www.sk.co.kr/Image/main/ex_pic_12.jpg" /></li>
+   <li class="last"><img alt="" src="http://www.sk.co.kr/Image/main/ex_pic_11.jpg" /></li>
+  </ul>
+ </div>
+ <!-- (e) thumbnail -->
+
+</div>
+<!-- (e) contents -->
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>expressition 확장하기</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+<ul>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li style="display: none">Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+</ul>
+<style>
+
+    li:first-child {display: inline}
+</style>
+<script>
+    'use strict';
+
+    /**
+     * ---------------------------------------
+     * display sudo Expression 확장 (반복문 처리)
+     * ---------------------------------------
+     */
+
+    var display_value = 'inline, block, inline-block, none, list-item'.split(', '),
+            i = 0,
+            len = display_value.length,
+            d_value;
+
+
+    for (; i < len; i++) {
+
+        d_value = display_value[i];
+        // 반복문에서 아래와 같은 코드 작성시에 i 는 전역변수가 되기 때문에 주의가 필요
+        // 그렇기 때문에 클로저를 이용한다.
+
+        // console.log(d_value);
+
+        if (!$.expr[':'][d_value]) {
+            // 클로저를 이용 (반복문을 사용할 시 주의해야 함)
+            // 첫번째 외부함수가 즉시 실행되면서 인자값으로 d_value 를 넘겨주고
+            // 첫번째 리턴, 즉 콜백함수가 리턴되면서 $.expr[':'][d_value] 에 담기게 된다.
+            // 또한 외부함수의 @param d_value 는 지역변수와 같기 때문에 콜백(내부)함수에서 d_value 값을 계속 참조하고 있을 수 있다.
+            // 다시 말해서, 내부함수의 지역변수가 외부함수의 지역변수를 계속 참조하도록 하는 것이다.
+            $.expr[':'][d_value] = (function(d_value) { //  d_value 는
+                return function(el) {
+                    return $(el).css('display') === d_value;
+                }
+            })(d_value); // 반복문 i 인 display_value[i]를 외부함수에 넘겨준다.
+        }
+
+    }
+
+
+
+
+    $('li:inline').css('border', '1px solid red');
+
+/*
+    if (!$.expr[':'][d_value]) {
+        // 클로저를 이용 (반복문을 사용할 시 주의해야 함)
+        (function() {
+            $.expr[':'][d_value] = (function(d_value) {
+                return function(el) {
+                    return $(el).css('display') === d_value;
+                }
+            })(d_value);
+        })();
+    }
+*/
+
+
+</script>
+
+</body>
+</html>

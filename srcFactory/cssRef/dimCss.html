@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="euc-kr">
+    <meta name="format-detection" content="telephone=no"><!-- ��ȭ��ȣ �ڵ� ��ũ ���� ���� -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- IE �ֽŹ������� -->
+    <title></title>
+
+    <style>
+        body,ul, ul li{ margin:0; padding:0; }
+        ul{ height:50px; overflow:hidden; }
+        ul li{ width:48px; height:48px; float:left; overflow:hidden; border:1px solid red; font-size:30px; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+</ul>
+<p></p>
+<button>����</button>
+<button>����</button>
+<!-- body ����!!! -->
+<div class="lightbox-dim"></div>
+<style>
+    .lightbox-dim { position: fixed; top: 0; left: 0; background: #000; width: 100%; height: 100%; z-index: 2100; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=66); opacity: 0.66; }
+</style>
+</body>
+</html>

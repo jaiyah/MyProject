@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<p><a href="#none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, qui!</a></p>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+</ul>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, in?</li>
+</ul>
+
+<script>
+
+    var arr = ['baz'];
+
+    var obj = {name: 'foo', length : 1};
+
+    Array.prototype.push.apply(obj, ['baz']);
+
+    console.log(obj);
+
+
+</script>
+
+</body>
+</html>

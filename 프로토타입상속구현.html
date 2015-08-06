@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="middle">
+    <h1 class="hidden">포트 폴리오</h1>
+</div>
+
+<div class="item_thumb">
+    <a href="#none" class="link_thumb"><img src="i2.media.daumcdn.jpg" alt="" class="thumb_g"/></a>
+</div>
+
+
+<script>
+
+
+    // Person 클래스
+    function Person(name) {
+        this.name = name;
+    }
+
+    // Person 의 프로토타입 멤버
+    Person.prototype.species = 'human';
+
+    // Korean 클래스
+    function Korean(name, city) {
+
+        // 인스턴스 멤버 상속
+        Person.call(this, name);
+
+        // Korean 의 인스턴스 멤버
+        this.city = city;
+
+    }
+
+    Korean.prototype.nationality = 'korea';
+
+    // 프로토타입 멤버 상속
+    Korean.prototype = new Person();
+    Korean.prototype.constructor = Korean;
+
+    var son = new Korean('달봉이', 'seoul');
+
+    var arr = [];
+
+    for (var prop in son) {
+        arr.push(son[prop]);
+    }
+
+    console.log(arr );
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+@charset "euc-kr";
+
+.guide_header{width:100%;height:100px;margin-bottom:40px;background:#333;overflow:hidden}
+.guide_inner{width:1170px;margin:0 auto}
+.guide_inner h1{padding-top:34px}
+.guide_inner h1 em{margin-left:10px;font-family:Verdana, Geneva, sans-serif;font-size:30px;font-weight:bold;color:#00ff00;line-height:23px;letter-spacing:-1px}
+.guide_inner h2 { color:#e375ff;text-align:right;font-size:80px;margin-top:-29px;}
+.guide_tab{position:relative;width:1170px;margin:0 auto;background:url('../../../guide/bg_tabType.png') repeat-x 0 0;}
+.guide_tab ul{overflow:hidden;position:relative;margin-bottom:40px;padding-left:1px}
+.guide_tab ul li{float:left;position:relative;height:27px;margin-left:-1px;background:url('../../../guide/sp_tabtype.png') repeat-x 0 -31px;border:1px solid #ccc;z-index:1}
+.guide_tab ul li a{ display: block;line-height: 28px;padding: 0 15px 0 14px;text-align: center;color:#666}
+.guide_tab ul li.on{background:#528fc6;border-color:#457fb3;z-index:10;}
+.guide_tab ul li.on a{color:#fff;font-weight:bold}
+.guide_content{position:relative;width:1170px;height:100%;margin:0 auto;padding-bottom:50px}
+.guide_tit{margin:0 0 20px;padding-bottom:7px;color:#333;font-size:14px;border-bottom:1px solid #ddd}
+.guide_tit span{display:inline-block;width:4px;height:16px;margin:2px 7px -2px 0;background:#17bd03}
+.ps{font-size:11px;color:#999}
+.ps2 {font-size:12px;color:black;line-height:1.6;margin-bottom:15px}
+.ps2 strong {color:red}
+.ps2 strong.blue {color:blue}
+.guide_width{width:715px}
+
+.syntaxhighlighter .toolbar {display: none;}
+.syntaxhighlighter {border: 1px solid #e1e1e1; padding: 10px; box-sizing: border-box}
+

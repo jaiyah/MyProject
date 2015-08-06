@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Slider Guide</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        * { margin: 0; padding: 0;}
+        body { margin: 10px 100px;}
+        ul {list-style: none}
+        #sliderWrap {position: relative;width:500px;height:380px;background:#ccc}
+        .sliderContainer {position:relative;width:500px;height:320px;overflow: hidden;}
+        .sliderContainer .sliderContent {position: absolute;/* width:2000px; */}
+        .sliderContainer .sliderContent ul {overflow:hidden}
+        .sliderContainer .sliderContent li {float:left;width:500px;height:300px}
+        .sliderContainer .sliderContent li:nth-child(1) {background-color: tan;}
+        .sliderContainer .sliderContent li:nth-child(2) {background-color: yellow;}
+        .sliderContainer .sliderContent li:nth-child(3) {background-color: aqua;}
+        .sliderContainer .sliderContent li:nth-child(4) {background-color: green;}
+        .naviGrb {position:relative;clear:both;}
+        .naviGrb .control {position:absolute;left: 250px}
+        .naviGrb .control a {display: block;padding: 10px; color:#fff}
+        .naviGrb .control .play {background-color: #4a75c3;}
+        .naviGrb .control .stop {background-color: #e33d3d;}
+        .naviGrb .naviList  {overflow:hidden;position:absolute;right:10px}
+        .naviGrb .naviList li {display:inline;float:left}
+        .naviGrb .naviList li a {display: block;padding: 10px;background-color: #fff;}
+        .naviGrb .naviList li a.active {background-color: #9cedd9;}
+        .naviGrb .naviList li + li a {margin-left:10px}
+        .naviGrb > a.prevBtn, .naviGrb > a.nextBtn {position: absolute;top:-170px;display: block;padding: 10px;color:#fff;background-color: #1a77f6;}
+        .naviGrb > a.prevBtn {left:-25px}
+        .naviGrb > a.nextBtn {right:-25px}
+
+        #sliderWrap2 {position: relative;width:800px;height:380px;background:#ccc}
+        #sliderWrap2 .sliderContainer {position:relative;width:800px;height:320px;overflow: hidden;}
+        #sliderWrap2 .sliderContainer .sliderContent {position: absolute;/* width:2000px; */}
+        #sliderWrap2 .sliderContainer .sliderContent ul {overflow:hidden}
+        #sliderWrap2 .sliderContainer .sliderContent li {float:left;width:800px;height:300px}
+    </style>
+</head>
+<body>
+
+<div class="guide_header">
+	<div class="guide_inner">
+		<h1><em>Title STYLE</em></h1>
+	</div>
+</div>
+
+<div class="guide_content">
+	<h2 class="guide_tit"><span></span>�����̵� ������</h2>
+	<div id="sliderWrap" class="slider">
+		<div class="sliderContainer">
+			<div class="sliderContent">
+				<ul>
+					<li>1111</li>
+					<li>222</li>
+					<li>3333</li>
+					<li>4444444</li>
+				</ul>
+			</div>
+		</div>
+		<div class="naviGrb navigation">
+			<p class="control"><a href="#none" class="play">�ڵ��Ѹ�</a></p>
+			<ul class="naviList">
+				<li><a href="#none" class="active">1</a></li>
+				<li><a href="#none">2</a></li>
+				<li><a href="#none">3</a></li>
+				<li><a href="#none">4</a></li>
+			</ul>
+			<a href="#none" class="prevBtn">prev</a>
+			<a href="#none" class="nextBtn">next</a>
+		</div>
+	</div>
+	<br /><br /><br />
+	<div id="sliderWrap2" class="slider">
+		<div class="sliderContainer">
+			<div class="sliderContent">
+				<ul>
+					<li>1111</li>
+					<li>222</li>
+					<li>3333</li>
+					<li>4444444</li>
+				</ul>
+			</div>
+		</div>
+		<div class="naviGrb navigation">
+			<p class="control"><a href="#none" class="play">�ڵ��Ѹ�</a></p>
+			<ul class="naviList">
+				<li><a href="#none" class="active">1</a></li>
+				<li><a href="#none">2</a></li>
+				<li><a href="#none">3</a></li>
+				<li><a href="#none">4</a></li>
+			</ul>
+			<a href="#none" class="prevBtn">prev</a>
+			<a href="#none" class="nextBtn">next</a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+    $.fn.slidingFn = function (options) {
+        return this.each(function () {
+            var that = $(this);
+            var opts = $.extend({}, $.fn.slidingFn.option, options || {});
+
+            var container = that.children().eq(0),
+                itemsCont = container.children(),
+                itemsWidth = container.width(),
+                itemsLength = itemsCont.find('ul > li').length,
+                prevBtn = that.find(opts.prevBtnClass),
+                nextBtn = that.find(opts.nextBtnClass),
+                currIdx = 0,
+                intervalId = 0,
+                playElm = that.find('.control > a'),
+                intervalTimer = opts.intervalTimer,
+                naviList = that.find('.navigation > ul > li > a');
+            //console.log(naviList);
+            itemsCont = itemsCont.width(itemsWidth * itemsLength);
+            prevBtn.on('click focus', function () {
+                prevItemShow();
+            })
+
+            nextBtn.on('click focus', function () {
+                nextItemShow();
+            })
+            function prevItemShow() {
+                var nextIdx = currIdx - 1;
+                if (nextIdx < 0) {
+                    nextIdx = itemsLength - 1;
+                }
+                showItem(nextIdx);
+            }
+
+            function nextItemShow() {
+                var nextIdx = currIdx + 1;
+                if (nextIdx >= itemsLength) {
+                    nextIdx = 0;
+                }
+                showItem(nextIdx);
+            }
+
+            function showItem(nextIdx) {
+                naviList.removeClass('active');
+                naviList.eq(nextIdx).addClass('active');
+                var posValue = -(itemsWidth * nextIdx);
+                itemsCont.stop().animate({
+                    left: posValue
+                }, opts.duration)
+                currIdx = nextIdx;
+            }
+
+            naviList.on('click mouseenter mouseleave', function (evt) {
+                var currDot = naviList.index($(this));
+                if (evt.type == 'click') {
+                    showItem(currDot);
+                }
+                intervalCtrl(evt);
+            })
+
+            itemsCont.on('mouseenter mouseleave', function (evt) {
+                intervalCtrl(evt);
+            })
+
+            function intervalCtrl(evt) {
+                if (evt.type == 'mouseenter') {
+                    if (intervalId != 0) {
+                        clearInterval(intervalId);
+                    }
+                }
+                if (evt.type == 'mouseleave') {
+                    if (intervalId == 0) {
+                        clearInterval(intervalId);
+                    } else if (intervalId != 0) {
+                        intervalId = setInterval(nextItemShow, intervalTimer);
+                    }
+                }
+            }
+
+            playElm.on('click', function () {
+                var ctrlBtn = $(this).attr('class');
+                if (ctrlBtn == 'play') {
+                    $(this).attr('class', 'stop').text('�Ѹ�����');
+                    playCtrl();
+                } else if (ctrlBtn == 'stop') {
+                    $(this).attr('class', 'play').text('�ڵ��Ѹ�');
+                    stopCtrl();
+                }
+            })
+
+            function playCtrl() {
+                if (intervalId != 0) {
+                    clearInterval(intervalId);
+                }
+                intervalId = setInterval(nextItemShow, intervalTimer);
+            }
+
+            function stopCtrl() {
+                if (intervalId != 0) {
+                    clearInterval(intervalId);
+                }
+                intervalId = 0;
+            }
+
+            if (opts.auto == true) {
+                intervalId = setInterval(nextItemShow, intervalTimer);
+                return false;
+            }
+
+
+        });
+    };
+
+    $.fn.slidingFn.option = {
+        prevBtnClass: '.prevBtn',
+        nextBtnClass: '.nextBtn',
+        duration: 400,
+        intervalTimer: 5000,
+        auto: false
+    };
+
+$('.slider').slidingFn();
+/* $('#sliderWrap2').slidingFn({
+	duration : 500, // �ִϸ��̼� ���ǵ�
+	intervalTimer : 2000,
+	auto : true
+}); */
+})
+
+
+</script>
+</body>
+</html>

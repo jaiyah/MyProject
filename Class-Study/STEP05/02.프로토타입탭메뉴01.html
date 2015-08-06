@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>클래스 단위의 프로토타입 프로그래밍</title>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="jquery.min.js"></script>
+        <script>
+            $(function() {
+                // 첫 번째 탭메뉴 인스턴스 생성
+                var firstTab = new TabMenu("#tabMenu1");
+                firstTab.indexItemAt(1);
+
+                // 두 번째 탭메뉴 인스턴스 생성
+                var secondsTab = new TabMenu("#tabMenu2");
+                secondsTab.indexItemAt(0);
+
+            });
+
+            // CLASS Define
+            function TabMenu(selector) {
+                this.$tabmenu = null;
+                this.$menuItem = null;
+                this.$selectItem = null;
+
+                this.init(selector);
+                this.initEvent();
+            }
+
+            // 요소 초기화
+            TabMenu.prototype.init = function (el) {
+                this.$tabmenu = $(el);
+                this.$menuItem = this.$tabmenu.find('li');
+            }
+
+            // 이벤트 등록하기
+            TabMenu.prototype.initEvent = function () {
+                var _self = this;
+                this.$menuItem.on('click', function () {
+                    _self.setSelectItem($(this));
+                })
+            }
+
+            // 메뉴 아이템 선택 설정하기
+            TabMenu.prototype.setSelectItem = function ($item) {
+                // 기존 아이템 비활성화 처리하기
+                if(this.$selectItem) {
+                    this.$selectItem.removeClass('select');
+                }
+                // 신규 아이템 활성화 처리하기
+                this.$selectItem = $item;
+                this.$selectItem.addClass('select');
+            }
+
+            // index 에 해당하는 메뉴 아이템 선택하기
+            TabMenu.prototype.indexItemAt = function (index) {
+                var $indexItem = this.$menuItem.eq(index)
+                // 기존 메서드의 재사용
+                this.setSelectItem($indexItem);
+            }
+
+
+        </script>
+    </head>
+
+    <body>
+
+        <ul class="tab-menu" id="tabMenu1">
+            <li class="menuitem1">
+                google
+            </li>
+            <li class="menuitem2">
+                facebook
+            </li>
+            <li class="menuitem3">
+                pinterest
+            </li>
+            <li class="menuitem4">
+                twitter
+            </li>
+            <li class="menuitem5">
+                airbnb
+            </li>
+            <li class="menuitem6">
+                path
+            </li>
+        </ul>
+        
+        <ul class="tab-menu" id="tabMenu2">
+            <li class="menuitem1">
+                google
+            </li>
+            <li class="menuitem2">
+                facebook
+            </li>
+            <li class="menuitem3">
+                pinterest
+            </li>
+            <li class="menuitem4">
+                twitter
+            </li>
+            <li class="menuitem5">
+                airbnb
+            </li>
+            <li class="menuitem6">
+                path
+            </li>
+        </ul>
+
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title>Expression 확장하기</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+    <script>
+
+
+    </script>
+</head>
+<body>
+<ul>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor.</li>
+</ul>
+
+<span>lorem11</span>
+<span>lorem23</span>
+<span>lorem42</span>
+
+<a href="#none" class="btn" data-btn="new-anchor">앵커 버튼</a>
+<style>
+
+    li:first-child { display: inline;}
+    li:last-child { display: block;}
+
+</style>
+
+<script>
+    'use strict';
+
+    /**
+     * ---------------------------------------
+     * display: inline 요소 찾는 sudo Expression
+     * ---------------------------------------
+     */
+     if (!$.expr[':'].inline) {
+         $.expr[':'].inline = function(el, index, meta) { // 메타인자는 :inline() 괄호 안의 인자값을 나타낸다.
+            return $(el).css('display') === 'inline';
+        }
+     }
+
+
+     if (!$.expr[':'].block) {
+         $.expr[':'].block = function(el, index, meta) {
+            return $(el).css('display') === 'block';
+        }
+     }
+
+
+
+
+
+    jQuery.extend(jQuery.expr[':'], {
+        'inview': function (el) {
+            var $e = $(el),
+                $w = $(window),
+                top = $e.offset().top,
+                height = $e.outerHeight(true),
+                windowTop = $w.scrollTop(),
+                windowScroll = windowTop - height,
+                windowHeight = windowTop + height + $w.height();
+            return (top > windowScroll && top < windowHeight);  }
+    });
+
+    // debug mode:
+    jQuery.extend(jQuery.expr[':'], {
+        debug: function(el, index, meta) {
+            console.log("---(s) debug ---");
+            console.log("element: ", el);
+            console.log("index: ", index);
+            console.log("meta: ", meta);
+            console.log("--- (e) // debug ---");
+            return el.nodeName.toLowerCase() === "span";
+        }
+    })
+
+    $("span:first:debug");
+    $("span:last:debug(args)");
+
+    // $("a.button.new-repo").attr("data-button", "new-anchor");
+
+    jQuery.extend(jQuery.expr[':'], {
+        button: function(el, index, meta) {
+            return el.nodeName.toLowerCase() === "a" && el.className.match("btn") && el.dataset.btn === meta[3];
+        }
+    });
+
+    // much better
+    $("a:button");
+    $("a:button(new-repo)");
+
+    $(readyJQ);
+    function readyJQ() {
+
+        $('li:inline').css('border', '1px solid blue');
+        $("a:button").css('border', '2px solid blue')
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

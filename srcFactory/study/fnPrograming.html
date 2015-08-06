@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>파일 업로드</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+
+            ul {list-style: none; margin: 0; padding: 0; width: 300px; overflow: hidden;}
+            li { float: left; width: 150px;}
+            li:nth-child(1) { height: 40px; background: #cfcfcf;}
+            li:nth-child(2) { height: 50px; background: #58647a;}
+            li:nth-child(3) { height: 20px; background: #ad3136;}
+            li:nth-child(4) { height: 50px; background: #5c1913;}
+            li:nth-child(5) { height: 30px; background: #cf467c;}
+            li:nth-child(6) { height: 70px; background: #cfcb51;}
+            li:nth-child(7) { height: 40px; background: #32cf3f;}
+            li:nth-child(8) { height: 20px; background: #42cfb4;}
+        </style>
+</head>
+
+<body>
+<p><a href="#none">버튼</a></p>
+<ul id="content" style="height: 500px;">
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>ifconfig</li>
+    <li>터미널 맥북 에어</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>ifconfig</li>
+    <li>터미널 맥북 에어</li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>ifconfig</li>
+</ul>
+<a class="link" href="#content">콘텐츠 바로가기</a>
+<script>
+
+    function reduce(func, arr, memo) {
+        var len = arr.length,
+            i = 0,
+            accum = memo;
+
+        for(; i < len; i++) {
+            accum = func(accum, arr[i]);
+        }
+
+        return accum;
+    }
+
+    var arr = [1,2,3,4];
+
+    var sum = function(x,y) {
+        return x + y;
+    }
+
+    var multiply = function(x,y) {
+        return x * y;
+    }
+
+    console.log(reduce(sum,arr, 0));
+    console.log(reduce(multiply, arr, 1));
+
+
+    // 팩토리얼 함수
+    function factorial_step1(num) {
+        var val = 1,
+            i = 2;
+
+        for(; i <= num; i++) {
+            val = val * i;
+        }
+        return val;
+    }
+
+    console.log(factorial_step1(4))
+
+    function factorial_step2(num) {
+        if(num == 0) return 1;
+        else return num * factorial_step2(num -1);
+    }
+    console.log(factorial_step2(5));
+
+    var factorial = function() {
+        var cache = {'0' : 1};
+        var func = function(n) {
+            var result = 0;
+
+            if(typeof(cache[n]) === 'number') {
+                result = cache[n];
+            } else {
+                result = cache[n] = n * func(n-1);
+            }
+            return result;
+        }
+        return func;
+    }();
+
+    console.log(factorial(5));
+    console.log(factorial(4));
+
+
+</script>
+</body>
+</html>

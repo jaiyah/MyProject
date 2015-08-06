@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="middle">
+    <h1 class="hidden">포트 폴리오</h1>
+</div>
+
+<div class="item_thumb">
+    <a href="#none" class="link_thumb"><img src="i2.media.daumcdn.jpg" alt="" class="thumb_g"/></a>
+</div>
+<style>
+    #middle {
+        position: relative;
+        margin: 0 auto;
+        width: 920px;
+        z-index: 200;
+        text-align: center; /* 센터이기 때문에 보더가 중간에서 넓어짐 */
+    }
+    #middle h1.hidden { display: inline-block; margin-bottom: 30px; padding-bottom: 15px;
+         width: 100%; height: 20px; color: #313131; line-height: 20px; font-size: 16px; text-indent: 0;
+         text-transform: uppercase; border-bottom: 2px solid #c30000; overflow: visible; white-space: nowrap;
+         animation: titMove 1.0s; -webkit-animation: titMove 1.0s; text-align: center; }
+
+    @-webkit-keyframes titMove {
+        0% {
+            width: 10px;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    @keyframes titMove {
+        0% {
+            width: 10px;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    
+    ::selection { background: red;color:white}
+    .item_thumb { width: 340px; height: 190px; overflow: hidden; }
+    .item_thumb .link_thumb {
+        display: block;
+        overflow: hidden;
+        width: 100%
+    }
+    .item_thumb .link_thumb .thumb_g {
+        -webkit-transition: -webkit-transform 1s;
+        transition: transform 1s
+    }
+
+    .item_thumb .link_thumb:hover .thumb_g {
+        -webkit-transform: scale(1.5,1.5);
+        transform: scale(1.5,1.5)
+    }
+</style>
+
+
+</body>
+</html>

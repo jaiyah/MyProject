@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>텝 메뉴 스타일링</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="my_tab">
+    <ul>
+        <li><a href="#" class="on"><span title="회원전보수정">회원정보수정</span></a></li>
+        <li><a href="#" class=""><span title="관심과정">관심과정</span></a></li>
+        <li><a href="#" class=""><span title="결제내력">결제내력</span></a></li>
+        <li><a href="#" class=""><span title="더조은포인트">더 조은 포인트</span></a></li>
+        <li><a href="#" class=""><span title="회원탈퇴">회원탈</span></a></li>
+    </ul>
+</div>
+
+
+<style>
+
+    .my_tab { width: 1000px; margin: 50px auto;}
+    .my_tab ul { *zomm:1;background: url("./images/bdb_bg.png") repeat-x 0 100%;}
+    .my_tab ul:after { content: ""; display: block; overflow: hidden; clear: both;}
+    .my_tab ul li { float: left; width: 20%;}
+    .my_tab ul li a { display: block; border:solid #c6c9ca; border-width: 1px 1px 0 0; text-align: center; height: 31px; cursor: pointer;}
+    .my_tab ul li a.on { position: relative; height: 32px; margin: 0 0 0 -1px;border: 1px solid #535f63; border-bottom:none; background: url("./images/bdb_onBg.png") repeat-x 0 100%}
+    .my_tab ul li:first-child a { border-left: 1px solid #c6c9ca;}
+    .my_tab ul li:first-child a.on { border-left: 1px solid #535f63; margin-left: 0;}
+    .my_tab ul li a span { display: inline-block; line-height: 30px; }
+
+</style>
+<script>
+
+</script>
+</body>
+</html>

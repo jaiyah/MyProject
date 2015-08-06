@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>IE 11 감지</title>
+
+<style>
+#result {
+	font: 12px/1.5 돋움;
+}
+
+/* IE 11 감지 스타일 사용법 */
+.ie11 {
+	background: #5f4e55;
+}
+.ie11 #result {
+	font-size: 14px;
+	color: #3fb5c8;
+}
+</style>
+
+<!-- IE 11 스크립트 감지 코드 호출 -->
+<script src="./js/check_ie11.min.js"></script>
+</head>
+<body>
+
+<p id="result">사용 중인 브라우저는??</p>
+
+<script>
+    (function(exports, doc, undefined){
+        var UA, html, is_IE11;
+        UA = exports.navigator.userAgent;
+        html = doc.documentElement;
+        is_IE11 = UA.match(/(Trident\/7.0)(?:.*rv:11.0)/);
+        if ( is_IE11 ) { html.classList.add('ie11'); }
+    })(window, document);
+
+    // IE 11 감자 시, #result 내용 변경 스크립트
+    if ( document.documentElement.classList.contains('ie11') ) {
+        document.getElementById('result').innerHTML = '사용 중인 브라우저는 IE 11 입니다.';
+    }
+</script>
+</body>
+</html>

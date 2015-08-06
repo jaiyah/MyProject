@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+
+
+<style>
+body {margin: 100px;}
+* {margin: 0;padding: 0;}
+.wrap {padding: 20px 0;background-color: tan;overflow: hidden;}
+ul {list-style:none;margin: 0;padding: 0; width: 100%;}
+ul.nav, ul.nav li {float: left;}
+ul.nav {width: 500px;}
+ul.nav li { background: url('/pub_guide/common/img/tabBG.png') 0 0 no-repeat;margin-right: 10px;}
+ul.nav li a { background:url('/pub_guide/common/img/tabBG.png') 100% 0 no-repeat;display: block;padding: 10px 20px 5px;margin-right:-10px}
+</style>
+
+<br /><br /><br /><br /><br />
+
+<div class="rd">
+	<div class="rdBox">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam tempora?</p>
+	</div>
+	
+</div>
+<style>
+.rd {padding: 20px;border: 1px solid #000;}
+.rdBox {position: relative;border:1px solid #cbcbcb;padding: 20px;background: #fff;}
+
+.rdBox span.c {background:#fff url(../images/connerBg.png) no-repeat;width: 4px;height: 5px;position: absolute;margin:-1px}
+.rdBox span.conner1 {top:0;left: 0;}
+.rdBox span.conner2 {top:0;right: 0;background-position: -4px 0;}
+.rdBox span.conner3 {bottom:0;left: 0;background-position: 0 -5px;}
+.rdBox span.conner4 {bottom:0;right: 0;background-position: -4px -5px;}
+</style>
+<script>
+	$(function(){
+		$('.rdBox').append('<span class="c conner1" /><span class="c conner2" /><span class="c conner3" /><span class="c conner4" />')
+	});
+</script>
+
+<br /><br /><br /><br />
+<div class="ir_wrap">
+	<div class="ir_img"><img src="../images/ex.png" alt="" /></div>
+	<div class="ir_txt">
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam repellat.</li>
+			<li>Lorem ipsum doloripisicing elit. Ipsam repellat.</li>
+			<li>Lorem ipsum doloripisicing elit. Ipsam repellat.</li>
+			<li>Lorem ipsum dolor sit amet, psam repellat.</li>
+			<li>Lorem ipsum dolor sit amet, psam repellat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum doloripisicing elit. Ipsam repellat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam repellat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum dolor sit amet, psam llat.</li>
+			<li>Lorem ipsum doloripisicing elit. Ipsam repellat.</li>
+		</ul>
+	</div>
+</div>
+
+<style>
+.ir_wrap {position: relative;width: 100%;height: 100%;}
+.ir_wrap .ir_img {position: absolute;left: 0;right: 0;}
+.ir_wrap .ir_txt {overflow: auto;left: 0;right: 0;}
+</style>
+
+<script>
+	function irWrap() {
+		var irElm = $('.ir_txt');
+		if (irElm.length != 0 ) {
+			irElm.each(function(){
+				// ir_img
+				var flag = $(this).prev();
+				if(flag.hasClass('ir_img')) {
+					$(this).height(flag.find('img').height()).width(flag.find('img').width());
+				} else {
+					$(this).height($('.ir_img img').height()).width($('.ir_img img').width());
+				}
+			})
+		}
+	}
+	$(window).on('load', function(){
+		
+		irWrap()
+	})
+</script>
+<br /><br /><br /><br />
+</body>
+</html>

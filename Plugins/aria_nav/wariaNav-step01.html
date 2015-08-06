@@ -1,0 +1,138 @@
+<!--[if IE]><![endif]-->
+<!DOCTYPE html>
+<!--[if !IE]><!-->
+<html lang="ko-KR" class="no-js">
+<!--<![endif]-->
+<!--[if IE 8]> <html lang="ko-KR" class="no-js lt-ie10 lt-ie9 ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="ko-KR" class="no-js lt-ie10 ie9"> <![endif]-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>접근성 내비게이션 제작</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="navigationBar.css">
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1 lang="en">jQuery Plugin StartKit ─ Gulp Project</h1>
+</header>
+<nav id="gnb">
+    <ul>
+        <li>
+            <a href="">철학</a>
+            <ul>
+                <li><a href="">다음카카오의 철학</a></li>
+                <li><a href="">프라이버시 보호 책임자</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">투명성</a>
+            <ul>
+                <li><a href="">개인정보 라이프 사이클</a></li>
+                <li><a href="">투명성 보고서</a></li>
+                <li>
+                    <a href="">op</a>
+                    <ul>
+                        <li><a href="">야무.</a></li>
+                        <li><a href="">청춘아!!</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="">보호노력</a>
+            <ul>
+                <li><a href="">기술적 보호노력</a></li>
+                <li><a href="">프라이버시 정책 자문위원회</a></li>
+                <li><a href="">정보보호 인증</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">동향</a>
+        </li>
+    </ul>
+</nav>
+
+
+<script>
+
+    /**
+     * 플러그인 이름 및 변수 설정
+     * -------------------------------- */
+    var plugin = 'navigationBar';
+
+    /**
+     * 플러그인 쉘 코드 설정
+     * -------------------------------- */
+    $.fn[plugin] = $.fn[plugin] || function(options) {
+
+        // $this 에 jQuery() 인스턴스 객체(집합) 참조
+        var $this = this;
+
+        // $this 인스턴스 객체(집합)에 개별적으로 플러그인 적용
+        return $.each($this, function(index, el) {
+
+            // $el 변수에 jQuery() 인스턴스(개별) 객체를 참조
+            var $el = $this.eq(index);
+
+            // NavigationBar 객체 생성 및 인자 전달
+            new NavigationBar($el, options);
+
+            // jQuery 체이닝 처리를 위한 return
+            return $el;
+
+        });
+    };
+
+    /**
+     * 플러그인 기본 옵션 설정
+     * -------------------------------- */
+    $.fn[plugin].defaults = {
+
+        // 회사 식별자(접두사)
+        'prefix': 'horizontal',
+
+    };
+
+
+    /**
+     * 플러그인 객체 생성자
+     * -------------------------------- */
+    var NavigationBar = function($el, options) {
+
+        // 플러그인 적용 대상 객체 참조 및
+        // 옵션 오버라이딩(덮어쓰기)
+        this.$el    = $el;
+        this.el     = $el[0];
+        this.config = $.extend(true, {}, $.fn[plugin].defaults, options);
+
+        // 플러그인 초기화 실행
+        this.init();
+    };
+
+    /**
+     * 플러그인 객체 생성자 프로토타입
+     * -------------------------------- */
+    NavigationBar.prototype = {
+
+        'init': function() {
+
+            // 내비게이션 객체 초기화 과정에서
+            // 대상 및 옵션을 제대로 받아오는지 테스트
+            console.log('this.$el: ', this.$el);
+            console.log('this.el: ', this.el);
+            console.log('this.config: ', this.config);
+        },
+
+    };
+
+
+    var $gnb = $('#gnb').navigationBar({
+        'prefix': 'yamoo9'
+    });
+
+</script>
+</body>
+</html>

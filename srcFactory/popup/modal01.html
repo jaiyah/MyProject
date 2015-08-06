@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아코디언 메뉴</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<style>
+/* 공통 */
+* { margin:0; padding:0 }
+#wrap{margin:30px}
+/* 모달창 */
+.modal-content, .modal-bg {position:fixed; display: none;}
+.modal-content { z-index: 9999;width:500px; height:500px; left:50%; top:50%; margin:-250px 0 0 -250px;padding:1em; background:#fff;-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;}
+.modal-bg { width:100%; height:100%; left:0; top:0; background:rgba(0,0,0,.8); z-index: 9998; }
+</style>
+</head>
+
+<body>
+<div id="wrap">
+	<h1>모달 팝업창</h1>
+	<a href="#modal" class="modal">팝업보기</a>
+	<div class="modal-content" id="modal">
+		<button class="close">창닫기</button>
+		<p>Authors are encouraged to use the article element instead of the section element when it would make sense to syndicate the contents of the elements.The section element is not a generic container element. When an element is needed for styling purpose or as a convenience for scripting, authors are encouraged to use the div element instead. A general rule is that the section element is appropriate only if the element’s contents would be listed explicitly in the document’s outline.With very few exceptions, section should not be used if there is no natural heading for it.</p>
+	</div>
+</div>
+<script type="text/javascript">
+
+//모달창
+$('.modal-content').after('<div class="modal-bg" />');
+var $modal = $('.modal-bg,.modal-content');
+$('.modal').click(function(event) {
+	event.preventDefault();
+	$modal.show();
+});
+
+$('.modal-bg,.modal-content .close').click(function() {
+	$modal.hide();
+});
+
+$(document).keydown(function(e){ //esc키를 누르면 모달창 닫기
+	if(e.which == 27) { //http://firejune.com/731?stag=%ED%82%A4%EC%BD%94%EB%93%9C
+		$modal.hide();
+	}
+});
+</script>
+</body>
+</html>

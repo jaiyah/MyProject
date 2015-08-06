@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+<script src="jquery.min.js"></script>
+
+<script>
+    var data = 10;
+    $(document).ready(function(){
+        
+        // 이벤트 리스너 등록    
+        $("#myButton").click(function(){
+            this.data = 20;
+            data = 30;
+
+            this.style.color = '#000';
+            console.log("1. data1 = " + data); // 30
+            console.log("2. this.data = " + this.data); // 20 (이벤트 핸들러의 객체)
+            console.log("3. window.data = " + window.data); // 30
+        });
+    });        
+
+</script>
+
+</head>
+    
+    <body>
+        <button id="myButton">리스너실행</button>
+    </body>
+</html>

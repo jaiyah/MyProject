@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko-KR">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../libs/jquery.min.js"></script>
+
+</head>
+<body>
+
+<ul>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+    <li>Lorem ipsum dolor sit.</li>
+</ul>
+
+<script>
+    'use strict';
+
+    /**
+     * --------------------------------------------
+     version 프로퍼티를 추가하여 jQuery 의 버전을 체크합니다.
+     * --------------------------------------------
+     */
+
+    if(!$.version) {
+        $.version = $().jquery;
+    }
+
+
+    /**
+     * --------------------------------
+     * console.log() 를 $ 함수에 추가합니다.
+     * --------------------------------
+     */
+
+    if( !$.log ) {
+        $.log = function (arg) {
+            if(window.console) {
+                console.log(arg);
+            }
+        }
+    }
+
+
+
+    /**
+     * -----------------------------------------------------------
+     * 요소를 탐색할 때 탐색했던 요소를 다시 탐색하지 않기 위한 유틸리티 메소드 설정
+     * $.$(), $.data() 사용자 유틸리티 메서드를 정의
+     * 목적 : 같은 Element 인지 아닌지를 체크하여 같은 Element 는 참조한다.
+     * -----------------------------------------------------------
+     */
+
+    if (!$.$) {
+        // $ 함수객체에 $ 메서드를 정의
+        // $.$() DOMElement 를 인자로 받는다.
+        $.$ = function (DOM_El) {
+            // $.data() 메서드에 param DOM_El, '@this' 이 없다면
+            if(!$.data(DOM_El, '$this')) {
+                // $.data() 인자로 $.$() 의 인자로 받은 DOM_El, @this, $(DOM_El)인 jQuery 인스턴스 객체인 인자를 정의한다.
+                $.data(DOM_El, '$this', $(DOM_El));
+                // 처음에 DOMElement 가 넘어왔다면 인자 세개를 받아서 정의된다.
+                // 하지만 같은 DOMElement 가 넘어온다면
+                // 이미 return $.data(DOM_El, '@this') 가 반환되었기 때문에
+                // 다시 조건문에서 $.data(DOM_El, '@this') 은 true 이므로
+                 !(부정연산자)로 인해 false 가 되어 바로 참조 되어있는 $.data(DOM_El, '@this') 이 반환되는 결과가 나타난다.
+            }
+
+            return $.data(DOM_El, '$this')
+
+            // 위의 조건문도 필요 없이 코드 리팩토링
+            // return $.data(DOM_El, 'this') ? $.data(DOM_El, 'this') : $.data(DOM_El, 'this', $(DOM_El))
+            // return $.data(DOM_El, '@this') || $.data(DOM_El, '@this', $(DOM_El));
+        }
+    }
+
+
+    $('ul').on('click','li', function () {
+        // console.log($.$(this));
+        $(this).css('border','1px solid red');
+    })
+
+
+
+</script>
+</body>
+</html>

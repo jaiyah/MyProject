@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="utf-8">
+    <title>IA (Imformation Architecture)</title>
+    <link rel="stylesheet" href="css/guide.css"/>
+    <link type="text/css" rel="stylesheet" href="css/shCore.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="./js/guide.js"></script>
+    <script src="./js/shCore.js"></script>
+    <script src="./js/shBrushJScript.js"></script>
+    <script src="./js/shBrushCss.js"></script>
+    <script src="./js/shBrushXml.js"></script>
+</head>
+<body>
+<a href="#wrap" class="skip">≫ &nbsp; 메뉴 건너 뛰기</a>
+<header>
+    <div id="header">
+        <hgroup>
+            <h1><span class="gd-bar"></span>Layout Structure</h1>
+
+            <h2>Publishing</h2>
+        </hgroup>
+    </div>
+</header>
+
+<div id="wrap">
+    <section>
+        <h3>Guide Tab</h3>
+
+        <p class="listBtnArea"><a href="./IA.html" class="on">Impormation Architeture</a></p>
+    </section>
+    <hr/>
+
+    <section class="guide-wrap">
+        <article>
+            <div class="guide-tap">
+                <ul>
+                    <li><a href="layout.html"><span>Layout Structure</span></a></li>
+                    <li><a href="title_font_type.html" class=""><span>Title & Font Type</span></a></li>
+                    <li><a href="tab_type.html" class=""><span>Tab Type</span></a></li>
+                    <li><a href="button_type.html" class="on"><span>Button Type</span></a></li>
+                    <li><a href="list_type.html" class=""><span>List type</span></a></li>
+                    <li><a href="table_type.html" class=""><span>Table Type</span></a></li>
+                    <li><a href="#" class=""><span>View Type</span></a></li>
+                    <li><a href="form_type.html" class=""><span>Form Type</span></a></li>
+                    <li><a href="popup_type.html" class=""><span>Pop-up Type</span></a></li>
+                    <li><a href="#" class=""><span>Scroll Type</span></a></li>
+                    <li><a href="#" class=""><span>IR Type</span></a></li>
+                </ul>
+            </div>
+            <div class="guide-contents">
+                <div class="guide-type">
+                    <h2 class="guide_tit">Button align</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>버튼이 중앙 정렬 하나만 있을 경우를 대비하여 버튼 랩퍼에 min-height 값을 설정한다.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, explicabo.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ align Preview</span></p>
+                        <div class="preview">
+                            <div class="btn_wrap clearfix">
+                                <div class="btn_l">
+                                    <a class="btn btype03" href="#none"><span>Submit</span></a>
+                                </div>
+                                <div class="btn_c">
+                                    <a class="btn btype03" href="#none"><span>Apply</span></a>
+                                    <a class="btn btype03" href="#none"><span>List</span></a>
+                                </div>
+                                <div class="btn_r">
+                                    <a class="btn btype03" href="#none"><span>Account Close</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <div class="btn_wrap clearfix">
+                             <div class="btn_l">
+                                 <a class="btn btype03" href="#none"><span>Submit</span></a>
+                             </div>
+                             <div class="btn_c">
+                                 <a class="btn btype03" href="#none"><span>Apply</span></a>
+                                 <a class="btn btype03" href="#none"><span>List</span></a>
+                             </div>
+                             <div class="btn_r">
+                                 <a class="btn btype03" href="#none"><span>Account Close</span></a>
+                             </div>
+                         </div>
+                    </pre>
+                </div>
+                <hr class="line"/>
+                <div class="guide-type">
+                    <h2 class="guide_tit">Anchor Tag Style</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>default 클래스는 btn</li>
+                            <li>버튼 디자인에 따라 btype01,02,03... 으로 사용합니다.</li>
+                            <li>버튼에 아이콘이 삽입된 버튼은 icon style 의 태그를 사용하 위치는 사용자 지정합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Anchor button Preview</span></p>
+                        <div class="preview">
+                            <a class="btn" href="#none"><span>확인</span></a>
+                            <a class="btn btype01" href="#none"><span>취소</span></a>
+                            <a class="btn btype02" href="#none"><span>회원 등록</span></a>
+                            <a class="btn btype03" href="#none"><span>달력보기 <i class="icon ictype02"></i></span></a>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <a class="btn" href="#none"><span>확인</span></a>
+                         <a class="btn btype01" href="#none"><span>취소</span></a>
+                         <a class="btn btype02" href="#none"><span>회원 등록</span></a>
+                         <a class="btn btype03" href="#none"><span>달력보기 <i class="icon itype02"></i></span></a>
+                    </pre>
+                </div>
+                <hr class="line"/>
+                <div class="guide-type">
+                    <h2 class="guide_tit">INPUT Type Button Style</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>default 클래스는 ipt</li>
+                            <li>인풋 버튼 디자인에 따라 iptype01,02,03... 으로 사용합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Input Button Preview</span></p>
+                        <div class="preview">
+                            <span class="ipt"><input type="button" value="검색" /></span>
+                            <span class="ipt iptype01"><input type="button" value="검색" /></span>
+                            <span class="ipt iptype02"><input type="button" value="summit button" /></span>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <span class="ipt"><input type="button" value="검색" /></span>
+                         <span class="ipt iptype01"><input type="button" value="검색" /></span>
+                         <span class="ipt iptype02"><input type="button" value="summit button" /></span>
+                    </pre>
+                </div>
+                <hr class="line"/>
+                <div class="guide-type">
+                    <h2 class="guide_tit">ICON Style</h2>
+
+                    <div class="description">
+                        <ul>
+                            <li>default 클래스는 icon</li>
+                            <li>아이콘 디자인에 따라 itype01,02,03... 으로 사용합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="mb20">
+                        <p class="sub-tit"><span>@ Input Button Preview</span></p>
+                        <div class="preview">
+                            <i class="icon">화살표 아이콘</i><span class="gap-r20"></span>
+                            <i class="icon ictype01">화살표 아이콘</i><span class="gap-r20"></span>
+                            <i class="icon ictype02">화살표 아이콘</i><span class="gap-r20"></span>
+                            <i class="icon ictype03">달력 아이콘</i>
+                        </div>
+                    </div>
+                    <p class="sub-tit"><span>@ HTML CODE</span></p>
+                    <pre class="brush: html">
+                         <i class="icon">화살표 아이콘</i>
+                         <i class="icon ictype01">화살표 아이콘</i>
+                         <i class="icon ictype02">화살표 아이콘</i>
+                         <i class="icon ictype03">달력 아이콘</i>
+                    </pre>
+                </div>
+
+                <!--<h2 class="guide_tit"><span class="gd-bar"></span>Btn type</h2>
+                <table class="guide_tb">
+                    <colgroup>
+                        <col style="width:20%">
+                        <col style="width:80%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>TAG별 버튼</th>
+                        <th>버튼 스타일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Anchor Tag Style</td>
+                        <td>
+                            <a class="btn" href="#none"><span>확인</span></a>
+                            <a class="btn btype01" href="#none"><span>취소</span></a>
+                            <a class="btn btype02" href="#none"><span>회원 등록</span></a>
+                            <a class="btn btype03" href="#none"><span>달력보기 <i class="icon itype02"></i></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Icon style</td>
+                        <td>
+                            <i class="icon">화살표 아이콘</i><div class="gap-r20"></div>
+                            <i class="icon itype01">화살표 아이콘</i><div class="gap-r20"></div>
+                            <i class="icon itype02">화살표 아이콘</i><div class="gap-r20"></div>
+                            <i class="icon itype03">달력 아이콘</i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, praesentium.</td>
+                        <td>adfaf</td>
+                    </tr>
+                    <tr>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, praesentium.</td>
+                        <td>adfaf</td>
+                    </tr>
+                    </tbody>
+                </table>-->
+
+            </div>
+        </article>
+    </section>
+    <hr/>
+    <footer>
+        <div class="author">
+        </div>
+    </footer>
+</div>
+<!-- 버튼 스타일 정의 -->
+<style>
+    /* anchor style button */
+    .btn { position: relative; cursor: pointer; display: inline-block; height: 22px; line-height: 22px; padding-left: 15px; background: url("./img/btn_spr_l.png") no-repeat; }
+    .btn span { display: block; height: 100%; padding-right: 15px; background: url("./img/btn_spr_r.png") no-repeat 100% 0; }
+    .btn span .icon { vertical-align: baseline;}
+    .btype01 { height: 16px; line-height: 18px; background-position: 0 -25px; color: #ffffff;}
+    .btype01 span{ background-position: 100% -25px;}
+    .btype02 { height: 27px; line-height: 29px; background-position: 0 -45px; color: #ffffff;}
+    .btype02 span{ background-position: 100% -45px;}
+    .btype03 { height: 30px; line-height: 31px; background-position: 0 -80px; color: #ffffff;}
+    .btype03 span{ background-position: 100% -80px;}
+
+    /* input type button style */
+    .ipt { position: relative; display: inline-block; cursor:pointer; height: 22px; background: url("./img/btn_spr_l.png") no-repeat 0 0; padding-left: 15px; zoom: 1;}
+    .ipt input { height: 22px;border:0; cursor:pointer; font-size: 12px; color: #000;  line-height: 12px; padding-right: 15px; background: url("./img/btn_spr_r.png") 100% 0; vertical-align: middle; overflow: hidden; }
+    .ipt input:focus, .ipt input:active { position: relative; left: 0; top: 0; outline: none}
+    .iptype01 { height: 27px; background-position: 0 -45px;}
+    .iptype01 input { height: 27px; background-position: 100% -45px;}
+    .iptype02 { height: 30px; background-position: 0 -80px;}
+    .iptype02 input { height: 30px; background-position: 100% -80px;}
+
+
+    /* icon style */
+    .icon { display: inline-block; width: 6px; height: 8px; background: url("./img/icon_spr.png") no-repeat; vertical-align: middle; zoom:1; overflow: hidden; line-height: 999em;}
+    .ictype01 { width: 4px; height: 7px; background-position: 0 -11px;}
+    .ictype02 { width: 4px; height: 7px; background-position: 0 -20px;}
+    .ictype03 { width: 21px; height: 20px; background-position: 0 -30px;}
+
+</style>
+
+
+</body>
+</html>

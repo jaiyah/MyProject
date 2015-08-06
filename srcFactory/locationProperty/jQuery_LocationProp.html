@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>JS GUIDE</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    	
+    </script>
+</head>
+
+<body>
+
+<div class="outerWrap">
+	<div class="wrap">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div> <br /><br />
+<button id="btn_1">돔레벨 0</button>
+<button id="btn_2">돔레벨 2</button>
+<div class="outerWrap2">
+	<div class="wrap2">
+		ssssss<br>
+		<p>좌표계 테스트영역</p>
+		<div class="scroll2">
+			<p style="width: 250px;">test start test start test start test start111</p>
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test <br />
+			test end <br />
+		</div>
+	</div>
+</div>
+<style>
+*{margin: 0;padding: 0;}
+.outerWrap {position: relative;width: 400px;padding: 20px;background: #cfc;border: 5px solid tan;}
+.wrap {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap > p {position: absolute;left: 250px;top: 50px;background: red;padding: 10px;}
+.scroll {border: 20px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+
+.outerWrap2 {position: relative;width: 400px;margin: 20px;padding: 20px;background: #cfc;border: 10px solid blue;}
+.wrap2 {margin:10px;padding: 5px;border: 3px solid #000;width: 200px;height: 200px;background: #ccc;}
+.wrap2 > p {position: absolute;left: 250px;top: 50px;background: #abc;padding: 10px;}
+.scroll2 {border: 1px solid red;position: relative;width: 100px;height: 80px;overflow:auto;padding: 5px;}
+</style>
+
+
+<pre>
+	/*
+	 *** jQuery *** 에서 제공하는 위치 및 크기와 관련된 프로퍼티와 메서드 
+	*/
+	
+	// === offset 그룹 ===
+	offsetParent() ==> Dom에서 offsetParent 프로퍼티와 같음
+	outerWidth(), outerHeight() ==> Dom에서 offsetWidth, offsetHeight 프로퍼티와 같음
+	
+	position().left, position().top ==> Dom에서 컨테이너인 부모(offsetParent)를 기준으로 엘리먼트가 위치한 x,y 값
+	
+	// === scroll 그룹 ===
+	scrollLeft(), scrollTop() ==> Dom에서 scrollLeft, scrollTop 프로퍼티와 같음 (스크롤된 값)
+			
+	// === client 그룹 ===
+	offset().left, offset().top ==> Dom에서 getBoundingClientRect() 메서드와 같음 
+	Document를 기준으로 엘리먼트의 left, top, right, top, width, height 를 모두 알아 낼수 있음
+	
+	width(), height()  ==> style에서 작성된 너비와 높이
+	innerWidth(), innerHeight() ==> 엘리먼트의 너비와 높이(단, 마진,보더제외, 패딩,스크롤바는 포함)
+	
+</pre>
+
+</body>
+</html>

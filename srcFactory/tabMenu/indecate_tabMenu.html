@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>script01</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<ul>
+	<li>테스트 1</li>
+	<li>테스트 2</li>
+	<li>테스트 3</li>
+	<li>테스트 4</li>
+	<li>테스트 5</li>
+	<li>테스트 6</li>
+	<li>테스트 7</li>
+	<li>테스트 8</li>
+	<li>테스트 9</li>
+	<li>테스트 10</li>
+</ul>
+<div>
+	<a href="#none">1</a>
+	<a href="#none">2</a>
+	<a href="#none">3</a>
+	<a href="#none">4</a>
+</div>
+
+
+<script>
+
+$('li:gt(2)').hide()
+
+$('div > a').on({
+	mouseenter : function(){
+		var idx = $(this).index();
+		$('ul li').hide();
+		var start = idx*3;
+		var end = start + 3;
+		$('li').slice(start, end).show();
+	}
+})
+
+function isNum() {
+	var num = 0;
+	for(var i =0 ; i< 10; i++) {
+		num += i;
+	}
+	console.log(num)
+}
+isNum();
+
+</script>
+
+
+
+</body>
+</html>

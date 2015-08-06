@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>플러그인 개발</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<p></p>
+<p></p>
+
+<script>
+    $('li').each(function(){
+        // console.log( $(this) instanceof jQuery)
+        // console.dir(this);
+        // console.dir(this instanceof HTMLElement);
+        // console.dir(this instanceof HTMLLIElement);
+
+    })
+    var obj1 = {
+        apple: 0,
+        banana: { weight: 52, price: 100 },
+        cherry: 97
+    };
+    var obj2 = {
+        banana: { price: 200 },
+        durian: 100
+    };
+
+    // obj2를 obj1에 병합(merge)한다.
+    var obj3 = $.extend( obj1, obj2 );
+    // console.log(obj1) // obj2가 obj1으로 병합되어 첫번째 인자의 값이 반환되기 때문에 기존 obj1이 갱신되었다.
+    // console.log(obj3) // obj1과 obj3는 같은 결과를 반환한다.
+    // weight는 제거되었고 banana의 price값이 200으로 덮어씌여 졌고, durian이 추가된 것을 볼 수 있다.
+
+
+    // $.extend() 첫번째 인자값으로 Boolean값인 true를 넘겨줄 경우
+    var obj4 = {
+        foo: {bar: '123', baz: '456'},
+        hello : 'world'
+    };
+    var obj5 = {
+        foo: {car: '789'}
+    };
+    var obj6 = $.extend(obj4, obj5);
+    console.log(obj6);
+
+    var obj7 = {
+        foo: {bar: '123', baz: '456'},
+        hello : 'world'
+    };
+    var obj8 = {
+        foo: {car: '789'}
+    };
+    var obj9 = $.extend(true, obj7, obj8);
+    console.log(obj7); // car:'789'가 추가되었다.
+    console.log(obj9);
+    // true를 인자값으로 넘겨주게 되면 extend 메소드는 깊은 복사(병합)를 하는데 같은 값은 병합을 하지만 원본 값을 그대로 유지한다.
+    // 하여 car가 기존 obj4에 있는 bar,baz를 제거하지 않고 그대로 복사를 한다.
+
+
+    var object1 = {
+        apple: 0,
+        banana: { weight: 52, price: 100 },
+        cherry: 97
+    };
+    var object2 = {
+        banana: { price: 200 },
+        durian: 100
+    };
+    var object = $.extend({}, object1, object2);
+    console.log(object1, object2);
+    console.log(object);
+    // object2를 object1에 병합한 결과를 빈 객체 {}에서 반환하고
+    // object1, object2의 원본값들 또한 그대로 유지한다.
+
+    //위와 같이 빈 객체를 첫번째 인자값으로 정의하는 방법은 플러그인 작성시에 default인 옵션값들을 정의해 두고
+    //사용자가 임의로 옵션값을 주었을때 default로 정의된 옵션값을 사용자 정의의 옵션값으로 merge하는데 용이하게 사용된다.
+    var defaults = { validate: false, limit: 5, name: "foo" };
+    var options = { validate: true, name: "bar" };
+    var settings = $.extend({}, defaults, options);
+    // settings --> { validate: true, limit: 5, name: bar }
+    // options --> { validate: true, name: bar }
+
+
+    (function($){
+        $.sum = function(array) {
+            var total = 0;
+            $.each(array, function(idx, value){
+                value = $.trim(value);
+                value = parseFloat(value) || 0;
+                total += value;
+            })
+            return total;
+        }
+    })(jQuery);
+
+    var result = $.sum([20,30,15,45]);
+    console.log(result); // 110
+</script>
+
+</body>
+</html>

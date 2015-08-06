@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<style type="text/css">
+* { margin:0;padding:0; }
+dl { width:500px; }
+dt { height:25px; cursor:pointer; background-color:#ffffcc; }
+dd > p { height:200px; background-color:#33ccff; }
+</style>
+</head>
+<body>
+
+<dl>
+<dt>정의1</dt>
+<dd class="first"><p>내용1</p></dd>
+<dt>정의2</dt>
+<dd><p>내용2</p></dd>
+<dt>정의3</dt>
+<dd><p>내용3</p></dd>
+<dt>정의4</dt>
+<dd><p>내용4</p></dd>
+</dl>
+
+<script type="text/javascript">
+$(function(){
+
+$('dd:not(.first)').css('display','none');
+
+$('dt').click(function(){
+if($('+dd',this).css('display')=='none'){
+$('dd').slideUp('slow');
+$('+dd',this).slideDown('slow');
+}
+});
+});
+// curring function
+function curring(num) {
+    // 클로저로 생성된 공간
+    return function(add) {
+        return num + add;
+    };
+}
+
+var add = curring(5);
+var result = add(5);
+
+console.log(result;);
+</script>
+
+
+</body>
+</html>

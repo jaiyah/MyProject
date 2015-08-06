@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>셀렉트(select)박스 디자인</title>
+<script type="text/javascript" language="javascript" src="jquery-1.8.3.min.js"></script>
+<script type="text/javascript" language="javascript" src="jquery.jqtransform.js"></script>
+<script type="text/javascript" language="javascript">
+$(function(){
+ $('.inputDesign').jqTransform();
+});
+</script>
+
+<style>
+/* Reset */
+*{margin:0px;padding:0px;}
+*{margin:0px;padding:0px;font-family:NanumGothic,"Malgun Gothic",Dotum,Gulim,Helvetica,Apple-Gothic;-webkit-text-size-adjust:none;}
+body{line-height:1.25em;color:#000;word-wrap:break-word;word-break:break-all; }
+img,fieldset,iframe{border:0 none}
+img, input, button, select, textarea { vertical-align:middle; }
+li{list-style:none}
+
+/* Selects */
+.jqTransformSelectWrapper {float:left;position:relative; width:150px;height: 27px;background: url(select_left.png) no-repeat top left;}
+.jqTransformSelectWrapper div span {font-size: 12px;position:absolute; left:0; top:0; white-space: nowrap;height:27px; line-height: 27px; width:150px !important; text-align:left; padding: 0 0 0 8px; color:#666; overflow: hidden; cursor:pointer;}
+.jqTransformSelectWrapper  a.jqTransformSelectOpen { display:block; position:absolute; right:0px; width:28px; height:27px; background: url(select_right.png) no-repeat center center}
+.jqTransformSelectWrapper ul { position:absolute; top:27px; left:0px; list-style: none; background:#fff; border:solid 1px #e8e8e8; border-top:0; display:none; overflow:auto; overflow-y:auto; z-index:10}
+.jqTransformSelectWrapper ul a{ display: block; padding: 3px 2px 3px 8px; text-decoration:none; color:#666; background:#fff; font-size:12px; text-align:left}
+.jqTransformSelectWrapper ul a:hover{background-color:#eee;}
+.jqTransformSelectWrapper ul a.selected {}
+.jqTransformHidden {display: none;}
+.inputDesign{margin:10px}
+</style>
+</head>
+
+<body>
+<p class="inputDesign">
+
+	<select name="" id="">
+		<option value="">질문유형</option>
+		<option value="">전체</option>
+		<option value="">제목</option>
+		<option value="">내용</option>
+		<option value="">추가검색어</option>
+	</select>
+</p>
+</body>
+</html>

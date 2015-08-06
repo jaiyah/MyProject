@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>sass 테스트</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+
+<div class="a">
+    인덱스 페이지
+
+</div>
+
+<ul>
+    <li class="css"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<!--#include virtual="./test.html" -->
+
+
+<style>
+    .a { height: 100px; background: royalblue; line-height: 100px; font-size: 20px; text-align: center;}
+     .b { height: 300px; background: greenyellow; font-size: 20px;}
+</style>
+<script>
+
+    console.group('for 문');
+    for (var i = 0; i < 10; i++) {
+        console.log(i);
+    }
+    console.groupEnd('for 문');
+
+    console.time('$().each() 인스턴스 메서드');
+    $('li').each(function () {
+        console.log($(this));
+    })
+    console.timeEnd('$().each() 인스턴스 메서드');
+
+    var $Lis = $('li')
+    console.time('$.each() 유틸리티 메서드');
+    $.each($Lis, function (index, item) {
+        console.log($(item));
+    })
+    console.timeEnd('$.each() 유틸리티 메서드');
+
+    function Person(name) {
+        this.name = name;
+    }
+
+    function Korean(city) {
+        this.city = city;
+    }
+
+    function Korean(city) {
+        // 생성자 Person 에 대해 call/apply 를 호출한다.
+        Person.call(this, name) // Person.apply(this, [name])
+        this.city = city;
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

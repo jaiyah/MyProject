@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>모바일 웹 세로 3단 레이아웃</title>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <header>헤더 영역입니다.</header>
+
+    <div class="container">
+        <article>
+            <ul class="benefit">
+                <li>
+                    <h3>나의 포인트 적립</h3>
+                    <p>100만원까지 사용</p>
+                </li>
+            </ul>
+            <div class="notice-zone">
+                <ul class="notice">
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <footer>푸터영역입니다.</footer>
+
+</div>
+
+<style>
+* {margin: 0; padding: 0; line-height: 1;}
+html, body { height: 100%; min-height: 99.9999%; background: #4d7cf5;}
+.page-wrap {
+    display: -webkit-box; -webkit-box-orient: vertical;
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+}
+header {
+    padding: 10px; background: #4d7cf5; color: #fff;
+    font-size: 20px; font-weight: bold; text-align: center;
+}
+.container { background: #fff; -webkit-box-orient: vertical;-webkit-box-flex: 1;}
+article { margin: 0 10px 10px;}
+.benefit { margin-top: 20px; margin-bottom: 20px;}
+.notice-zone { border: 1px solid red; }
+.notice li { margin-bottom: 10px;}
+footer { padding: 10px;}
+
+</style>
+
+</body>
+</html>

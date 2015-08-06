@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+    
+<script>
+    // 일반함수에서의 this 는 무조건 window 를 가리킨다.
+
+    var data = 10;
+    // window.data == this.data  형식과 동일하다.
+
+    function outer(){
+        this.data = 20;
+        data = 30;
+        
+        console.log("1. data1 = " + data); // 30
+        console.log("2. this.data = " + this.data); // 30
+        console.log("3. window.data = " + window.data); // 30
+    }
+    
+    outer();    
+    
+    
+
+</script>
+
+</head>
+    
+    <body>
+        
+    </body>
+</html>

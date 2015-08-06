@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <meta charset="utf-8">
+  <title>Banner_step 5:event check move</title>
+  <style>
+*{ margin:0;padding:0;text-decoration:none}
+li{list-style:none}
+
+.product_con{ position:relative; width:300px; top:100px;margin:0 auto; border:1px solid green }
+.product_con .product_list{/*overflow:hidden; */position:relative;margin-left:50px;width:200px; height:200px; border:1px solid red}
+.product_con .product_list li{ position:absolute;left:0;}
+.product_con .product_list li:nth-child(1){left:0px;}
+.product_con .product_list li:nth-child(2){left:200px;}
+.product_con .product_list li:nth-child(3){left:200px;}
+.product_con .product_list li:nth-child(4){left:200px;}
+.product_con .product_list li:nth-child(5){left:200px;}
+
+.product_con .product_list li a{display:block; width:200px;height:200px;background:red;font-size:150px;color:#fff;text-align: center}
+.product_con .product_list li:nth-child(1) a{background:#65f078;left:-200px;}
+.product_con .product_list li:nth-child(2) a{background:#f5da5c}
+.product_con .product_list li:nth-child(3) a{background:#fe719c;left:200px;}
+.product_con .product_list li:nth-child(4) a{background:#10A8AB;left:200px;}
+.product_con .product_list li:nth-child(5) a{background:#A1305E;left:200px;}
+
+.product_con .btn_prev,.product_con .btn_next { position:absolute;top:100px;}
+.product_con .btn_prev { left:0px;}
+.product_con .btn_next { right:0px;}
+.numlist {width:105px; margin:0 auto;}
+
+
+  </style>
+  <script>
+$(document).ready(function(){     
+  var selNum = 0; 
+  var $proList = $(".product_list li");
+  var totalNum = $proList.length;
+  var $btnprev = $(".product_con .btn_prev");
+  var $btnnext = $(".product_con .btn_next");
+
+  $proList.css({display:"none"});
+  $proList.eq(selNum).css({display:"block"});
+
+
+
+  $btnprev.on("click",function(){
+    prevClick();
+  });
+function prevClick(){
+  oldNum = selNum;
+    if(selNum <=0){
+      selNum = totalNum - 1;
+    }else{
+      selNum -= 1;
+    }
+    selectCon(selNum);
+}
+
+  $btnnext.on("click",function(){
+      nextClick();
+  }); 
+
+  function nextClick(){
+        oldNum = selNum;
+    if(selNum >= totalNum-1){
+      selNum = 0;
+    }else{
+      selNum +=1; 
+    }
+    selectCon(selNum);
+  }
+  
+  
+  var oldNum;
+  
+  function selectCon(chk){
+
+    if((chk-oldNum)==-1 ||(chk-oldNum)==( totalNum-1)){
+      // 양수이면 next
+      nextMove(chk);
+    
+    }else{
+      //음수이면 prev
+      prevMove(chk);
+    }
+    
+    $proList.eq(chk).stop().animate({left:"0px",opacity:1}, 500, function() {  });
+  }
+
+  function nextMove(chk){
+      $proList.eq(chk).css({left:"-400px",display:"block",opacity:0});
+      //$proList.eq(oldNum).sass({left:"400px"});
+      $proList.eq(oldNum).stop().animate({left:"400px",opacity:0}, 500, function() { $(this).css({display:"none"}); });
+  }
+
+  function prevMove(chk){
+$proList.eq(chk).css({left:"400px",display:"block",opacity:0});
+      //$proList.eq(oldNum).sass({left:"-400px"});
+      $proList.eq(oldNum).stop().animate({left:"-400px",opacity:0}, 500, function() { $(this).css({display:"none"}); });
+  }
+
+  $(".numlist a").on('click',function(){
+
+    oldNum = selNum;
+    selNum = $(this).index();
+
+    if( selNum == oldNum) return;
+
+      console.log(selNum+"-"+oldNum+"="+(selNum-oldNum));
+
+        if((selNum-oldNum)<0){
+          // 양수이면 next
+            nextMove(selNum);
+        }else{
+          //음수이면 prev
+        prevMove(selNum);
+        }
+    
+      $proList.eq(selNum ).stop().animate({left:"0px",opacity:1}, 500, function() {  });// 선택값 보이기
+
+  });
+
+
+
+
+  });
+  </script>
+</head>
+<body>
+<div class="product_con">
+    <ul class="product_list">
+        <li><a href="#none">1</a></li>
+        <li><a href="#none">2</a></li>
+        <li><a href="#none">3</a></li>
+        <li><a href="#none">4</a></li>
+        <li><a href="#none">5</a></li>
+    </ul>
+    <a class="btn_prev" href="#none">◀prev</a>
+    <a class="btn_next" href="#none">next▶</a>
+
+    <div class="numlist">
+      <a href="#none">●</a>
+      <a href="#none">●</a>
+      <a href="#none">●</a>
+      <a href="#none">●</a>
+      <a href="#none">●</a>
+    </div>
+</div>
+</body>
+</html>

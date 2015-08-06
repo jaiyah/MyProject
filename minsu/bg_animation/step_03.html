@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>Banner_step 5:event check move</title>
+  <style>
+  /*@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 700; 
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2) format('woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}*/
+*{ margin:0;padding:0;text-decoration:none}
+body{min-height:4000px;background:url("./img/bg.jpg") repeat-y 0 0;}
+li{list-style:none;}
+span{position:absolute; width:100%;top: 106px;font-size: 16px;line-height: 22px;text-align:center;color:#fff; font-family: "Nanum Gothic", 굴림;  font-weight: 400;}
+ul {overflow:hidden; position:relative; width:800px; margin:300px auto 0; }
+ul li{float:left; position:relative;width:144px;height:144px; margin-left:20px;}
+ul li:first-child{margin-left:0;}
+ul li a{display:block;position:relative; width:100%;height:100%;}
+ul li a img{position:absolute;left:0;top:0;width:100%;height:100%;}
+.qubic{position:absolute; top:0px; left:300px;width:800px;height:144px;margin:30px auto 0;background:url(./img/bg-an.png) no-repeat 0 0;border:1px solid red;}
+  </style>
+  <script>
+  // step 03 :  스크롤 이벤 적용 
+  var diceArr = new Array(0,1,2,3,4);
+  diceArr[0] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19);
+  diceArr[1] = new Array(0,1,2,3,4,5,6,7,8,9,10,11);
+  diceArr[2] = new Array(0,1,2,3,4,5,6,7,8,9,10,11);
+  diceArr[3] = new Array(0,1,2,3,4,5,6,7,8,9,10,11);
+  diceArr[4] = new Array(0,1,2,3,4,5,6,7,8,9,10,11,12);
+  diceArr[0][0] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  diceArr[0][1] = [740,154,240,-370,0,-154,922,192,280,-461,0,0];
+  diceArr[0][2] = [661,154,240,-330,0,-308,823,192,280,-412,0,-250];
+  diceArr[0][3] = [561,154,240,-280,0,-462,699,192,280,-350,0,-500];
+  diceArr[0][4] = [441,154,240,-220,-740,-308,549,192,280,-275,0,-750];
+  diceArr[0][5] = [321,154,240,-160,-740,-462,399,192,280,-200,-650,-750];
+  diceArr[0][6] = [249,154,240,-122,-951,-154,310,192,280,-155,-750,-500];
+  diceArr[0][7] = [184,154,240,-92,-951,0,229,192,280,-115,-850,-250];
+  diceArr[0][8] = [144,154,240,-72,-756,-154,180,192,280,-90,-950,0];
+  diceArr[0][9] = [160,174,244,-88,0,-616,200,217,244,-113,0,-1000];
+  diceArr[0][10] = [181,213,214,-132,-160,-616,228,266,207,-163,-300,-1000];
+  diceArr[0][11] = [201,235,190,-178,-341,-616,250,293,176,-220,-600,-1000];
+  diceArr[0][12] = [194,216,185,-210,-542,-616,242,271,169,-260,-900,-1000];
+  diceArr[0][13] = [148,172,190,-230,-740,-616,183,215,176,-285,0,-1300];
+  diceArr[0][14] = [173,216,159,-292,-951,-615,216,271,136,-364,-300,-1300];
+  diceArr[0][15] = [188,203,147,-351,0,-850,235,254,122,-437,-600,-1300];
+  diceArr[0][16] = [194,153,156,-396,-188,-850,243,191,133,-494,-900,-1300];
+  diceArr[0][17] = [199,209,154,-434,-382,-850,247,262,130,-540,0,-1600];
+  diceArr[0][18] = [188,225,137,-466,-581,-850,234,281,110,-581,-300,-1600];
+  diceArr[0][19] = [188,225,150,-482,-769,-850,203,217,126,-600,-600,-1600];
+   diceArr[0][19] = [188,225,150,-482,-769,-850,203,217,126,-600,-600,-1600];
+     diceArr[0][20] = [144,154,200,-482,-756,-154,180,192,280,-90,-950,0];
+
+$(document).ready(function(){     
+
+
+ 	resizeWindow();
+ 	scrollEvent();
+
+
+
+ 	function scrollEvent(){
+ 		$(window).scroll(function(){
+ 			if(window.pageYOffset%40 == 0){
+                  //console.log(window.pageYOffset);
+                  //$(".qubic").sass("top",window.pageYOffset);
+              }
+		  // $(".qubic").sass("top",window.pageYOffset+20);
+      console.log($(window).scrollTop());
+    if($(window).scrollTop()>=48){
+      $("ul").css({"display":"none"});
+    }else{
+      $("ul").css({"display":""});
+    }
+		   var stage = 0,sTop,step,gap;
+              sTop = $(window).scrollTop();
+              gap = Math.ceil( 900 / 20);
+              step = (sTop - 0)/gap;
+
+              step = step & step;
+
+                setDice(stage,step,sTop);
+		  });
+
+ 	}
+
+  function setDice(stage,frame,scrollTop){
+    console.log(stage,frame,scrollTop);
+
+ $(".qubic").css({
+      "display" : "",
+      "background-image" : "url(./img/bg-an.png)",
+      "width" : diceArr[stage][frame][0] +"px",
+      "height" :diceArr[stage][frame][1] +"px",
+      "top" : diceArr[stage][frame][2] +scrollTop+ "px",  
+      "left" : diceArr[stage][frame][3] +550+"px",
+      "background-position" :diceArr[stage][frame][4] +"px " +diceArr[stage][frame][5] +"px"
+    });
+  }
+
+
+
+
+	$(window).resize(function () { 
+	   resizeWindow();
+	 });
+
+
+	function resizeWindow(){
+		
+	var w_size = $(window).width(); 
+   	var q_size = $(".qubic").width();
+
+   	console.log(w_size,q_size);
+	   // 가운데 정렬 
+	   if((w_size/2)-(q_size/2)<=0){ 
+	   		$(".qubic").css("left",0);
+		 }else{
+		   	$(".qubic").css("left",(w_size/2)-(q_size/2));
+		   }
+		}
+
+  });
+
+
+
+
+  </script>
+</head>
+<body>
+	<ul>
+		<li><a href="#none"><img src="./img/title_1.jpg" alt=""><span>기업소개</span></a></li>
+		<li><a href="#none"><img src="./img/title_2.jpg" alt=""><span>투자정보</span></a></li>
+		<li><a href="#none"><img src="./img/title_3.jpg" alt=""><span>홍보채널</span></a></li>
+		<li><a href="#none"><img src="./img/title_4.jpg" alt=""><span>지속가능경영</span></a></li>
+		<li><a href="#none"><img src="./img/title_5.jpg" alt=""><span>인재채용</span></a></li>
+	</ul>
+<div class="qubic">
+  
+</div>
+</body>
+</html>

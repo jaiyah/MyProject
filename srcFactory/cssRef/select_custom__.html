@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+    <meta charset="UTF-8">
+    <title>file type</title>
+    <link rel="stylesheet" href="../css/init.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</head>
+<body>
+
+<div class="box">
+    <select id="" style="">
+        <option>캠퍼스 선택</option>
+        <option>강남</option>
+        <option>홍대</option>
+        <option>분당</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+        <option>서울대 입구</option>
+    </select>
+</div>
+<style>
+
+    .box { margin: 50px auto; width: 500px; }
+    /* custom select */
+    .cmselw {display:inline-block;*display:inline;position:relative;*zoom:1;text-align:left;*vertical-align:middle}
+    .cmselw .t-top {position:relative;height:20px;cursor:pointer;border:1px solid #cdd3d4;background-color:#ecefef;overflow:hidden}
+    .cmselw .t-top .tit {padding:0 0 0 5px;line-height:20px;color:#79797a}
+    .cmselw .t-top .arr {position:absolute;right:0;top:0;width:24px;height:20px;background:url('./images/blt_sell.gif') no-repeat 0 0;padding:0}
+    .cmselw .a-lay {position:absolute;top:21px;border:1px solid #cdd3d4;background-color:#fafafa}
+    .cmselw .a-lay .scroll {
+        position:relative;
+        max-height:130px;
+        margin:0;
+        overflow-x:hidden;
+        overflow-y:auto;
+        scrollbar-face-color:#fff;
+        scrollbar-3dlight-color:#fff;
+        scrollbar-shadow-color:#dad9d9;
+        scrollbar-highlight-color:#dad9d9;
+        scrollbar-darkshadow-color:#fff;
+        scrollbar-track-color:#fff;
+        scrollbar-arrow-color:#dad9d9;
+    }
+    .cmselw .a-lay ul {padding:0}
+    .cmselw .a-lay ul li a {display:block;padding:0 5px;color:#79797a;line-height:22px}
+    .cmselw .a-lay ul li a:hover {text-decoration:none;color:#fff;background-color:#cdd3d4}
+    .cmselw select {margin-right:0}
+    .cmseldisabled * { opacity:0.6; filter:alpha(opacity=60) }
+
+</style>
+<script>
+    $(function(){
+        $("select").uChFormAll(); //select
+    });
+    (function($) {
+        $.fn.uChSelect = function(options){
+
+            return this.each(function(){
+                var S = $.extend({cName:'cmselw',onChange:null},options);
+                var $select = $(this);
+                var style = $select.attr('style');
+                if(style != null){
+                    style = style.replace("inline","");
+                }
+                var $wrap = $select.wrap('<div />').parent();
+                $wrap.addClass('cmSelD '+ S.cName +' ' + $select.attr('className')).attr({'style':style})
+                        .prepend('<div class="t-top"><span class="tit"></span><span class="arr"></span></div><div class="a-lay"><div class="scroll"><ul></ul></div></div>');
+                $select.hide();
+
+                var $list = $wrap.find('.a-lay').hide();
+                var $scroll = $wrap.find('.scroll');
+
+                var wid = $select.outerWidth(true) + 10;
+                $wrap.css({width:wid}).bind('mouseleave',function(){
+                    var $self = $(this);
+                    $list.slideUp('fast',function(){ $self.css({zIndex:''});   });
+                });
+                $scroll.width(wid-2);
+                if($scroll.height() >0 && $.browser.msie && $.browser.version==8) $scroll.width(wid-3).css('paddingRight','0.05em');
+
+                $select.find('option').each(function(i){
+                    var target =($(this).attr('target'))? 'target="'+$(this).attr('target') +'"' : '';
+                    $list.find('ul').append($('<li><a href="#"'+target+' index="'+ i +'">'+ $(this).html() +'</a></li>'));
+                });
+
+                $list.find('a').click(function(){
+                    $('a.selected', $wrap).removeClass('selected');
+                    $(this).addClass('selected');
+                    if ($select[0].selectedIndex != $(this).attr('index')){
+                        $select[0].selectedIndex = $(this).attr('index');
+                        $select[0].target = $(this).attr('target');
+                        if($select[0].onchange) $select[0].onchange();
+                        if(S.onChange) S.onChange();
+                    }
+                    $('.tit', $wrap).html($(this).text());
+                    $list.hide();
+                    return false;
+                });
+
+                $('a:eq('+ $select[0].selectedIndex +')', $list).trigger('click');
+
+                $(".t-top", $wrap).click(function(){
+                    $wrap.css({zIndex:9997});
+                    if ($list.css('display')=='none'){ $('.cmSelD .A:visible').hide(); };
+
+
+                    if($select.attr("disabled") != true){
+                        $list.slideToggle('fast', function(){ //$list.toggle()
+                            var offSet = ($('a.selected', $list).offset().top - $list.find("ul").offset().top);
+                            $scroll.animate({scrollTop: offSet});
+                        });
+                        $wrap.removeClass('cmseldisabled');
+                    }else{
+                        $wrap.addClass('cmseldisabled');
+
+                    }
+                    return false;
+                })
+            });
+        };
+
+
+        $.fn.uChFormAll = function(options){
+            return this.each(function() {
+                var el = $(this);
+                if(el.is("select")){
+                    if(el.attr("multiple") != true){
+                        if(el.attr("size") == undefined || el.attr("size") <= 1){
+                            el.uChSelect(options);
+                        }
+                    }
+                }
+            });
+        };
+
+
+
+
+    })(jQuery);
+
+</script>
+</body>
+</html>

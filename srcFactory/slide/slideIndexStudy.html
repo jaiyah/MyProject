@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="euc-kr">
+    <meta name="format-detection" content="telephone=no"><!-- ��ȭ��ȣ �ڵ� ��ũ ���� ���� -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- IE �ֽŹ������� -->
+    <title></title>
+
+    <style>
+        body,ul, ul li{ margin:0; padding:0; }
+        ul{ height:50px; overflow:hidden; }
+        ul li{ width:48px; height:48px; float:left; overflow:hidden; border:1px solid red; font-size:30px; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            list(2);
+            $("button").eq(0).click(function(){
+                var inx = num,
+                    i;
+                active--;
+                $("ul li").show();
+                if(active >= 1){
+                    for(i=0; i<inx; i++){
+                        $("ul li:last").insertBefore("ul li:first");
+                    }
+                    $("p").html(active + "/" +Math.ceil(total/num));
+                    $("ul").data("active",active);
+                }else{
+                    active = 1;
+                    alert("ó��"); return;
+                }
+            });
+            $("button").eq(1).click(function(){
+                var inx = num,
+                    z;
+                active++;
+                if(active < Math.ceil(total/num)){
+                    $("ul li").show();
+                    for(i=0; i<inx; i++){
+                        $("ul li:first").insertAfter("ul li:last");
+                    }
+                    $("p").html(active + "/" +Math.ceil(total/num));
+                    $("ul").data("active",active);
+                }else if(active == Math.ceil(total/num)){
+                    $("ul li").show();
+                    for(i=0; i<inx; i++){
+                        $("ul li:first").insertAfter("ul li:last");
+                    }
+                    $("p").html(active + "/" +Math.ceil(total/num));
+                    $("ul").data("active",active);
+                    var lastList = parseInt(total-((Math.ceil(total/num)-1)*num));
+                    $("ul li").hide();
+                    for(z=0; z<lastList; z ++){
+                        $("ul li:eq("+z+")").show();
+                    }
+                }else{
+                    active = Math.ceil(total/num);
+                    alert("������");
+                    return;
+                }
+            });
+        });
+        var num, total, active;
+        function list(n){
+            $("ul").data("active","1");
+            num = n;
+            total = $("ul li").length;
+            active = $("ul").data("active");
+            $("p").html(parseInt(active) + "/" +Math.ceil(total/num));
+            $("ul").css("width",parseInt(n*50)+"px");
+
+        }
+
+    </script>
+
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+</ul>
+<p></p>
+<button>����</button>
+<button>����</button>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="application/xhtml+xml;charset=utf-8;" />
+<title>  </title>
+<style type="text/css">
+#thumbnail li{display:inline;}
+#thumbnail li a img{width:100px;}
+
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</head>
+<body>
+<div id="bigImg">
+	<img src="../images/1.jpg" alt="" />
+</div>
+
+<div id="thumbnail">
+	<ul>
+	<li><a href="#none"><img src="../images/1.jpg" alt="img11" /></a></li>
+	<li><a href="#none"><img src="../images/2.jpg" alt="img21" /></a></li>
+	<li><a href="#none"><img src="../images/3.jpg" alt="img31" /></a></li>
+	<li><a href="#none"><img src="../images/4.jpg" alt="img41" /></a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+
+
+$(function(){
+
+    var thumbnail = $('#thumbnail a');
+    thumbnail.on({
+        click : function() {
+            var smallImg = $(this).find('img').attr('src'),
+                smallAlt = $(this).find('img').attr('alt'),
+                bigImg   = $('#bigImg img');
+            bigImg.attr('src',smallImg).attr('alt',smallAlt);
+        }
+    })
+										
+});
+
+</script>
+</body>
+</html>

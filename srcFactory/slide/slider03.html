@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <title>Slider Guide</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style type="text/css">
+        * { margin: 0; padding: 0;}
+        ul {list-style: none}
+        img { width: 100%; height: auto;}
+        #gallery { width: 300px; margin: 0 auto; }
+        .gallery-wrap { float: left; position: relative; width: 221px; height: 256px; margin: 0 10px; overflow: hidden; }
+        .gallery-wrap ul.slide-cont { position: absolute; }
+        .gallery-wrap ul.slide-cont li { float: left; width: 221px; }
+        span.prev { float: left; width: 25px; margin-top: 120px; }
+        span.next { float: left; width: 25px; margin-top: 120px; }
+        ul.indicator { width: 110px; margin: 20px auto 0; }
+        ul.indicator li { float: left; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<div id="gallery" class="clfix">
+    <span class="prev"><a href="#"><img src="../images/btn_left_arr.png" alt="����"></a></span>
+
+    <div class="gallery-wrap">
+        <ul class="slide-cont clfix">
+            <li><a href="#"><img src="../images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../images/1.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <span class="next"><a href="#"><img src="../images/btn_right_arr.png" alt="����"></a></span>
+</div>
+
+<ul class="indicator">
+    <li><a href="#"><img src="../images/btn_circle_.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+    <li><a href="#"><img src="../images/btn_circle.png" alt=""></a></li>
+</ul>
+
+<script type="text/javascript">
+    var $gallery = $('#gallery');
+    var $slideCont = $gallery.find('ul.slide-cont');
+    var $prev = $gallery.find('span.prev > a');
+    var $next = $gallery.find('span.next > a');
+    var size = $slideCont.children().outerWidth();
+    var len =  $slideCont.children().length;
+    var indicatorLis = $('.indicator').children();
+    var cnt = 0;
+
+    $slideCont.css('width',len*size);
+    $prev.hide();
+
+    function replaceImg(obj, img1, img2){
+        obj.attr('src', function(){
+            return $(this).attr('src').replace(img1, img2);
+        })
+    }
+
+    indicatorLis.on('click',function(){
+        var idx = $(this).index();
+        cnt = idx;
+        $slideCont.stop().animate({'left': -(cnt*size)+'px' },'normal');
+
+        replaceImg(indicatorLis.find('img'),'_.png','.png');
+        replaceImg(indicatorLis.eq(cnt).find('img'),'.png','_.png');
+
+        if(cnt == 0){
+            $prev.hide();
+            $next.show();
+        } else if (cnt >= len-1){
+            $prev.show();
+            $next.hide();
+        } else {
+            $prev.show();
+            $next.show();
+        }
+        return false;
+    });
+
+
+    $next.bind('click', function(){
+        if(cnt >= len-1) return false;
+
+        cnt++;
+        $slideCont.stop().animate({'left': -(cnt*size)+'px'}, 'normal');
+
+        replaceImg(indicatorLis.find('img'), '_.png', '.png');
+        replaceImg(indicatorLis.eq(cnt).find('img'), '.png','_.png');
+
+        if(cnt > 0) $prev.show();
+        if(cnt >= len-1) $(this).hide();
+
+        return false;
+    });
+
+    $prev.bind('click', function(){
+        if(cnt == 0) return false;
+
+        cnt--;
+        $slideCont.stop().animate({'left': -(cnt*size)+'px'}, 'normal');
+
+        replaceImg(indicatorLis.find('img'), '_.png','.png');
+        replaceImg(indicatorLis.eq(cnt).find('img'), '.png', '_.png');
+
+        if(cnt <= len-1) $next.show();
+        if(cnt == 0) $(this).hide();
+        return false;
+    });
+
+
+
+</script>
+</body>
+</html>

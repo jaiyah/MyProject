@@ -1,0 +1,305 @@
+@charset "UTF-8";
+/*! Normalize.css v3.0.1 | MIT License | git.io/normalize
+ *  Chrome, Firefox, Opera, Safari 6+, IE 8+
+ *  다운로드: http://necolas.github.io/normalize.css/3.0.1/normalize.css */
+/**
+ * 글꼴 sans-serief로 조정, iOS 회전에 따른 글꼴 크기 고정
+ */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/**
+ * body 요소 margin 초기화
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * HTML5 새로운 요소 초기화
+ */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden], template {
+  display: none;
+}
+
+/**
+ * 링크(Links) 초기화
+ */
+a {
+  background: transparent;
+}
+a:active, a:hover {
+  outline: 0;
+}
+
+/**
+ * 텍스트 의미 구조화, 브라우저 간 디자인 동일하게 변경.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/**
+ * 엠베드 요소, 브라우저 간 디자인 동일하게 변경.
+ */
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/**
+ * 그룹핑 콘텐츠, 브라우저 간 디자인 동일하게 변경.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/**
+ * 폼 요소, 브라우저 간 디자인 동일하게 변경.
+ */
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+  text-transform: none;
+}
+
+select {
+  text-transform: none;
+}
+
+button, html input[type="button"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * 테이블 요소, 브라우저 간 디자인 동일하게 변경.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+/**
+ * --------------------------------
+ * Basic Style
+ * --------------------------------
+ */
+html {
+  overflow-y: visible;
+}
+
+body {
+  position: relative;
+  width: 200px;
+  margin: 100px auto;
+  font: 14px/1.5 "Helvetica Neue", Arial, Verdata;
+  color: #454545;
+}
+body * {
+  transition: all 0.3s ease-out;
+}
+
+/**
+ * --------------------------------
+ * #toggleBoxOrderBtn
+ * --------------------------------
+ */
+#toggleBoxOrderBtn {
+  position: absolute;
+  top: 0;
+  right: -100px;
+  border: 1px solid;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+  border-radius: 3px;
+}
+#toggleBoxOrderBtn:hover, #toggleBoxOrderBtn:focus {
+  background: #fff;
+  color: #000;
+}
+#toggleBoxOrderBtn:active {
+  top: 2px;
+}
+
+/**
+ * --------------------------------
+ * #box-container
+ * --------------------------------
+ */
+#box-container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.box {
+  float: left;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+.box.order-1 {
+  background: #fc2b39;
+}
+.box.order-2 {
+  background: #fa9e21;
+}
+.box.order-3 {
+  background: #8ecb16;
+}
+.box.order-4 {
+  background: #1f8df9;
+}
+
+/*# sourceMappingURL=style.css.map */

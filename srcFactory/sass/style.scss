@@ -1,0 +1,141 @@
+@import "compile";
+
+* { margin: 0; padding: 0; line-height: 1;}
+ul {list-style: none}
+
+/* accodian */
+.tit { padding-left: 10px; font-weight: bold; font-size: 20px;}
+.acc-wrap { margin: 20px auto; width: 400px;}
+.accodian {
+  padding: 10px;
+  li { margin-bottom: 10px;
+    h3 {
+      background: #cfcfcf; padding: 5px;
+    }
+    div {
+      margin-bottom: 20px; background: #93ada0; padding: 5px;display: none;
+    }
+  }
+}
+@mixin aquaButton($className, $color, $radius:5px)
+{
+  button.d-button.#{$className} {
+    background: -webkit-gradient(
+                    linear, left top, left bottom,
+                    from(#ffffff),
+                    color-stop(0.50, lighten($color, 8%)),
+                    color-stop(0.50, lighten($color, 5%)),
+                    to($color));
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    border: 1px solid $color;
+    &:hover {
+
+      background: -webkit-gradient(
+                      linear, left top, left bottom,
+                      from(#ffffff),
+                      color-stop(0.50, lighten($color, 8%)),
+                      color-stop(0.50, lighten($color, 5%)),
+                      to(darken($color, 20%)));
+    }
+  }
+}
+@include aquaButton("btn1",#6d8000);
+@include aquaButton("btn2",#0598FF,10px);
+@include aquaButton("btn3",#eeeeee,15px);
+
+// @content & @each 사용법
+@mixin create-context($classes...) {
+  @each $class in $classes {
+    .#{$class} & {
+      @content;
+    }
+  }
+}
+
+@mixin context--alternate-template {
+  @include create-context(about, blog) {
+    @content;
+  }
+}
+
+.header {
+  height: 12px; background: red;
+  @include context--alternate-template {
+    background: green;
+  }
+}
+
+// 미디어 쿼리[반응형(rwd) 적용]
+// 최소한 한번은 쓰는 320px의 미디어 쿼리 예제
+
+@mixin media($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@include media(320px) {
+  background: red;
+};
+
+// BEM 간략화 하기
+// @at-root 사용법
+
+@mixin element($name) {
+  @at-root #{&}_#{$name} {
+    @content;
+  }
+}
+
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+.block {
+  color: #000000;
+  @include element(noticeWrap) {
+    color: green;
+    @include modifier(noticeChild) {
+      padding: 10px;
+    }
+  }
+  @include  modifier(notice2) {
+    color: #0056b3;
+  }
+}
+
+#main {
+  $width : 5em !global;
+  width: $width;
+}
+#sidebar {
+  width: $width;
+}
+
+@mixin border-radius( $radius : 4px ) {
+  -webkit-border-radius:$radius; -moz-border-radius: $radius; border-radius: $radius; }
+
+#app {
+  @include border-radius; }
+
+#design {
+  @include border-radius (3px 3px 0 0); }
+
+.jaehee {
+  padding: {
+    top: 10px;
+    bottom: 5px;
+  }
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+/* 한글 주석ㅇㅇㅇ */
+.main {
+  @import "compile";
+}

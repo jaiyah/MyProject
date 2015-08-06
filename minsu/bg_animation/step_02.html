@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <meta charset="utf-8">
+  <title>Banner_step 5:event check move</title>
+  <style>
+*{ margin:0;padding:0;text-decoration:none}
+body{min-height:4000px;}
+li{list-style:none;}
+span{position:absolute; width:100%;top: 106px;font-size: 20px;line-height: 22px;text-align:center;color:#fff}
+ul {overflow:hidden; position:relative; width:800px; margin:30px auto 0; }
+ul li{float:left; position:relative;width:144px;height:144px; margin-left:20px;}
+ul li:first-child{margin-left:0;}
+ul li a{display:block;position:relative; width:100%;height:100%;}
+ul li a img{position:absolute;left:0;top:0;width:100%;height:100%;}
+.qubic{position:absolute; top:0px; left:300px;width:800px;height:144px;margin:30px auto 0;background:url(./img/bg-an.png) no-repeat 0 0;border:1px solid red;}
+  </style>
+  <script>
+  // step 02 :  윈도우 resize 가운데 정렬 적용 
+$(document).ready(function(){     
+
+
+ resizeWindow();
+
+  $(window).resize(function () { 
+     //console.log($(this).width(),$(".qubic").width());
+     resizeWindow();
+   });
+
+
+  function resizeWindow(){
+    
+  var w_size = $(window).width(); 
+    var q_size = $(".qubic").width();
+
+    console.log(w_size,q_size);
+     // 가운데 정렬 
+     if((w_size/2)-(q_size/2)<=0){ 
+        $(".qubic").css("left",0);
+     }else{
+        $(".qubic").css("left",(w_size/2)-(q_size/2));
+       }
+    }
+
+  });
+  </script>
+</head>
+<body>
+	<ul>
+		<li><a href="#none"><img src="./img/title_1.jpg" alt=""><span>기업소개</span></a></li>
+		<li><a href="#none"><img src="./img/title_2.jpg" alt=""><span>투자정보</span></a></li>
+		<li><a href="#none"><img src="./img/title_3.jpg" alt=""><span>홍보채널</span></a></li>
+		<li><a href="#none"><img src="./img/title_4.jpg" alt=""><span>지속가능경영</span></a></li>
+		<li><a href="#none"><img src="./img/title_5.jpg" alt=""><span>인재채용</span></a></li>
+	</ul>
+<div class="qubic">
+  
+</div>
+</body>
+</html>

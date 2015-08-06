@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>script01</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrap">
+    <ul class="tabs">
+        <li><a href="#A-1">Tab A</a></li>
+        <li><a href="#B-1">Tab B</a></li>
+        <li><a href="#C-1">Tab C</a></li>
+    </ul>
+
+    <div class="pane">
+        <ul class="tabs2">
+            <li><a href="#A-1">Tab A-1</a></li>
+            <li><a href="#A-2">Tab A-2</a></li>
+            <li><a href="#A-3">Tab A-3</a></li>
+        </ul>
+        <div class="pane2">A1-First tab content.</div>
+        <div class="pane2">A2-Second tab content</div>
+        <div class="pane2">A3-Third tab content</div>
+
+    </div>
+
+    <div class="pane">
+        <ul class="tabs2">
+            <li><a href="#B-1">Tab B-1</a></li>
+            <li><a href="#B-2">Tab B-2</a></li>
+            <li><a href="#B-3">Tab B-3</a></li>
+        </ul>
+        <div class="pane2">B1-First tab content.</div>
+        <div class="pane2">B2-Second tab content</div>
+        <div class="pane2">B3-Third tab content</div>
+    </div>
+
+    <div class="pane">
+        <ul class="tabs2">
+            <li><a href="#C-1">Tab C-1</a></li>
+            <li><a href="#C-2">Tab C-2</a></li>
+            <li><a href="#C-3">Tab C-3</a></li>
+        </ul>
+        <div class="pane2">C1-First tab content.</div>
+        <div class="pane2">C2-Second tab content</div>
+        <div class="pane2">C3-Third tab content</div>
+    </div>
+
+</div>
+
+<script>
+    $(function() {
+        var initab = 0;
+        var initab2 = 0;
+        var lhash = window.location.hash;
+        if (lhash) {
+            lhash.match(/^#(\d+)-(\d+)/);
+            initab = RegExp.$1 - 1;
+            initab2 = RegExp.$2 - 1;
+        }
+
+        $("ul.tabs").tabs("> .pane",{initialIndex:initab});
+        $("ul.tabs2").tabs("> .pane2",{initialIndex:initab2});
+        $('ul li a').click(function () {location.hash = $(this).attr('href');});
+
+    });
+</script>
+
+<style>
+    :focus { outline: 0;}
+    *::-moz-focus-inner { border: none;}
+
+    div.wrap {
+        width:500px;
+    }
+
+    .wrap .pane .pane2 {
+        display:none;
+        padding:20px;
+        border:1px solid #999;
+        border-top:0;
+        font-size:18px;
+        color:#456;
+    }
+
+    .wrap .pane .pane2 p {
+        font-size:12px;
+        text-align:left;
+        color:#578;
+    }
+
+    /* root element for tabs  */
+    ul.tabs, ul.tabs2 {
+        list-style:none;
+        margin:0 !important;
+        padding:0;
+        height:30px;
+        border-bottom:1px solid #666;
+    }
+
+    /* single tab */
+    ul.tabs li, ul.tabs2 li {
+        float:left;
+        text-indent:0;
+        padding:0;
+        margin:0 !important;
+        list-style-image:none !important;
+    }
+
+    /* link inside the tab. uses a background image */
+    ul.tabs a, ul.tabs2 a {
+        font-size:11px;
+        display:block;
+        height: 30px;
+        line-height:30px;
+        width: 111px;
+        text-align:center;
+        text-decoration:none;
+        color:#000;
+        padding:0px;
+        margin:0px;
+        position:relative;
+        top:1px;
+    }
+
+    ul.tabs a:active, ul.tabs2 a:active {
+        outline:none;
+    }
+
+    /* when mouse enters the tab move the background image */
+    ul.tabs a:hover, ul.tabs2 a:hover {
+        background-position: -652px -31px;
+        color:#fff;
+    }
+
+    /* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+    ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a, ul.tabs2 a.current, ul.tabs2 a.current:hover, ul.tabs2 li.current a {
+        background-position: -652px -62px;
+        cursor:default !important;
+        color:#000 !important;
+    }
+
+</style>
+
+
+
+</body>
+</html>
